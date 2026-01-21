@@ -32,32 +32,30 @@ import {
   ExternalLink
 } from 'lucide-react'
 import Link from 'next/link'
+import { GitHubStars } from '@/components/GitHubStars'
 
-export default function Home() {
+export default function HomeEN() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const features = [
     {
       icon: Eye,
-      title: '智能感知',
-      titleEn: 'Intelligent Perception',
-      description: '实时分析屏幕内容、剪贴板、文件变化，理解你的工作上下文',
+      title: 'Intelligent Perception',
+      description: 'Real-time analysis of screen content, clipboard, and file changes to understand your work context',
       badge: 'Free',
       badgeColor: 'bg-green-100 text-green-700'
     },
     {
       icon: Zap,
-      title: '即时建议',
-      titleEn: 'Instant Suggestions',
-      description: '基于 AI 推理生成可执行的任务建议，一键直达',
+      title: 'Instant Suggestions',
+      description: 'AI-powered actionable task suggestions with one-click execution',
       badge: 'Dynamic',
       badgeColor: 'bg-blue-100 text-blue-700'
     },
     {
       icon: Shield,
-      title: '本地优先',
-      titleEn: 'Local-First',
-      description: '所有数据处理在本地完成，支持离线运行，隐私安全',
+      title: 'Local-First',
+      description: 'All data processing happens locally, supports offline mode, privacy-secure',
       badge: 'Secure',
       badgeColor: 'bg-purple-100 text-purple-700'
     }
@@ -66,52 +64,52 @@ export default function Home() {
   const useCases = [
     {
       icon: Cpu,
-      title: '程序员调试助手',
-      description: '自动感知报错信息，智能建议解决方案，减少调试时间',
+      title: 'Developer Debug Assistant',
+      description: 'Automatically detect error messages and suggest solutions to reduce debugging time',
       tag: '⭐️ Featured'
     },
     {
       icon: FileText,
-      title: '文档自动整理',
-      description: '监控下载文件夹，自动按类型和日期整理文档',
+      title: 'Auto File Organization',
+      description: 'Monitor downloads folder and automatically organize files by type and date',
       tag: '⭐️ Featured'
     },
     {
       icon: Clipboard,
-      title: '剪贴板智能助手',
-      description: '理解复制内容的意图，自动建议下一步操作',
+      title: 'Smart Clipboard',
+      description: 'Understand clipboard content intent and suggest next actions',
       tag: null
     },
     {
       icon: FolderOpen,
-      title: '项目文件追踪',
-      description: '监控项目文件变化，自动生成变更报告',
+      title: 'Project Tracking',
+      description: 'Monitor project file changes and auto-generate change reports',
       tag: null
     },
     {
       icon: Mail,
-      title: '邮件处理建议',
-      description: '分析邮件内容，建议回复模板和待办事项',
+      title: 'Email Processing',
+      description: 'Analyze email content and suggest reply templates and todo items',
       tag: null
     },
     {
       icon: Globe,
-      title: '网页信息提取',
-      description: '浏览网页时自动识别关键信息并建议保存',
+      title: 'Web Info Extraction',
+      description: 'Auto-identify key information while browsing and suggest saving',
       tag: null
     }
   ]
 
   const stats = [
-    { value: '10x', label: '效率提升', description: '相比传统工作流程' },
-    { value: '100%', label: '本地运行', description: '数据永不离开设备' },
-    { value: '3', label: '平台支持', description: '桌面/VS Code/Chrome' },
+    { value: '10x', label: 'Efficiency Boost', description: 'Compared to traditional workflows' },
+    { value: '100%', label: 'Local Processing', description: 'Data never leaves your device' },
+    { value: '3', label: 'Platforms', description: 'Desktop / VS Code / Chrome' },
   ]
 
   const platforms = [
-    { icon: Monitor, name: '桌面应用', desc: 'macOS / Windows / Linux', color: 'from-blue-500 to-cyan-500' },
-    { icon: Code2, name: 'VS Code', desc: '编辑器扩展', color: 'from-purple-500 to-pink-500' },
-    { icon: Chrome, name: 'Chrome', desc: '浏览器扩展', color: 'from-orange-500 to-red-500' },
+    { icon: Monitor, name: 'Desktop App', desc: 'macOS / Windows / Linux', color: 'from-blue-500 to-cyan-500' },
+    { icon: Code2, name: 'VS Code', desc: 'Editor Extension', color: 'from-purple-500 to-pink-500' },
+    { icon: Chrome, name: 'Chrome', desc: 'Browser Extension', color: 'from-orange-500 to-red-500' },
   ]
 
   return (
@@ -121,7 +119,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/en" className="flex items-center gap-2">
               <span className="text-2xl">🦅</span>
               <span className="text-xl font-bold text-gray-900">Hawkeye</span>
             </Link>
@@ -129,36 +127,25 @@ export default function Home() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
               <Link href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">
-                功能
+                Features
               </Link>
               <Link href="#usecases" className="text-gray-600 hover:text-gray-900 transition-colors">
-                使用场景
+                Use Cases
               </Link>
               <Link href="#platforms" className="text-gray-600 hover:text-gray-900 transition-colors">
-                多平台
+                Platforms
               </Link>
               <Link href="https://github.com/tensorboy/hawkeye" className="text-gray-600 hover:text-gray-900 transition-colors">
-                文档
+                Docs
               </Link>
             </div>
 
             {/* Right Actions */}
             <div className="hidden md:flex items-center gap-3">
-              <a
-                href="https://github.com/tensorboy/hawkeye"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-gray-600 hover:text-gray-900 transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <Link
-                href="https://github.com/tensorboy/hawkeye"
-                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors"
-              >
-                Get Started
+              <Link href="/" className="text-sm text-gray-500 hover:text-gray-700">
+                中文
               </Link>
+              <GitHubStars repo="tensorboy/hawkeye" />
               <Link
                 href="https://github.com/tensorboy/hawkeye/releases"
                 className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
@@ -186,10 +173,11 @@ export default function Home() {
             className="md:hidden bg-white border-t border-gray-100 py-4"
           >
             <div className="container mx-auto px-4 flex flex-col gap-4">
-              <Link href="#features" className="text-gray-600 hover:text-gray-900 py-2">功能</Link>
-              <Link href="#usecases" className="text-gray-600 hover:text-gray-900 py-2">使用场景</Link>
-              <Link href="#platforms" className="text-gray-600 hover:text-gray-900 py-2">多平台</Link>
-              <Link href="https://github.com/tensorboy/hawkeye" className="text-gray-600 hover:text-gray-900 py-2">文档</Link>
+              <Link href="#features" className="text-gray-600 hover:text-gray-900 py-2">Features</Link>
+              <Link href="#usecases" className="text-gray-600 hover:text-gray-900 py-2">Use Cases</Link>
+              <Link href="#platforms" className="text-gray-600 hover:text-gray-900 py-2">Platforms</Link>
+              <Link href="https://github.com/tensorboy/hawkeye" className="text-gray-600 hover:text-gray-900 py-2">Docs</Link>
+              <Link href="/" className="text-gray-600 hover:text-gray-900 py-2">中文版</Link>
               <hr className="border-gray-100" />
               <Link
                 href="https://github.com/tensorboy/hawkeye/releases"
@@ -214,13 +202,13 @@ export default function Home() {
             <h1 id="hero-heading" className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 tracking-tight">
               <span className="block">Hawkeye</span>
               <span className="block text-3xl md:text-5xl mt-2 font-normal text-gray-700">
-                AI 赋能每个人 10x 效率
+                AI-Powered 10x Productivity
               </span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-              从感知到行动 — <strong className="text-gray-900">本地优先的 AI 助手</strong>自动观察你的工作环境，
-              理解意图，主动提供帮助。
+              From perception to action — A <strong className="text-gray-900">local-first AI assistant</strong> that
+              automatically observes your work environment, understands intent, and proactively helps.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -265,43 +253,43 @@ export default function Home() {
                     <div className="w-3 h-3 rounded-full bg-yellow-400" />
                     <div className="w-3 h-3 rounded-full bg-green-400" />
                   </div>
-                  <div className="flex-1 text-center text-sm text-gray-500">Hawkeye - 智能任务助手</div>
+                  <div className="flex-1 text-center text-sm text-gray-500">Hawkeye - Smart Task Assistant</div>
                 </div>
                 <div className="p-6 bg-gradient-to-br from-gray-50 to-white min-h-[300px] flex items-center justify-center">
                   <div className="grid grid-cols-3 gap-4 w-full max-w-3xl">
                     {/* Chat Panel */}
                     <div className="col-span-1 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                      <div className="text-sm font-medium text-gray-900 mb-3">对话</div>
+                      <div className="text-sm font-medium text-gray-900 mb-3">Chat</div>
                       <div className="space-y-2">
                         <div className="bg-gray-100 rounded-lg p-2 text-xs text-gray-600">
-                          帮我整理下载文件夹...
+                          Organize my downloads folder...
                         </div>
                         <div className="bg-primary-100 rounded-lg p-2 text-xs text-primary-700">
-                          好的！我已检测到 23 个文件...
+                          Done! Found 23 files to organize...
                         </div>
                       </div>
                     </div>
                     {/* Agent Cards */}
                     <div className="col-span-2 grid grid-cols-2 gap-3">
                       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3">
-                        <div className="text-xs font-medium text-green-600 mb-1">屏幕感知</div>
-                        <div className="text-sm text-gray-700">正在分析当前窗口...</div>
-                        <div className="mt-2 text-xs text-gray-400">● 运行中</div>
+                        <div className="text-xs font-medium text-green-600 mb-1">Screen Perception</div>
+                        <div className="text-sm text-gray-700">Analyzing current window...</div>
+                        <div className="mt-2 text-xs text-gray-400">● Running</div>
                       </div>
                       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3">
-                        <div className="text-xs font-medium text-blue-600 mb-1">文件监控</div>
-                        <div className="text-sm text-gray-700">检测到 3 个新文件</div>
-                        <div className="mt-2 text-xs text-gray-400">● 活跃</div>
+                        <div className="text-xs font-medium text-blue-600 mb-1">File Monitor</div>
+                        <div className="text-sm text-gray-700">Detected 3 new files</div>
+                        <div className="mt-2 text-xs text-gray-400">● Active</div>
                       </div>
                       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3">
-                        <div className="text-xs font-medium text-purple-600 mb-1">剪贴板</div>
-                        <div className="text-sm text-gray-700">已捕获代码片段</div>
-                        <div className="mt-2 text-xs text-gray-400">● 就绪</div>
+                        <div className="text-xs font-medium text-purple-600 mb-1">Clipboard</div>
+                        <div className="text-sm text-gray-700">Captured code snippet</div>
+                        <div className="mt-2 text-xs text-gray-400">● Ready</div>
                       </div>
                       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3">
-                        <div className="text-xs font-medium text-orange-600 mb-1">任务建议</div>
-                        <div className="text-sm text-gray-700">生成了 5 个建议</div>
-                        <div className="mt-2 text-xs text-gray-400">● 完成</div>
+                        <div className="text-xs font-medium text-orange-600 mb-1">Task Suggestions</div>
+                        <div className="text-sm text-gray-700">Generated 5 suggestions</div>
+                        <div className="mt-2 text-xs text-gray-400">● Complete</div>
                       </div>
                     </div>
                   </div>
@@ -347,15 +335,15 @@ export default function Home() {
               Build Your Workflow, Your Way
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              智能、安全、完全可控
+              Intelligent, Secure, Fully Controllable
             </p>
           </motion.header>
 
           {/* Feature Badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            <span className="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium">Free · 免费开源</span>
-            <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Dynamic · 动态感知</span>
-            <span className="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Secure · 本地优先</span>
+            <span className="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium">Free & Open Source</span>
+            <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Dynamic Perception</span>
+            <span className="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Local-First</span>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -372,7 +360,6 @@ export default function Home() {
                   <feature.icon className="w-7 h-7 text-gray-700" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-sm text-gray-500 mb-4">{feature.titleEn}</p>
                 <p className="text-gray-600">{feature.description}</p>
               </motion.article>
             ))}
@@ -389,12 +376,12 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Usecases</span>
+            <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Use Cases</span>
             <h2 id="usecases-heading" className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mt-2 mb-4">
-              真实场景，真实效果
+              Real Scenarios, Real Results
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              看看 Hawkeye 如何帮助你处理日常任务
+              See how Hawkeye helps with your daily tasks
             </p>
           </motion.header>
 
@@ -438,10 +425,10 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 id="platforms-heading" className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
-              多平台联动
+              Multi-Platform Support
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              桌面应用、VS Code 扩展、Chrome 扩展三端实时同步
+              Desktop app, VS Code extension, and Chrome extension in real-time sync
             </p>
           </motion.header>
 
@@ -483,24 +470,24 @@ export default function Home() {
                 </div>
                 <div className="flex-1">
                   <h2 id="privacy-heading" className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                    隐私优先，安全设计
+                    Privacy-First, Secure by Design
                   </h2>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">所有数据本地处理，永不上传</span>
+                      <span className="text-gray-600">All data processed locally, never uploaded</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">支持 Ollama 本地 LLM</span>
+                      <span className="text-gray-600">Supports Ollama local LLM</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">可选云端 AI（Claude API）</span>
+                      <span className="text-gray-600">Optional cloud AI (Claude API)</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">100% 开源透明</span>
+                      <span className="text-gray-600">100% open source & transparent</span>
                     </div>
                   </div>
                 </div>
@@ -519,10 +506,10 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 id="cta-heading" className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
-              开源 · 免费 · 本地运行
+              Open Source · Free · Local-First
             </h2>
             <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg">
-              Hawkeye 是开源项目，你可以自己托管并使用自己的 API Key 或本地模型。
+              Hawkeye is open source. Self-host and use your own API keys or local models.
             </p>
             <motion.a
               whileHover={{ scale: 1.02 }}
@@ -548,7 +535,7 @@ export default function Home() {
                 <span className="text-xl font-bold text-white">Hawkeye</span>
               </div>
               <p className="text-gray-400 mb-6 max-w-sm">
-                AI 赋能每个人 10x 效率。本地优先，隐私安全，开源免费。
+                AI-powered 10x productivity for everyone. Local-first, privacy-secure, free and open source.
               </p>
               {/* Email Subscribe */}
               <div className="flex gap-2">
@@ -565,33 +552,29 @@ export default function Home() {
 
             {/* Links */}
             <div>
-              <h3 className="font-semibold text-white mb-4">产品</h3>
+              <h3 className="font-semibold text-white mb-4">Product</h3>
               <ul className="space-y-2">
-                <li><Link href="#features" className="text-gray-400 hover:text-white transition-colors">功能</Link></li>
-                <li><Link href="#usecases" className="text-gray-400 hover:text-white transition-colors">使用场景</Link></li>
-                <li><Link href="#platforms" className="text-gray-400 hover:text-white transition-colors">多平台</Link></li>
-                <li><Link href="/compare" className="text-gray-400 hover:text-white transition-colors">对比竞品</Link></li>
+                <li><Link href="#features" className="text-gray-400 hover:text-white transition-colors">Features</Link></li>
+                <li><Link href="#usecases" className="text-gray-400 hover:text-white transition-colors">Use Cases</Link></li>
+                <li><Link href="#platforms" className="text-gray-400 hover:text-white transition-colors">Platforms</Link></li>
+                <li><Link href="/en/compare" className="text-gray-400 hover:text-white transition-colors">Compare</Link></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold text-white mb-4">资源</h3>
+              <h3 className="font-semibold text-white mb-4">Resources</h3>
               <ul className="space-y-2">
-                <li><a href="https://github.com/tensorboy/hawkeye" className="text-gray-400 hover:text-white transition-colors">文档</a></li>
+                <li><a href="https://github.com/tensorboy/hawkeye" className="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
                 <li><a href="https://github.com/tensorboy/hawkeye" className="text-gray-400 hover:text-white transition-colors">GitHub</a></li>
-                <li><Link href="/changelog" className="text-gray-400 hover:text-white transition-colors">更新日志</Link></li>
+                <li><Link href="/en/changelog" className="text-gray-400 hover:text-white transition-colors">Changelog</Link></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold text-white mb-4">法律</h3>
+              <h3 className="font-semibold text-white mb-4">Legal</h3>
               <ul className="space-y-2">
-                <li><Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">隐私政策</Link></li>
-                <li><Link href="/terms" className="text-gray-400 hover:text-white transition-colors">服务条款</Link></li>
-              </ul>
-              <h3 className="font-semibold text-white mb-4 mt-6">语言</h3>
-              <ul className="space-y-2">
-                <li><Link href="/en" className="text-gray-400 hover:text-white transition-colors">English</Link></li>
+                <li><Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="text-gray-400 hover:text-white transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
           </div>
@@ -600,9 +583,8 @@ export default function Home() {
             <p className="text-gray-500 text-sm">
               © {new Date().getFullYear()} Hawkeye. MIT License.
             </p>
-            <div className="flex items-center gap-6 mt-4 md:mt-0">
-              <Link href="/privacy" className="text-gray-500 hover:text-white text-sm transition-colors">隐私政策</Link>
-              <Link href="/terms" className="text-gray-500 hover:text-white text-sm transition-colors">服务条款</Link>
+            <div className="flex items-center gap-4 mt-4 md:mt-0">
+              <Link href="/" className="text-gray-400 hover:text-white text-sm">中文</Link>
               <a href="https://github.com/tensorboy/hawkeye" className="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
                 <Github className="w-5 h-5" />
               </a>
