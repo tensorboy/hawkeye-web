@@ -1,51 +1,7 @@
-import { Metadata } from 'next'
-import CompareContent from './CompareContent'
-import { siteConfig } from '@/lib/seo'
+'use client'
 
-// SEO metadata for compare page
-export const metadata: Metadata = {
-  title: 'Hawkeye vs Cursor vs Copilot vs Cline - AI 编程助手对比 2025',
-  description: '详细对比 Hawkeye、GitHub Copilot、Cursor、Cline 四款主流 AI 编程助手。了解功能差异、定价、隐私保护，选择最适合你的工具。',
-  keywords: [
-    'Hawkeye vs Cursor',
-    'Hawkeye vs Copilot',
-    'Hawkeye vs Cline',
-    'AI 编程助手对比',
-    'AI coding assistant comparison',
-    'best AI coding tool 2025',
-    'Cursor alternative',
-    'Copilot alternative',
-    'free AI coding assistant',
-    'local AI assistant',
-    'privacy-focused AI tool',
-  ],
-  openGraph: {
-    title: 'Hawkeye vs Cursor vs Copilot vs Cline - 完整对比',
-    description: '四款主流 AI 编程助手全面对比：功能、定价、隐私保护。找到最适合你的AI工具。',
-    url: `${siteConfig.url}/compare`,
-    type: 'article',
-    images: [
-      {
-        url: `${siteConfig.url}/og-compare.png`,
-        width: 1200,
-        height: 630,
-        alt: 'Hawkeye vs Cursor vs Copilot vs Cline 对比',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Hawkeye vs Cursor vs Copilot vs Cline',
-    description: 'AI 编程助手完整对比指南',
-  },
-  alternates: {
-    canonical: `${siteConfig.url}/compare`,
-  },
-}
-
-export default function ComparePage() {
-  return <CompareContent />
-}
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 import {
   ArrowLeft,
   Check,
@@ -65,7 +21,7 @@ import {
 } from 'lucide-react'
 import { GitHubStarButton } from '@/components/GitHubStars'
 
-export default function ComparePage() {
+export default function CompareContent() {
   const competitors = [
     {
       name: 'Hawkeye',
@@ -460,11 +416,12 @@ export default function ComparePage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-12 text-center">详细对比</h2>
 
           {/* vs Copilot */}
-          <motion.div
+          <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-12 p-8 bg-gray-50 rounded-2xl"
+            id="hawkeye-vs-copilot"
           >
             <h3 className="text-xl font-bold text-gray-900 mb-4">
               🦅 Hawkeye vs 🤖 GitHub Copilot
@@ -493,14 +450,15 @@ export default function ComparePage() {
             <p className="mt-4 text-gray-500 text-sm">
               <strong>结论：</strong>如果你重视隐私和成本，选择 Hawkeye；如果需要成熟的代码补全和企业支持，选择 Copilot。
             </p>
-          </motion.div>
+          </motion.article>
 
           {/* vs Cursor */}
-          <motion.div
+          <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-12 p-8 bg-gray-50 rounded-2xl"
+            id="hawkeye-vs-cursor"
           >
             <h3 className="text-xl font-bold text-gray-900 mb-4">
               🦅 Hawkeye vs ⚡ Cursor
@@ -529,14 +487,15 @@ export default function ComparePage() {
             <p className="mt-4 text-gray-500 text-sm">
               <strong>结论：</strong>如果你想保持现有工作流程并获得额外的感知能力，选择 Hawkeye；如果愿意切换 IDE 追求极致的 AI 编程体验，选择 Cursor。
             </p>
-          </motion.div>
+          </motion.article>
 
           {/* vs Cline */}
-          <motion.div
+          <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="p-8 bg-gray-50 rounded-2xl"
+            id="hawkeye-vs-cline"
           >
             <h3 className="text-xl font-bold text-gray-900 mb-4">
               🦅 Hawkeye vs 🔧 Cline
@@ -564,7 +523,7 @@ export default function ComparePage() {
             <p className="mt-4 text-gray-500 text-sm">
               <strong>结论：</strong>两者都是优秀的开源选择。如果你需要超越 VS Code 的使用场景和感知能力，选择 Hawkeye；如果专注于 VS Code 内的代码开发，Cline 是很好的选择。
             </p>
-          </motion.div>
+          </motion.article>
         </div>
       </section>
 

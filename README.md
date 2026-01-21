@@ -1,5 +1,9 @@
 # Hawkiyi.com 🦅
 
+<p align="center">
+  <img src="./public/logo.png" alt="Hawkeye Logo" width="200" height="200" style="border-radius: 20%;" />
+</p>
+
 Hawkeye 项目官方网站 - [hawkiyi.com](https://hawkiyi.com)
 
 ## 关于
