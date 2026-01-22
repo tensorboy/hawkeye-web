@@ -598,7 +598,7 @@ export default function Home() {
 
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Hawkeye. MIT License.
+              © {new Date().getFullYear()} Hawkeye. MIT License. <span className="text-gray-600">v0.1.0</span>
             </p>
             <div className="flex items-center gap-6 mt-4 md:mt-0">
               <Link href="/privacy" className="text-gray-500 hover:text-white text-sm transition-colors">隐私政策</Link>
