@@ -3,15 +3,36 @@ import { siteConfig } from '@/lib/seo'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Hawkeye 使用场景 - 开发者 | 设计师 | 学生 | 办公人员',
-  description: '了解 Hawkeye AI 助手如何帮助不同用户：程序员代码辅助、设计师创意工作、学生学习研究、办公人员日常任务自动化。真实使用案例和效率提升数据。',
+  // 优化后的标题：英文关键词 + 用户群体
+  title: 'Hawkeye Use Cases - For Developers, Designers, Students & Professionals | AI Productivity',
+  description: 'Discover how Hawkeye AI assistant helps different users: developer code assistance, designer workflow automation, student research support, office productivity. Real use cases with 65-90% efficiency gains. Free Screenpipe/Rewind alternative.',
   keywords: [
+    // 英文用户场景词
+    'Hawkeye use cases',
+    'AI coding assistant',
+    'AI design tool',
+    'AI study assistant',
+    'AI office assistant',
+    'developer productivity tool',
+    'designer workflow automation',
+    'student efficiency tool',
+    'office automation AI',
+    'task automation examples',
+    'productivity improvement tool',
+    'workflow optimization AI',
+    // 长尾关键词
+    'AI assistant for programmers',
+    'AI assistant for designers',
+    'AI assistant for students',
+    'best AI productivity tool 2026',
+    'free AI workflow automation',
+    // 中文关键词
     'Hawkeye 使用场景',
     'AI 编程助手',
     'AI 设计工具',
     'AI 学习助手',
     'AI 办公助手',
-    '程序员工具',
+    '程序员效率工具',
     '设计师工具',
     '学生效率工具',
     '办公自动化',

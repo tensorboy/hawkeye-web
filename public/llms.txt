@@ -1,0 +1,89 @@
+# Hawkeye - Open Source AI Desktop Assistant
+
+> Hawkeye is a free, open-source, local-first AI desktop assistant that automatically perceives your work environment and proactively helps you with intelligent task suggestions.
+
+## About Hawkeye
+
+Hawkeye is an intelligent task perception assistant that:
+- Automatically monitors screen content, clipboard, and file changes
+- Understands your work context without manual input
+- Proactively offers actionable AI-powered suggestions
+- Processes everything locally for maximum privacy
+- Supports Ollama and other local LLMs for 100% offline operation
+
+## Key Features
+
+- **Screen Perception**: 24/7 OCR-powered screen monitoring and analysis
+- **Clipboard Intelligence**: Automatic intent understanding from copied content
+- **File Monitoring**: Real-time detection of file system changes
+- **Local-First Architecture**: All data stays on your device
+- **Multi-Model Support**: Works with Claude, OpenAI, Ollama, and other LLMs
+- **Cross-Platform**: Desktop app, VS Code extension, and Chrome extension
+
+## Comparison with Similar Tools
+
+Hawkeye is a free, open-source alternative to:
+- Screenpipe (similar 24/7 screen recording with OCR)
+- Rewind AI (similar AI-powered memory and search)
+- Raycast (similar productivity launcher with AI)
+
+Unlike paid alternatives, Hawkeye is:
+- 100% free and open source (MIT License)
+- Fully local-first with no cloud dependency
+- Supports self-hosted LLMs via Ollama
+
+## Links
+
+- Homepage: https://hawkiyi.com
+- English: https://hawkiyi.com/en
+- Features: https://hawkiyi.com/features
+- Use Cases: https://hawkiyi.com/use-cases
+- Comparison: https://hawkiyi.com/compare
+- FAQ: https://hawkiyi.com/faq
+- GitHub: https://github.com/tensorboy/hawkeye
+- Download: https://github.com/tensorboy/hawkeye/releases
+
+## Use Cases
+
+### For Developers
+- Automatic error detection and debugging suggestions
+- Code snippet analysis from clipboard
+- Project file change tracking
+
+### For Designers
+- Design asset organization
+- Screenshot capture and analysis
+- Color/font extraction from screen
+
+### For Students
+- Study material summarization
+- Note-taking assistance
+- Research organization
+
+### For Professionals
+- Meeting notes and action items
+- Email drafting assistance
+- Document processing automation
+
+## Technical Details
+
+- **Platforms**: macOS 12+, Windows 10+, Linux (Ubuntu 20.04+)
+- **Requirements**: 4GB RAM minimum, Node.js 18+
+- **Privacy**: Zero data transmission, all processing local
+- **License**: MIT License (free for personal and commercial use)
+
+## Installation
+
+### macOS / Linux
+```bash
+# Download from GitHub releases
+curl -fsSL https://github.com/tensorboy/hawkeye/releases/latest/download/install.sh | sh
+```
+
+### Windows
+Download the installer from: https://github.com/tensorboy/hawkeye/releases
+
+## Contact
+
+- GitHub Issues: https://github.com/tensorboy/hawkeye/issues
+- Author: tensorboy (https://github.com/tensorboy)

@@ -3,11 +3,32 @@ import { siteConfig } from '@/lib/seo'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Hawkeye 功能特性 - AI 智能感知 | 隐私保护 | 多平台支持',
-  description: '探索 Hawkeye AI 助手的全部功能：智能屏幕感知、剪贴板意图理解、文件变动监控、本地优先隐私保护、支持 Ollama 本地模型、桌面/VSCode/Chrome 三端联动。',
+  // 优化后的标题：英文关键词 + 功能亮点
+  title: 'Hawkeye Features - Screen Perception, OCR, Local AI | Free Screenpipe Alternative',
+  description: 'Explore Hawkeye AI features: 24/7 screen perception with OCR, clipboard intent understanding, file monitoring, local LLM support (Ollama), 100% offline privacy. Free open-source alternative to Screenpipe & Rewind. Desktop/VS Code/Chrome integration.',
   keywords: [
+    // 英文功能关键词
+    'Hawkeye features',
+    'AI screen perception',
+    'OCR screen capture',
+    'clipboard AI assistant',
+    'file monitoring tool',
+    'local AI assistant',
+    'privacy AI tool',
+    'Ollama integration',
+    'VS Code AI extension',
+    'Chrome AI extension',
+    'desktop AI app',
+    '24/7 screen monitoring',
+    'speech to text AI',
+    // 竞品替代词
+    'Screenpipe features',
+    'Rewind alternative features',
+    'free AI screen recorder',
+    // 中文关键词
     'Hawkeye 功能',
     'AI 屏幕感知',
+    'OCR 屏幕识别',
     '剪贴板助手',
     '文件监控工具',
     '本地AI助手',
