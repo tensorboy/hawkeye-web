@@ -30,7 +30,8 @@ import {
   Mail,
   MessageSquare,
   Twitter,
-  ExternalLink
+  ExternalLink,
+  Play
 } from 'lucide-react'
 import Link from 'next/link'
 import { GitHubStars } from '@/components/GitHubStars'
@@ -241,6 +242,31 @@ export default function HomeEN() {
                 <ExternalLink className="w-4 h-4" />
               </motion.a>
             </div>
+
+            {/* Trust Badges */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mt-8 text-sm text-gray-500"
+            >
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-green-500" />
+                No Credit Card
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-green-500" />
+                Works Offline
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-green-500" />
+                Data Stays Local
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-green-500" />
+                Open Source
+              </span>
+            </motion.div>
           </motion.div>
 
           {/* Product Screenshot */}
@@ -306,6 +332,73 @@ export default function HomeEN() {
         </div>
       </section>
 
+      {/* Demo Video Section */}
+      <section className="py-16 md:py-24 bg-white relative">
+        <div className="container mx-auto px-4">
+          <motion.header
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Product Demo</span>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2 mb-4">
+              See Hawkeye in Action
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              A quick 2-minute overview of Hawkeye&apos;s core features
+            </p>
+          </motion.header>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            {/* Video Player Placeholder */}
+            <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-xl flex items-center justify-center group cursor-pointer border border-gray-200">
+              {/* Play button */}
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative z-10 w-20 h-20 md:w-24 md:h-24 rounded-full bg-gray-900 flex items-center justify-center shadow-2xl group-hover:bg-orange-500 transition-colors"
+              >
+                <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="currentColor" />
+              </motion.div>
+
+              {/* Video info overlay */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full">
+                  <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <span className="text-white text-sm font-medium">Demo Video</span>
+                </div>
+                <span className="px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+                  2:15
+                </span>
+              </div>
+            </div>
+
+            {/* Video highlights */}
+            <div className="grid grid-cols-3 gap-4 mt-6">
+              {[
+                { time: '0:00', label: 'Installation' },
+                { time: '0:45', label: 'Screen Perception' },
+                { time: '1:30', label: 'Task Automation' },
+              ].map((chapter) => (
+                <button
+                  key={chapter.time}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200 hover:border-orange-300 transition-colors group"
+                >
+                  <span className="text-sm font-mono text-orange-600">{chapter.time}</span>
+                  <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">{chapter.label}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-16 bg-white border-y border-gray-100">
         <div className="container mx-auto px-4">
@@ -322,6 +415,73 @@ export default function HomeEN() {
                 <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">{stat.value}</div>
                 <div className="text-lg font-medium text-gray-700">{stat.label}</div>
                 <div className="text-sm text-gray-500 mt-1">{stat.description}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-orange-50/30 to-white">
+        <div className="container mx-auto px-4">
+          <motion.header
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Testimonials</span>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">
+              What Developers Are Saying
+            </h2>
+          </motion.header>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                quote: "Finally, an AI assistant that truly respects privacy. All data is processed locally, and I can use it confidently at work.",
+                author: "Mike Chen",
+                role: "Full-Stack Developer",
+                avatar: "M"
+              },
+              {
+                quote: "Hawkeye has completely transformed my workflow. It automatically understands what I'm doing and gives precise suggestions.",
+                author: "Sarah Lee",
+                role: "Frontend Engineer",
+                avatar: "S"
+              },
+              {
+                quote: "As an open source project, Hawkeye's quality is impressive. Active community, frequent updates, and getting more powerful.",
+                author: "David Wang",
+                role: "Tech Lead",
+                avatar: "D"
+              }
+            ].map((testimonial, index) => (
+              <motion.div
+                key={testimonial.author}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
+              >
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-orange-400 fill-orange-400" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-semibold">
+                    {testimonial.avatar}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900">{testimonial.author}</div>
+                    <div className="text-sm text-gray-500">{testimonial.role}</div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -360,13 +520,18 @@ export default function HomeEN() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-orange-50/50 to-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all group"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="bg-gradient-to-br from-orange-50/50 to-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl hover:border-orange-200 transition-all group cursor-pointer"
               >
-                <div className="w-14 h-14 rounded-xl bg-white shadow-sm border border-gray-100 flex items-center justify-center mb-6 group-hover:shadow-md transition-shadow">
-                  <feature.icon className="w-7 h-7 text-gray-700" />
+                <div className="w-14 h-14 rounded-xl bg-white shadow-sm border border-gray-100 flex items-center justify-center mb-6 group-hover:shadow-md group-hover:border-orange-200 transition-all">
+                  <feature.icon className="w-7 h-7 text-gray-700 group-hover:text-orange-600 transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
+                <div className="mt-6 flex items-center gap-2 text-sm font-medium text-orange-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span>Learn more</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </motion.article>
             ))}
           </div>

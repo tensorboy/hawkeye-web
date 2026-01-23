@@ -773,3 +773,299 @@ body {
   font-size: 0.875rem;
   line-height: 1.5;
 }
+
+/* ============================================
+   Advanced Visual Effects - P2 Upgrade
+   ============================================ */
+
+/* Enhanced glassmorphism with 3D depth */
+.hawk-glass-3d {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.6) 100%
+  );
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+    0 -2px 6px rgba(0, 0, 0, 0.02) inset;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hawk-glass-3d {
+    background: linear-gradient(
+      135deg,
+      rgba(30, 41, 59, 0.9) 0%,
+      rgba(30, 41, 59, 0.6) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+      0 -2px 6px rgba(0, 0, 0, 0.1) inset;
+  }
+}
+
+/* Animated gradient background */
+@keyframes hawk-gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.hawk-animated-gradient {
+  background: linear-gradient(
+    -45deg,
+    var(--hawk-accent),
+    #fcd34d,
+    var(--hawk-blue),
+    #60a5fa,
+    var(--hawk-accent)
+  );
+  background-size: 400% 400%;
+  animation: hawk-gradient-shift 15s ease infinite;
+}
+
+/* Subtle shimmer effect */
+@keyframes hawk-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.hawk-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.hawk-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: hawk-shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Floating orb effect for backgrounds */
+.hawk-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: hawk-float 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hawk-orb-accent {
+  background: var(--hawk-accent);
+}
+
+.hawk-orb-blue {
+  background: var(--hawk-blue);
+}
+
+/* 3D card with perspective */
+.hawk-card-3d {
+  background: var(--hawk-surface);
+  border: 1px solid var(--hawk-border);
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.hawk-card-3d:hover {
+  transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.15),
+    0 0 0 1px var(--hawk-accent-glow),
+    -5px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .hawk-card-3d:hover {
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 30px var(--hawk-accent-glow),
+      -5px 10px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Glow button with animated border */
+@keyframes hawk-border-rotate {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.hawk-btn-glow {
+  position: relative;
+  background: var(--hawk-surface);
+  border: none;
+  border-radius: 12px;
+  padding: 16px 32px;
+  font-weight: 600;
+  overflow: hidden;
+  isolation: isolate;
+  animation: hawk-border-rotate 4s linear infinite;
+}
+
+.hawk-btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from var(--angle),
+    var(--hawk-accent),
+    var(--hawk-blue),
+    var(--hawk-accent)
+  );
+  border-radius: 14px;
+  z-index: -2;
+}
+
+.hawk-btn-glow::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: var(--hawk-surface);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+/* Spotlight effect on hover */
+.hawk-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.hawk-spotlight::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    var(--hawk-accent-glow) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.hawk-spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Dotted grid pattern */
+.hawk-dots-bg {
+  background-image: radial-gradient(
+    circle,
+    var(--hawk-border) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* Radial gradient spotlight */
+.hawk-radial-gradient {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    var(--hawk-accent-glow),
+    transparent
+  );
+}
+
+/* Soft shadow for elevated elements */
+.hawk-shadow-soft {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 20px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.hawk-shadow-glow {
+  box-shadow:
+    0 10px 40px -10px var(--hawk-accent-glow),
+    0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Text gradient animation */
+@keyframes hawk-text-gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.hawk-text-animated {
+  background: linear-gradient(
+    90deg,
+    var(--hawk-accent),
+    #fcd34d,
+    var(--hawk-blue),
+    #60a5fa,
+    var(--hawk-accent)
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: hawk-text-gradient 8s ease infinite;
+}
+
+/* Feature badge with glow */
+.hawk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--hawk-accent), 0.15),
+    rgba(var(--hawk-accent), 0.05)
+  );
+  border: 1px solid var(--hawk-accent);
+  color: var(--hawk-accent);
+  box-shadow: 0 0 20px var(--hawk-accent-glow);
+}
+
+/* Smooth scroll behavior */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

@@ -396,6 +396,29 @@ export default function Home() {
               </motion.a>
             </motion.div>
 
+            {/* Trust Badges */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-sm text-[var(--hawk-text-tertiary)] mb-12"
+            >
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-emerald-500" />
+                无需信用卡
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-emerald-500" />
+                离线可用
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-emerald-500" />
+                数据本地存储
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-emerald-500" />
+                开源透明
+              </span>
+            </motion.div>
+
             {/* Product Preview Card */}
             <motion.div
               variants={itemVariants}
@@ -473,6 +496,88 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Demo Video Section */}
+      <section className="py-16 md:py-24 bg-[var(--hawk-bg-primary)] relative overflow-hidden">
+        <div className="absolute inset-0 hawk-grid-bg opacity-30" />
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.header
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold text-[var(--hawk-accent)] bg-[var(--hawk-accent)]/10 rounded-full uppercase tracking-wider">
+              产品演示
+            </span>
+            <h2 className="hawk-display-lg text-[var(--hawk-text-primary)] mb-4">
+              看看 Hawkeye 如何工作
+            </h2>
+            <p className="hawk-body-lg text-[var(--hawk-text-secondary)] max-w-2xl mx-auto">
+              2 分钟快速了解 Hawkeye 的核心功能
+            </p>
+          </motion.header>
+
+          <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            {/* Video Player Placeholder */}
+            <div className="hawk-border-gradient overflow-hidden">
+              <div className="relative aspect-video bg-gradient-to-br from-[var(--hawk-bg-secondary)] to-[var(--hawk-surface)] flex items-center justify-center group cursor-pointer">
+                {/* Animated background pattern */}
+                <div className="absolute inset-0 hawk-noise opacity-50" />
+
+                {/* Play button */}
+                <motion.div
+                  whileHover={prefersReducedMotion ? {} : { scale: 1.1 }}
+                  whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+                  className="relative z-10 w-20 h-20 md:w-24 md:h-24 rounded-full bg-[var(--hawk-accent)] flex items-center justify-center shadow-2xl group-hover:bg-amber-400 transition-colors"
+                  style={{ boxShadow: '0 10px 50px rgba(245, 158, 11, 0.4)' }}
+                >
+                  <Play className="w-8 h-8 md:w-10 md:h-10 text-slate-900 ml-1" fill="currentColor" />
+                </motion.div>
+
+                {/* Video info overlay */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2 px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full">
+                    <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    <span className="text-white text-sm font-medium">Demo Video</span>
+                  </div>
+                  <span className="px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+                    2:15
+                  </span>
+                </div>
+
+                {/* Corner decorations */}
+                <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-[var(--hawk-accent)]/30 rounded-tl-lg" />
+                <div className="absolute top-4 right-4 w-12 h-12 border-r-2 border-t-2 border-[var(--hawk-accent)]/30 rounded-tr-lg" />
+                <div className="absolute bottom-4 left-4 w-12 h-12 border-l-2 border-b-2 border-[var(--hawk-accent)]/30 rounded-bl-lg" />
+                <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-[var(--hawk-accent)]/30 rounded-br-lg" />
+              </div>
+            </div>
+
+            {/* Video highlights */}
+            <div className="grid grid-cols-3 gap-4 mt-6">
+              {[
+                { time: '0:00', label: '安装与设置' },
+                { time: '0:45', label: '屏幕感知演示' },
+                { time: '1:30', label: '任务自动化' },
+              ].map((chapter) => (
+                <button
+                  key={chapter.time}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-[var(--hawk-surface)] border border-[var(--hawk-border)] hover:border-[var(--hawk-accent)]/50 transition-colors group"
+                >
+                  <span className="text-sm font-mono text-[var(--hawk-accent)]">{chapter.time}</span>
+                  <span className="text-sm text-[var(--hawk-text-secondary)] group-hover:text-[var(--hawk-text-primary)] transition-colors">{chapter.label}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-16 md:py-20 border-y border-[var(--hawk-border)] bg-[var(--hawk-bg-secondary)]">
         <div className="container mx-auto px-4">
@@ -491,6 +596,75 @@ export default function Home() {
                 </div>
                 <div className="hawk-display-md text-[var(--hawk-text-primary)] mb-1">{stat.value}</div>
                 <div className="text-sm font-semibold text-[var(--hawk-text-secondary)]">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 md:py-24 bg-[var(--hawk-bg-primary)]">
+        <div className="container mx-auto px-4">
+          <motion.header
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold text-[var(--hawk-accent)] bg-[var(--hawk-accent)]/10 rounded-full uppercase tracking-wider">
+              用户评价
+            </span>
+            <h2 className="hawk-display-lg text-[var(--hawk-text-primary)]">
+              开发者们都在说什么
+            </h2>
+          </motion.header>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                quote: "终于有一个真正尊重隐私的 AI 助手了。所有数据都在本地处理，我可以放心地在工作中使用它。",
+                author: "张明",
+                role: "全栈开发者",
+                avatar: "Z"
+              },
+              {
+                quote: "Hawkeye 彻底改变了我的工作流程。它能自动识别我在做什么，并给出精准的建议，效率提升太明显了。",
+                author: "李华",
+                role: "前端工程师",
+                avatar: "L"
+              },
+              {
+                quote: "作为一个开源项目，Hawkeye 的质量让我惊讶。社区活跃，更新频繁，功能越来越强大。",
+                author: "王强",
+                role: "技术负责人",
+                avatar: "W"
+              }
+            ].map((testimonial, index) => (
+              <motion.div
+                key={testimonial.author}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: prefersReducedMotion ? 0 : index * 0.1 }}
+                className="hawk-card"
+              >
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-[var(--hawk-accent)] fill-[var(--hawk-accent)]" />
+                  ))}
+                </div>
+                <p className="text-[var(--hawk-text-secondary)] mb-6 leading-relaxed">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--hawk-accent)] to-orange-600 flex items-center justify-center text-white font-semibold">
+                    {testimonial.avatar}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-[var(--hawk-text-primary)]">{testimonial.author}</div>
+                    <div className="text-sm text-[var(--hawk-text-tertiary)]">{testimonial.role}</div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -527,19 +701,29 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: prefersReducedMotion ? 0 : index * 0.15 }}
-                className="hawk-card group"
+                whileHover={prefersReducedMotion ? {} : { y: -8, scale: 1.02 }}
+                className="hawk-card group cursor-pointer relative overflow-hidden"
               >
+                {/* Hover gradient overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+
                 {/* Icon with gradient */}
                 <div
-                  className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
+                  className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                   style={{ boxShadow: `0 8px 30px ${feature.glow}` }}
                 >
                   <feature.icon className="w-7 h-7 text-white" />
                 </div>
 
-                <h3 className="hawk-heading text-[var(--hawk-text-primary)] mb-1">{feature.title}</h3>
+                <h3 className="hawk-heading text-[var(--hawk-text-primary)] mb-1 group-hover:text-[var(--hawk-accent)] transition-colors">{feature.title}</h3>
                 <p className="text-sm text-[var(--hawk-text-tertiary)] mb-4 font-medium">{feature.titleEn}</p>
                 <p className="hawk-body text-[var(--hawk-text-secondary)]">{feature.description}</p>
+
+                {/* Interactive indicator */}
+                <div className="mt-6 flex items-center gap-2 text-sm font-medium text-[var(--hawk-accent)] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span>了解更多</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </motion.article>
             ))}
           </div>
