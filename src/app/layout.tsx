@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Noto_Sans_SC } from 'next/font/google'
+// Temporarily use system fonts due to network issues
+// import { Sora, Plus_Jakarta_Sans, Noto_Sans_SC } from 'next/font/google'
 import './globals.css'
 import { JsonLd } from '@/components/JsonLd'
 import {
@@ -8,19 +9,30 @@ import {
   getAllSchemas,
 } from '@/lib/seo'
 
-// 优化字体加载
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
+// Temporarily disabled Google Fonts - using system fonts fallback
+// Display font - geometric, modern, tech-forward
+// const sora = Sora({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-sora',
+//   weight: ['400', '500', '600', '700', '800'],
+// })
 
-const notoSansSC = Noto_Sans_SC({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-noto-sans-sc',
-})
+// Body font - clean, professional, readable
+// const plusJakartaSans = Plus_Jakarta_Sans({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-plus-jakarta',
+//   weight: ['400', '500', '600', '700'],
+// })
+
+// Chinese font
+// const notoSansSC = Noto_Sans_SC({
+//   subsets: ['latin'],
+//   weight: ['400', '500', '600', '700'],
+//   display: 'swap',
+//   variable: '--font-noto-sans-sc',
+// })
 
 // 使用 SEO 配置生成 metadata
 export const metadata: Metadata = genMeta()
@@ -45,13 +57,10 @@ export default function RootLayout({
   return (
     <html
       lang="zh-CN"
-      className={`${inter.variable} ${notoSansSC.variable}`}
       suppressHydrationWarning
     >
       <head>
         {/* 预连接优化 */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://github.com" />
 
         {/* DNS 预解析 */}
@@ -71,7 +80,7 @@ export default function RootLayout({
         {/* JSON-LD 结构化数据 */}
         <JsonLd data={getAllSchemas()} />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className="antialiased font-sans">
         {/* 跳过导航链接 - 无障碍优化 */}
         <a
           href="#main-content"

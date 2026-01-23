@@ -15,13 +15,20 @@ export function GitHubStars({ repo, className = '' }: GitHubStarsProps) {
   useEffect(() => {
     async function fetchStars() {
       try {
-        const response = await fetch(`https://api.github.com/repos/${repo}`)
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 5000)
+
+        const response = await fetch(`https://api.github.com/repos/${repo}`, {
+          signal: controller.signal,
+        })
+        clearTimeout(timeoutId)
+
         if (response.ok) {
           const data = await response.json()
           setStars(data.stargazers_count)
         }
-      } catch (error) {
-        console.error('Failed to fetch GitHub stars:', error)
+      } catch {
+        // Silently fail - will show fallback text
       } finally {
         setLoading(false)
       }
@@ -63,13 +70,20 @@ export function GitHubStarButton({ repo, className = '' }: GitHubStarsProps) {
   useEffect(() => {
     async function fetchStars() {
       try {
-        const response = await fetch(`https://api.github.com/repos/${repo}`)
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 5000)
+
+        const response = await fetch(`https://api.github.com/repos/${repo}`, {
+          signal: controller.signal,
+        })
+        clearTimeout(timeoutId)
+
         if (response.ok) {
           const data = await response.json()
           setStars(data.stargazers_count)
         }
-      } catch (error) {
-        console.error('Failed to fetch GitHub stars:', error)
+      } catch {
+        // Silently fail - will show fallback text
       } finally {
         setLoading(false)
       }

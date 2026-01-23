@@ -1,7 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { Fragment, useState, useEffect } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   ArrowLeft,
   Check,
@@ -22,38 +24,46 @@ import {
 import { GitHubStarButton } from '@/components/GitHubStars'
 
 export default function CompareContent() {
+  const [mounted, setMounted] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
+  const prefersReducedMotion = mounted ? shouldReduceMotion : true
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const competitors = [
     {
       name: 'Hawkeye',
-      logo: '🦅',
+      logo: '/logo.png',
       tagline: 'AI 赋能 10x 效率',
       isUs: true,
       pricing: '免费开源',
       pricingNote: 'MIT License',
     },
     {
-      name: 'GitHub Copilot',
+      name: 'Claude Cowork',
+      logo: '🧠',
+      tagline: 'Anthropic 桌面助手',
+      isUs: false,
+      pricing: '$20+/月',
+      pricingNote: 'Pro 订阅起',
+    },
+    {
+      name: 'Screenpipe',
+      logo: '📺',
+      tagline: '开源 Rewind',
+      isUs: false,
+      pricing: '免费开源',
+      pricingNote: 'MIT License',
+    },
+    {
+      name: 'Minimax Agent',
       logo: '🤖',
-      tagline: 'AI Pair Programmer',
+      tagline: 'AI 超级伴侣',
       isUs: false,
-      pricing: '$10-39/月',
-      pricingNote: '订阅制',
-    },
-    {
-      name: 'Cursor',
-      logo: '⚡',
-      tagline: 'AI Code Editor',
-      isUs: false,
-      pricing: '$20/月',
-      pricingNote: 'Pro 版',
-    },
-    {
-      name: 'Cline',
-      logo: '🔧',
-      tagline: 'VS Code Agent',
-      isUs: false,
-      pricing: '免费',
-      pricingNote: '需自带 API Key',
+      pricing: '免费/付费',
+      pricingNote: '云端服务',
     },
   ]
 
@@ -62,52 +72,52 @@ export default function CompareContent() {
       category: '核心功能',
       items: [
         {
-          name: '代码补全',
-          hawkeye: 'partial',
-          copilot: true,
-          cursor: true,
-          cline: true,
-          note: 'Hawkeye 主要聚焦任务建议',
-        },
-        {
           name: '屏幕感知',
           hawkeye: true,
-          copilot: false,
-          cursor: false,
-          cline: false,
-          note: '独家功能：理解屏幕内容',
+          cowork: true,
+          screenpipe: true,
+          minimax: false,
+          note: '理解屏幕内容和上下文',
+        },
+        {
+          name: '主动任务建议',
+          hawkeye: true,
+          cowork: 'partial',
+          screenpipe: false,
+          minimax: false,
+          note: '主动分析并建议下一步',
         },
         {
           name: '剪贴板智能',
           hawkeye: true,
-          copilot: false,
-          cursor: false,
-          cline: false,
-          note: '独家功能：监控剪贴板',
+          cowork: false,
+          screenpipe: true,
+          minimax: false,
+          note: '监控剪贴板内容',
         },
         {
           name: '文件监控',
           hawkeye: true,
-          copilot: false,
-          cursor: false,
-          cline: 'partial',
+          cowork: true,
+          screenpipe: false,
+          minimax: false,
           note: '自动追踪文件变化',
-        },
-        {
-          name: '任务建议',
-          hawkeye: true,
-          copilot: false,
-          cursor: 'partial',
-          cline: true,
-          note: '主动提供下一步建议',
         },
         {
           name: 'Agent 模式',
           hawkeye: true,
-          copilot: true,
-          cursor: true,
-          cline: true,
+          cowork: true,
+          screenpipe: 'partial',
+          minimax: true,
           note: '自主执行多步任务',
+        },
+        {
+          name: '24/7 录制',
+          hawkeye: false,
+          cowork: false,
+          screenpipe: true,
+          minimax: false,
+          note: '持续录制屏幕/音频',
         },
       ],
     },
@@ -117,34 +127,50 @@ export default function CompareContent() {
         {
           name: '桌面应用',
           hawkeye: true,
-          copilot: false,
-          cursor: true,
-          cline: false,
+          cowork: true,
+          screenpipe: true,
+          minimax: false,
           note: '独立运行的桌面 App',
         },
         {
           name: 'VS Code 扩展',
           hawkeye: true,
-          copilot: true,
-          cursor: false,
-          cline: true,
+          cowork: false,
+          screenpipe: false,
+          minimax: false,
           note: 'VS Code 集成',
         },
         {
           name: 'Chrome 扩展',
           hawkeye: true,
-          copilot: false,
-          cursor: false,
-          cline: false,
-          note: '独家功能：浏览器集成',
+          cowork: 'partial',
+          screenpipe: false,
+          minimax: false,
+          note: '浏览器集成',
         },
         {
-          name: 'JetBrains',
+          name: 'Windows',
+          hawkeye: true,
+          cowork: false,
+          screenpipe: true,
+          minimax: true,
+          note: 'Cowork 仅 macOS',
+        },
+        {
+          name: 'Linux',
+          hawkeye: true,
+          cowork: false,
+          screenpipe: true,
+          minimax: false,
+          note: 'Linux 支持',
+        },
+        {
+          name: '移动端',
           hawkeye: false,
-          copilot: true,
-          cursor: false,
-          cline: false,
-          note: 'JetBrains IDE 支持',
+          cowork: false,
+          screenpipe: false,
+          minimax: true,
+          note: 'iOS/Android 应用',
         },
       ],
     },
@@ -152,44 +178,52 @@ export default function CompareContent() {
       category: '隐私与安全',
       items: [
         {
-          name: '本地运行',
+          name: '100% 本地处理',
           hawkeye: true,
-          copilot: false,
-          cursor: false,
-          cline: 'partial',
-          note: '数据不离开设备',
+          cowork: false,
+          screenpipe: true,
+          minimax: false,
+          note: '数据完全不上传',
         },
         {
-          name: '离线模式',
+          name: '离线可用',
           hawkeye: true,
-          copilot: false,
-          cursor: false,
-          cline: 'partial',
+          cowork: false,
+          screenpipe: true,
+          minimax: false,
           note: '无需联网使用',
         },
         {
-          name: '本地 LLM',
+          name: '本地 LLM (Ollama)',
           hawkeye: true,
-          copilot: false,
-          cursor: false,
-          cline: true,
-          note: '支持 Ollama 等',
+          cowork: false,
+          screenpipe: true,
+          minimax: false,
+          note: '支持本地大模型',
         },
         {
           name: '自带 API Key',
           hawkeye: true,
-          copilot: false,
-          cursor: true,
-          cline: true,
+          cowork: false,
+          screenpipe: true,
+          minimax: false,
           note: '使用自己的 Key',
         },
         {
           name: '开源透明',
           hawkeye: true,
-          copilot: false,
-          cursor: false,
-          cline: true,
+          cowork: false,
+          screenpipe: true,
+          minimax: 'partial',
           note: '源码公开可审计',
+        },
+        {
+          name: 'VM 沙盒隔离',
+          hawkeye: false,
+          cowork: true,
+          screenpipe: false,
+          minimax: false,
+          note: '虚拟机安全隔离',
         },
       ],
     },
@@ -197,27 +231,27 @@ export default function CompareContent() {
       category: '定价',
       items: [
         {
-          name: '免费使用',
+          name: '完全免费',
           hawkeye: true,
-          copilot: 'partial',
-          cursor: 'partial',
-          cline: true,
-          note: 'Copilot/Cursor 有免费限制',
+          cowork: false,
+          screenpipe: true,
+          minimax: 'partial',
+          note: 'Cowork 需 $20+/月',
         },
         {
           name: '无订阅费',
           hawkeye: true,
-          copilot: false,
-          cursor: false,
-          cline: true,
+          cowork: false,
+          screenpipe: true,
+          minimax: 'partial',
           note: '无月费',
         },
         {
           name: '企业自托管',
           hawkeye: true,
-          copilot: true,
-          cursor: false,
-          cline: true,
+          cowork: false,
+          screenpipe: true,
+          minimax: false,
           note: '私有部署',
         },
       ],
@@ -242,7 +276,7 @@ export default function CompareContent() {
         <div className="container mx-auto px-4 py-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors min-h-[44px] py-2"
           >
             <ArrowLeft className="w-4 h-4" />
             返回首页
@@ -254,14 +288,17 @@ export default function CompareContent() {
       <section className="py-16 bg-gradient-to-b from-orange-50/50 to-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Hawkeye vs 竞品对比
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-              了解 Hawkeye 与其他 AI 编程助手的区别，选择最适合你的工具
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-4">
+              对比 Claude Cowork、Screenpipe、Minimax Agent 等主流 AI 桌面助手
+            </p>
+            <p className="text-base text-gray-500 max-w-3xl mx-auto mb-8">
+              <strong className="text-orange-600">Hawkeye 的独特定位：</strong>Claude Cowork 的能力 + Screenpipe 的隐私 + 三平台联动
             </p>
             <div className="flex justify-center gap-4">
               <GitHubStarButton repo="tensorboy/hawkeye" />
@@ -274,9 +311,9 @@ export default function CompareContent() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">为什么选择 Hawkeye？</h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="bg-gradient-to-br from-green-50 to-white p-6 rounded-2xl border border-green-100"
@@ -291,7 +328,7 @@ export default function CompareContent() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
@@ -302,12 +339,12 @@ export default function CompareContent() {
               </div>
               <h3 className="font-bold text-gray-900 mb-2">主动感知</h3>
               <p className="text-gray-600 text-sm">
-                独家屏幕感知、剪贴板监控功能，理解你的工作上下文。
+                屏幕感知 + 剪贴板监控 + 文件追踪，理解你的工作上下文。
               </p>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
@@ -321,6 +358,41 @@ export default function CompareContent() {
                 MIT 开源许可，无订阅费，自带 API Key 或使用本地模型。
               </p>
             </motion.div>
+          </div>
+
+          {/* Competitive Positioning */}
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">Hawkeye 的竞争优势</h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-lg">🧠</span>
+                  <span className="font-semibold text-gray-800">vs Claude Cowork</span>
+                </div>
+                <p className="text-sm text-gray-600">免费开源 + 跨平台 + 本地优先（Cowork 需 $20+/月，仅 macOS）</p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-lg">📺</span>
+                  <span className="font-semibold text-gray-800">vs Screenpipe</span>
+                </div>
+                <p className="text-sm text-gray-600">主动建议 + 开发者工具集成（Screenpipe 侧重被动记录）</p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-lg">🤖</span>
+                  <span className="font-semibold text-gray-800">vs Minimax Agent</span>
+                </div>
+                <p className="text-sm text-gray-600">100% 本地运行 + 桌面感知（Minimax 云端依赖）</p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-lg">⏪</span>
+                  <span className="font-semibold text-gray-800">vs Rewind AI</span>
+                </div>
+                <p className="text-sm text-gray-600">开源永续 + 更主动智能（Rewind 已被 Meta 收购停服）</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -339,7 +411,11 @@ export default function CompareContent() {
                   {competitors.map((c) => (
                     <th key={c.name} className={`p-4 text-center ${c.isUs ? 'bg-orange-50' : ''}`}>
                       <div className="flex flex-col items-center gap-1">
-                        <span className="text-2xl">{c.logo}</span>
+                        {c.isUs ? (
+                          <Image src={c.logo} alt={c.name} width={32} height={32} className="w-8 h-8" />
+                        ) : (
+                          <span className="text-2xl">{c.logo}</span>
+                        )}
                         <span className={`font-bold ${c.isUs ? 'text-orange-600' : 'text-gray-900'}`}>
                           {c.name}
                         </span>
@@ -353,8 +429,8 @@ export default function CompareContent() {
               {/* Body */}
               <tbody>
                 {features.map((category, categoryIndex) => (
-                  <>
-                    <tr key={category.category} className="bg-gray-50">
+                  <Fragment key={category.category}>
+                    <tr className="bg-gray-50">
                       <td colSpan={5} className="p-3 font-semibold text-gray-700 text-sm uppercase tracking-wide">
                         {category.category}
                       </td>
@@ -376,17 +452,17 @@ export default function CompareContent() {
                           {renderFeatureValue(item.hawkeye)}
                         </td>
                         <td className="p-4 text-center">
-                          {renderFeatureValue(item.copilot)}
+                          {renderFeatureValue(item.cowork)}
                         </td>
                         <td className="p-4 text-center">
-                          {renderFeatureValue(item.cursor)}
+                          {renderFeatureValue(item.screenpipe)}
                         </td>
                         <td className="p-4 text-center">
-                          {renderFeatureValue(item.cline)}
+                          {renderFeatureValue(item.minimax)}
                         </td>
                       </tr>
                     ))}
-                  </>
+                  </Fragment>
                 ))}
               </tbody>
             </table>
@@ -415,113 +491,156 @@ export default function CompareContent() {
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-2xl font-bold text-gray-900 mb-12 text-center">详细对比</h2>
 
-          {/* vs Copilot */}
+          {/* vs Claude Cowork */}
           <motion.article
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-12 p-8 bg-gray-50 rounded-2xl"
-            id="hawkeye-vs-copilot"
+            id="hawkeye-vs-cowork"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
-              🦅 Hawkeye vs 🤖 GitHub Copilot
+            <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <Image src="/logo.png" alt="Hawkeye" width={24} height={24} className="w-6 h-6 inline" /> Hawkeye vs 🧠 Claude Cowork
             </h3>
+            <p className="text-gray-600 text-sm mb-4">
+              Claude Cowork 是 Anthropic 推出的桌面 AI 助手，被称为"Claude Code for the rest of your work"。使用 Computer Use API 控制桌面，运行在隔离 VM 中。
+            </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-semibold text-green-600 mb-2">Hawkeye 优势</h4>
                 <ul className="space-y-2 text-gray-600 text-sm">
-                  <li>✅ 完全免费，无订阅费用</li>
-                  <li>✅ 本地优先，数据不上传</li>
-                  <li>✅ 屏幕感知、剪贴板监控</li>
-                  <li>✅ 开源透明，可审计代码</li>
-                  <li>✅ 支持 Chrome 浏览器扩展</li>
+                  <li>✅ <strong>完全免费</strong>，无 $20+/月订阅费</li>
+                  <li>✅ <strong>100% 本地处理</strong>，数据不上传</li>
+                  <li>✅ <strong>支持 Windows/Linux</strong>（Cowork 仅 macOS）</li>
+                  <li>✅ <strong>VS Code + Chrome 扩展</strong>多端联动</li>
+                  <li>✅ <strong>本地 LLM 支持</strong>（Ollama）完全离线</li>
+                  <li>✅ <strong>开源透明</strong>，代码可审计</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-blue-600 mb-2">Copilot 优势</h4>
+                <h4 className="font-semibold text-blue-600 mb-2">Claude Cowork 优势</h4>
                 <ul className="space-y-2 text-gray-600 text-sm">
-                  <li>✅ 代码补全更成熟</li>
-                  <li>✅ 支持更多 IDE（JetBrains 等）</li>
-                  <li>✅ 企业级支持和 SLA</li>
-                  <li>✅ 与 GitHub 深度集成</li>
+                  <li>✅ Claude Opus 4.5 模型能力强大</li>
+                  <li>✅ VM 沙盒安全隔离</li>
+                  <li>✅ 与 Gmail 等 Anthropic 连接器集成</li>
+                  <li>✅ Anthropic 官方技术支持</li>
+                  <li>✅ 200K 超长上下文窗口</li>
                 </ul>
               </div>
             </div>
             <p className="mt-4 text-gray-500 text-sm">
-              <strong>结论：</strong>如果你重视隐私和成本，选择 Hawkeye；如果需要成熟的代码补全和企业支持，选择 Copilot。
+              <strong>结论：</strong>如果你重视<strong>隐私、成本和跨平台</strong>，选择 Hawkeye；如果需要 Anthropic 官方支持和最强模型能力，且只使用 macOS，选择 Claude Cowork。
             </p>
           </motion.article>
 
-          {/* vs Cursor */}
+          {/* vs Screenpipe */}
           <motion.article
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-12 p-8 bg-gray-50 rounded-2xl"
-            id="hawkeye-vs-cursor"
+            id="hawkeye-vs-screenpipe"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
-              🦅 Hawkeye vs ⚡ Cursor
+            <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <Image src="/logo.png" alt="Hawkeye" width={24} height={24} className="w-6 h-6 inline" /> Hawkeye vs 📺 Screenpipe
             </h3>
+            <p className="text-gray-600 text-sm mb-4">
+              Screenpipe 是开源版 Rewind，24/7 录制屏幕和音频，2025年7月融资 $2.8M。专注于"记录一切"，通过 Pipes 生态构建自动化。
+            </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-semibold text-green-600 mb-2">Hawkeye 优势</h4>
                 <ul className="space-y-2 text-gray-600 text-sm">
-                  <li>✅ 完全免费，无 Pro 版限制</li>
-                  <li>✅ 不需要更换编辑器</li>
-                  <li>✅ 本地 LLM 支持更好</li>
-                  <li>✅ 多平台（VS Code + Chrome）</li>
-                  <li>✅ 独特的感知功能</li>
+                  <li>✅ <strong>主动建议</strong>而非被动记录</li>
+                  <li>✅ <strong>VS Code 扩展</strong>深度集成开发场景</li>
+                  <li>✅ <strong>Chrome 扩展</strong>浏览器内辅助</li>
+                  <li>✅ <strong>即时分析</strong>，无需回溯搜索</li>
+                  <li>✅ 更轻量，不需要 24/7 录制存储</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-blue-600 mb-2">Cursor 优势</h4>
+                <h4 className="font-semibold text-blue-600 mb-2">Screenpipe 优势</h4>
                 <ul className="space-y-2 text-gray-600 text-sm">
-                  <li>✅ Composer 多文件编辑强大</li>
-                  <li>✅ 代码补全速度极快</li>
-                  <li>✅ 专为 AI 编程优化的 IDE</li>
-                  <li>✅ 更流畅的编辑体验</li>
+                  <li>✅ 24/7 全量录制，可回溯搜索</li>
+                  <li>✅ Pipes 生态可构建自动化工作流</li>
+                  <li>✅ 社区更活跃，融资 $2.8M</li>
+                  <li>✅ Screenpipe Terminator 桌面自动化 SDK</li>
+                  <li>✅ 与 Notion/Obsidian 等集成</li>
                 </ul>
               </div>
             </div>
             <p className="mt-4 text-gray-500 text-sm">
-              <strong>结论：</strong>如果你想保持现有工作流程并获得额外的感知能力，选择 Hawkeye；如果愿意切换 IDE 追求极致的 AI 编程体验，选择 Cursor。
+              <strong>结论：</strong>如果你需要<strong>主动智能建议和开发者工具集成</strong>，选择 Hawkeye；如果需要<strong>全量记录和历史搜索</strong>，选择 Screenpipe。两者都是优秀的开源方案。
             </p>
           </motion.article>
 
-          {/* vs Cline */}
+          {/* vs Minimax Agent */}
           <motion.article
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-8 bg-gray-50 rounded-2xl"
-            id="hawkeye-vs-cline"
+            className="mb-12 p-8 bg-gray-50 rounded-2xl"
+            id="hawkeye-vs-minimax"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
-              🦅 Hawkeye vs 🔧 Cline
+            <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <Image src="/logo.png" alt="Hawkeye" width={24} height={24} className="w-6 h-6 inline" /> Hawkeye vs 🤖 Minimax Agent
             </h3>
+            <p className="text-gray-600 text-sm mb-4">
+              Minimax Agent 是"AI 超级伴侣"，使用 MiniMax-M2 模型（456B 参数），支持 400万 token 上下文，专注于多步骤任务和多模态生成。
+            </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-semibold text-green-600 mb-2">Hawkeye 优势</h4>
                 <ul className="space-y-2 text-gray-600 text-sm">
-                  <li>✅ 独立桌面应用，不限于 VS Code</li>
-                  <li>✅ Chrome 扩展支持</li>
-                  <li>✅ 屏幕感知、剪贴板监控</li>
-                  <li>✅ 更广泛的使用场景</li>
+                  <li>✅ <strong>100% 本地处理</strong>，数据不离开设备</li>
+                  <li>✅ <strong>完全离线可用</strong></li>
+                  <li>✅ <strong>屏幕感知</strong>理解工作上下文</li>
+                  <li>✅ <strong>桌面原生</strong>体验，不依赖 App</li>
+                  <li>✅ <strong>开源透明</strong>，可自托管</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-blue-600 mb-2">Cline 优势</h4>
+                <h4 className="font-semibold text-blue-600 mb-2">Minimax Agent 优势</h4>
                 <ul className="space-y-2 text-gray-600 text-sm">
-                  <li>✅ Plan/Act 双模式更成熟</li>
-                  <li>✅ VS Code 集成更深入</li>
-                  <li>✅ 社区更活跃（4M+ 用户）</li>
-                  <li>✅ MCP 协议支持更完善</li>
+                  <li>✅ 400万 token 超长上下文</li>
+                  <li>✅ 多模态生成（视频/音频/代码）</li>
+                  <li>✅ 移动端 App（iOS/Android）</li>
+                  <li>✅ Lightning 模式速度极快</li>
+                  <li>✅ 无需配置即可使用</li>
                 </ul>
               </div>
             </div>
             <p className="mt-4 text-gray-500 text-sm">
-              <strong>结论：</strong>两者都是优秀的开源选择。如果你需要超越 VS Code 的使用场景和感知能力，选择 Hawkeye；如果专注于 VS Code 内的代码开发，Cline 是很好的选择。
+              <strong>结论：</strong>如果你重视<strong>隐私、桌面感知和本地运行</strong>，选择 Hawkeye；如果需要<strong>多模态生成和移动端使用</strong>，选择 Minimax Agent。
+            </p>
+          </motion.article>
+
+          {/* vs Rewind (已停服) */}
+          <motion.article
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="p-8 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-300"
+            id="hawkeye-vs-rewind"
+          >
+            <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <Image src="/logo.png" alt="Hawkeye" width={24} height={24} className="w-6 h-6 inline" /> Hawkeye vs ⏪ Rewind AI <span className="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full ml-2">已停服</span>
+            </h3>
+            <p className="text-gray-600 text-sm mb-4">
+              Rewind AI 于 2025年12月被 Meta 收购，12月19日起停止所有屏幕/音频捕获功能。曾是最受欢迎的"数字记忆"助手。
+            </p>
+            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+              <h4 className="font-semibold text-orange-700 mb-2">🔄 Hawkeye：Rewind 的开源替代</h4>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>✅ <strong>永久免费开源</strong>，不会被收购停服</li>
+                <li>✅ <strong>100% 本地运行</strong>，比 Rewind 更隐私</li>
+                <li>✅ <strong>主动建议</strong>而非仅记录</li>
+                <li>✅ <strong>三端联动</strong>（桌面 + VS Code + Chrome）</li>
+                <li>✅ <strong>社区驱动</strong>，持续迭代</li>
+              </ul>
+            </div>
+            <p className="mt-4 text-gray-500 text-sm">
+              如果你是 Rewind 的原用户，Hawkeye 是最佳的开源替代方案——更隐私、更主动、永久免费。
             </p>
           </motion.article>
         </div>

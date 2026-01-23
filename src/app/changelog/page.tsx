@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowLeft,
@@ -30,6 +31,14 @@ interface ChangelogEntry {
 }
 
 export default function ChangelogPage() {
+  const [mounted, setMounted] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
+  const prefersReducedMotion = mounted ? shouldReduceMotion : true
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const changelog: ChangelogEntry[] = [
     {
       version: '0.2.0',
@@ -123,7 +132,7 @@ export default function ChangelogPage() {
         <div className="container mx-auto px-4 py-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors min-h-[44px] py-2"
           >
             <ArrowLeft className="w-4 h-4" />
             返回首页
@@ -135,7 +144,7 @@ export default function ChangelogPage() {
       <section className="py-16 bg-gradient-to-b from-orange-50/50 to-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
@@ -158,7 +167,7 @@ export default function ChangelogPage() {
             {changelog.map((entry, index) => (
               <motion.article
                 key={entry.version}
-                initial={{ opacity: 0, y: 20 }}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
@@ -222,7 +231,7 @@ export default function ChangelogPage() {
 
           {/* More on GitHub */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mt-16 p-8 bg-gray-50 rounded-2xl text-center"

@@ -1,10 +1,19 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowLeft, Shield, Lock, Eye, Server, Trash2, Mail } from 'lucide-react'
 
 export default function PrivacyPolicy() {
+  const [mounted, setMounted] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
+  const prefersReducedMotion = mounted ? shouldReduceMotion : true
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const lastUpdated = '2025-01-20'
 
   return (
@@ -14,7 +23,7 @@ export default function PrivacyPolicy() {
         <div className="container mx-auto px-4 py-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors min-h-[44px] py-2"
           >
             <ArrowLeft className="w-4 h-4" />
             返回首页
@@ -25,7 +34,7 @@ export default function PrivacyPolicy() {
       {/* Content */}
       <article className="container mx-auto px-4 py-16 max-w-4xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >

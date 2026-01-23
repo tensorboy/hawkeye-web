@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { motion, useReducedMotion } from 'framer-motion'
 import {
   Eye,
   Zap,
@@ -36,6 +37,15 @@ import { GitHubStars } from '@/components/GitHubStars'
 
 export default function HomeEN() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
+
+  // Prevent hydration mismatch by only using motion values after mount
+  const prefersReducedMotion = mounted ? shouldReduceMotion : true
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const features = [
     {
@@ -113,29 +123,29 @@ export default function HomeEN() {
   ]
 
   return (
-    <main id="main-content" className="min-h-screen bg-gradient-to-b from-orange-50/50 via-white to-white">
+    <main id="main-content" lang="en" className="min-h-screen bg-gradient-to-b from-orange-50/50 via-white to-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/en" className="flex items-center gap-2">
-              <span className="text-2xl">🦅</span>
+            <Link href="/en" className="flex items-center gap-2 min-h-[44px]">
+              <Image src="/logo.png" alt="Hawkeye" width={32} height={32} className="w-8 h-8" />
               <span className="text-xl font-bold text-gray-900">Hawkeye</span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              <Link href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <div className="hidden md:flex items-center gap-6">
+              <Link href="#features" className="text-gray-600 hover:text-gray-900 transition-colors py-3 px-2">
                 Features
               </Link>
-              <Link href="#usecases" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="#usecases" className="text-gray-600 hover:text-gray-900 transition-colors py-3 px-2">
                 Use Cases
               </Link>
-              <Link href="#platforms" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="#platforms" className="text-gray-600 hover:text-gray-900 transition-colors py-3 px-2">
                 Platforms
               </Link>
-              <Link href="https://github.com/tensorboy/hawkeye" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="https://github.com/tensorboy/hawkeye" className="text-gray-600 hover:text-gray-900 transition-colors py-3 px-2">
                 Docs
               </Link>
             </div>
@@ -156,7 +166,7 @@ export default function HomeEN() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2"
+              className="md:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -172,16 +182,16 @@ export default function HomeEN() {
             animate={{ opacity: 1, y: 0 }}
             className="md:hidden bg-white border-t border-gray-100 py-4"
           >
-            <div className="container mx-auto px-4 flex flex-col gap-4">
-              <Link href="#features" className="text-gray-600 hover:text-gray-900 py-2">Features</Link>
-              <Link href="#usecases" className="text-gray-600 hover:text-gray-900 py-2">Use Cases</Link>
-              <Link href="#platforms" className="text-gray-600 hover:text-gray-900 py-2">Platforms</Link>
-              <Link href="https://github.com/tensorboy/hawkeye" className="text-gray-600 hover:text-gray-900 py-2">Docs</Link>
-              <Link href="/" className="text-gray-600 hover:text-gray-900 py-2">中文版</Link>
+            <div className="container mx-auto px-4 flex flex-col gap-2">
+              <Link href="#features" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Features</Link>
+              <Link href="#usecases" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Use Cases</Link>
+              <Link href="#platforms" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Platforms</Link>
+              <Link href="https://github.com/tensorboy/hawkeye" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Docs</Link>
+              <Link href="/" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">中文版</Link>
               <hr className="border-gray-100" />
               <Link
                 href="https://github.com/tensorboy/hawkeye/releases"
-                className="px-4 py-3 bg-gray-900 text-white rounded-lg font-medium text-center"
+                className="px-4 py-3 bg-gray-900 text-white rounded-lg font-medium text-center min-h-[44px] flex items-center justify-center"
               >
                 Download
               </Link>
@@ -531,7 +541,7 @@ export default function HomeEN() {
             {/* Brand */}
             <div className="md:col-span-2">
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">🦅</span>
+                <Image src="/logo.png" alt="Hawkeye" width={32} height={32} className="w-8 h-8" />
                 <span className="text-xl font-bold text-white">Hawkeye</span>
               </div>
               <p className="text-gray-400 mb-6 max-w-sm">
