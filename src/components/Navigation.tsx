@@ -145,14 +145,12 @@ export function Navigation({
 // Pre-configured navigation items for each locale
 export const zhNavItems: NavItem[] = [
   { href: '#features', label: '功能' },
-  { href: '#usecases', label: '使用场景' },
-  { href: '#platforms', label: '多平台' },
-  { href: 'https://github.com/tensorboy/hawkeye', label: '文档', external: true },
+  { href: '#usecases', label: '场景' },
+  { href: '#platforms', label: '平台' },
 ]
 
 export const enNavItems: NavItem[] = [
   { href: '#features', label: 'Features' },
   { href: '#usecases', label: 'Use Cases' },
   { href: '#platforms', label: 'Platforms' },
-  { href: 'https://github.com/tensorboy/hawkeye', label: 'Docs', external: true },
 ]

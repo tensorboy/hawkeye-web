@@ -206,7 +206,6 @@ export default function Home() {
                 { href: '#features', label: '功能' },
                 { href: '#usecases', label: '场景' },
                 { href: '#platforms', label: '平台' },
-                { href: 'https://github.com/tensorboy/hawkeye', label: '文档', external: true },
               ].map((item) => (
                 <Link
                   key={item.href}
@@ -263,9 +262,8 @@ export default function Home() {
             <div className="container mx-auto px-4 py-4 space-y-1">
               {[
                 { href: '#features', label: '功能' },
-                { href: '#usecases', label: '使用场景' },
-                { href: '#platforms', label: '多平台' },
-                { href: 'https://github.com/tensorboy/hawkeye', label: '文档' },
+                { href: '#usecases', label: '场景' },
+                { href: '#platforms', label: '平台' },
               ].map((item) => (
                 <Link
                   key={item.href}
@@ -776,7 +774,6 @@ export default function Home() {
             <div>
               <h3 className="font-semibold text-white mb-4">资源</h3>
               <ul className="space-y-2">
-                <li><a href="https://github.com/tensorboy/hawkeye" className="text-slate-400 hover:text-white transition-colors">文档</a></li>
                 <li><a href="https://github.com/tensorboy/hawkeye" className="text-slate-400 hover:text-white transition-colors">GitHub</a></li>
                 <li><Link href="/changelog" className="text-slate-400 hover:text-white transition-colors">更新日志</Link></li>
               </ul>

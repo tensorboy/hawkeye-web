@@ -145,9 +145,6 @@ export default function HomeEN() {
               <Link href="#platforms" className="text-gray-600 hover:text-gray-900 transition-colors py-3 px-2">
                 Platforms
               </Link>
-              <Link href="https://github.com/tensorboy/hawkeye" className="text-gray-600 hover:text-gray-900 transition-colors py-3 px-2">
-                Docs
-              </Link>
             </div>
 
             {/* Right Actions */}
@@ -186,7 +183,6 @@ export default function HomeEN() {
               <Link href="#features" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Features</Link>
               <Link href="#usecases" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Use Cases</Link>
               <Link href="#platforms" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Platforms</Link>
-              <Link href="https://github.com/tensorboy/hawkeye" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Docs</Link>
               <Link href="/" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">中文版</Link>
               <hr className="border-gray-100" />
               <Link
