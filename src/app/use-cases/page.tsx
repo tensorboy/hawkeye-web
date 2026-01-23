@@ -3,10 +3,15 @@ import { siteConfig } from '@/lib/seo'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  // 优化后的标题：英文关键词 + 用户群体
-  title: 'Hawkeye Use Cases - For Developers, Designers, Students & Professionals | AI Productivity',
-  description: 'Discover how Hawkeye AI assistant helps different users: developer code assistance, designer workflow automation, student research support, office productivity. Real use cases with 65-90% efficiency gains. Free Screenpipe/Rewind alternative.',
+  // 优化后的标题：Prompt-Free 定位 + 用户群体
+  title: 'Hawkeye Use Cases - Prompt-Free AI for Developers, Designers, Students & Professionals',
+  description: 'Discover how Hawkeye prompt-free AI helps without typing: developer code assistance, designer workflow automation, student research support, office productivity. The only AI that works without prompts. Free Claude Cowork/Cursor alternative.',
   keywords: [
+    // Prompt-Free 核心词
+    'prompt-free AI',
+    'prompt-free AI coworker',
+    'AI without prompts',
+    'no prompt AI',
     // 英文用户场景词
     'Hawkeye use cases',
     'AI coding assistant',
@@ -17,17 +22,20 @@ export const metadata: Metadata = {
     'designer workflow automation',
     'student efficiency tool',
     'office automation AI',
-    'task automation examples',
-    'productivity improvement tool',
-    'workflow optimization AI',
+    // 竞品关键词
+    'Claude Cowork alternative',
+    'Cursor alternative',
+    'free Cursor alternative',
     // 长尾关键词
     'AI assistant for programmers',
     'AI assistant for designers',
     'AI assistant for students',
-    'best AI productivity tool 2026',
+    'best prompt-free AI 2026',
     'free AI workflow automation',
     // 中文关键词
     'Hawkeye 使用场景',
+    '无提示词 AI',
+    '免 Prompt AI 助手',
     'AI 编程助手',
     'AI 设计工具',
     'AI 学习助手',
@@ -36,9 +44,6 @@ export const metadata: Metadata = {
     '设计师工具',
     '学生效率工具',
     '办公自动化',
-    '任务自动化案例',
-    '效率提升工具',
-    '工作流优化',
   ],
   openGraph: {
     title: 'Hawkeye 使用场景 - 适合每个人的 AI 智能助手',
@@ -217,14 +222,17 @@ export default function UseCasesPage() {
       <section className="relative py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
         <div className="max-w-6xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
+            <span className="text-purple-400 text-sm font-medium">The Only Prompt-Free AI</span>
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Hawkeye 使用场景
             <span className="block text-2xl md:text-3xl text-purple-400 mt-2">
-              适合每个人的 AI 智能助手
+              无需提示词的 AI 智能助手
             </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            无论你是开发者、设计师、学生还是办公人员，Hawkeye 都能理解你的工作，主动提供帮助，让你专注于真正重要的事情。
+            无论你是开发者、设计师、学生还是办公人员，Hawkeye 都能<strong className="text-white">不需要你输入任何提示词</strong>，自动理解你的工作并主动提供帮助。
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             {useCases.map((uc) => (

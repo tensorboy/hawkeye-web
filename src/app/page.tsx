@@ -86,25 +86,25 @@ export default function Home() {
   const features = [
     {
       icon: Scan,
-      title: '屏幕感知',
-      titleEn: 'Screen Awareness',
-      description: '如鹰眼般锐利，实时捕捉屏幕变化，深度理解你的工作上下文',
+      title: 'Sees Everything',
+      titleEn: '多模态感知',
+      description: '屏幕、剪贴板、文件变化，全方位感知你的工作上下文',
       gradient: 'from-amber-500 to-orange-600',
       glow: 'rgba(245, 158, 11, 0.3)'
     },
     {
       icon: Brain,
-      title: '智能推理',
-      titleEn: 'Smart Inference',
-      description: '本地 AI 驱动，毫秒级响应，生成精准可执行的任务建议',
+      title: 'Thinks Ahead',
+      titleEn: '主动推理',
+      description: '无需输入提示词，自动理解意图，主动建议下一步行动',
       gradient: 'from-blue-500 to-cyan-500',
       glow: 'rgba(59, 130, 246, 0.3)'
     },
     {
       icon: Shield,
-      title: '隐私优先',
-      titleEn: 'Privacy First',
-      description: '所有数据永不离开设备，100% 本地处理，完全离线运行',
+      title: 'Stays Private',
+      titleEn: '隐私安全',
+      description: '100% 本地处理，数据永不离开设备，完全离线可用',
       gradient: 'from-emerald-500 to-teal-500',
       glow: 'rgba(16, 185, 129, 0.3)'
     }
@@ -343,17 +343,17 @@ export default function Home() {
             <motion.div variants={itemVariants} className="mb-8">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--hawk-accent)]/10 border border-[var(--hawk-accent)]/20 text-[var(--hawk-accent)] text-sm font-medium">
                 <Sparkles className="w-4 h-4" />
-                开源免费 · 本地运行 · 隐私优先
+                Prompt-Free · Open Source · Local-First
               </span>
             </motion.div>
 
             {/* Main Headline */}
             <motion.h1 variants={itemVariants} className="mb-6">
               <span className="hawk-display-xl text-[var(--hawk-text-primary)] block">
-                像鹰眼一样
+                Your AI Coworker
               </span>
               <span className="hawk-display-xl hawk-gradient-text block mt-2">
-                洞察一切
+                That Just Knows
               </span>
             </motion.h1>
 
@@ -362,9 +362,9 @@ export default function Home() {
               variants={itemVariants}
               className="hawk-body-lg text-[var(--hawk-text-secondary)] mb-10 max-w-2xl mx-auto"
             >
-              从感知到行动 — <strong className="text-[var(--hawk-text-primary)]">本地优先的 AI 助手</strong>
+              <strong className="text-[var(--hawk-text-primary)]">无需开口，它已懂你</strong> — Stop typing prompts.
               <br className="hidden sm:block" />
-              自动观察你的工作环境，理解意图，主动提供帮助
+              Hawkeye watches your screen, understands context, and acts proactively.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -381,18 +381,18 @@ export default function Home() {
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                 </svg>
-                Download for Mac
+                Try Prompt-Free AI
                 <ChevronDown className="w-4 h-4" />
               </motion.a>
 
               <motion.a
                 whileHover={prefersReducedMotion ? {} : { scale: 1.02 }}
                 whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
-                href="https://github.com/tensorboy/hawkeye"
+                href="#features"
                 className="hawk-btn-ghost flex items-center gap-2"
               >
                 <Play className="w-4 h-4" />
-                View on GitHub
+                See How It Works
               </motion.a>
             </motion.div>
 
@@ -403,19 +403,19 @@ export default function Home() {
             >
               <span className="flex items-center gap-1.5">
                 <Check className="w-4 h-4 text-emerald-500" />
-                无需信用卡
+                Zero prompts needed
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="w-4 h-4 text-emerald-500" />
-                离线可用
+                Works offline
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="w-4 h-4 text-emerald-500" />
-                数据本地存储
+                100% private
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="w-4 h-4 text-emerald-500" />
-                开源透明
+                Open source
               </span>
             </motion.div>
 
@@ -437,7 +437,7 @@ export default function Home() {
                       <div className="w-3 h-3 rounded-full bg-green-500/80" />
                     </div>
                     <div className="flex-1 text-center text-sm text-[var(--hawk-text-tertiary)] font-medium">
-                      Hawkeye — 智能感知中
+                      Hawkeye — Thinking Ahead
                     </div>
                     <div className="flex items-center gap-1 text-xs text-[var(--hawk-accent)]">
                       <Activity className="w-3 h-3 animate-pulse" />
@@ -507,13 +507,13 @@ export default function Home() {
             className="text-center mb-12"
           >
             <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold text-[var(--hawk-accent)] bg-[var(--hawk-accent)]/10 rounded-full uppercase tracking-wider">
-              产品演示
+              See It In Action
             </span>
             <h2 className="hawk-display-lg text-[var(--hawk-text-primary)] mb-4">
-              看看 Hawkeye 如何工作
+              Watch Prompt-Free AI Work
             </h2>
             <p className="hawk-body-lg text-[var(--hawk-text-secondary)] max-w-2xl mx-auto">
-              2 分钟快速了解 Hawkeye 的核心功能
+              2 minutes to see how Hawkeye understands without being told
             </p>
           </motion.header>
 
@@ -683,13 +683,13 @@ export default function Home() {
             className="text-center mb-16 md:mb-20"
           >
             <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold text-[var(--hawk-accent)] bg-[var(--hawk-accent)]/10 rounded-full uppercase tracking-wider">
-              Core Features
+              Why Prompt-Free
             </span>
             <h2 className="hawk-display-lg text-[var(--hawk-text-primary)] mb-4">
-              三大核心能力
+              No Prompts. Just Results.
             </h2>
             <p className="hawk-body-lg text-[var(--hawk-text-secondary)] max-w-2xl mx-auto">
-              像鹰眼一样精准，像本地一样安全
+              Your genius AI teammate who never needs instructions
             </p>
           </motion.header>
 
@@ -887,10 +887,10 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="hawk-display-lg text-white mb-6">
-              开源 · 免费 · 本地运行
+              The Future is Prompt-Free
             </h2>
             <p className="hawk-body-lg text-slate-400 mb-10 max-w-2xl mx-auto">
-              Hawkeye 是开源项目，你可以自己托管并使用自己的 API Key 或本地模型
+              Open source, local-first, 100% private. Your AI coworker that just works.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
@@ -927,7 +927,7 @@ export default function Home() {
                 <span className="text-xl font-display font-bold text-white">Hawkeye</span>
               </div>
               <p className="text-slate-400 mb-6 max-w-sm">
-                像鹰眼一样洞察一切。本地优先的 AI 助手，赋能每个人 10x 效率。
+                Your prompt-free AI coworker. No typing needed — just work naturally and let Hawkeye help.
               </p>
               {/* Email Subscribe */}
               <div className="flex gap-2">
