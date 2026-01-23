@@ -210,8 +210,6 @@ export default function Home() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
                   className="px-4 py-2 min-h-[44px] flex items-center text-[var(--hawk-text-secondary)] hover:text-[var(--hawk-text-primary)] transition-colors font-medium"
                 >
                   {item.label}
