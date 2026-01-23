@@ -3,21 +3,31 @@ import { Metadata } from 'next'
 // SEO 配置常量
 export const siteConfig = {
   name: 'Hawkeye',
-  // 优化后的标题：英文优先 + 明确产品定位 + 核心价值主张
-  title: 'Hawkeye - Open Source AI Desktop Assistant | Local-First Screen Perception & 10x Productivity',
-  titleZh: 'Hawkeye - 开源 AI 桌面助手 | 本地优先屏幕感知 · 10x 工作效率',
-  titleEn: 'Hawkeye - Open Source AI Desktop Assistant | Local-First Screen Perception & 10x Productivity',
-  // 优化后的描述：加入竞品对标 + 核心功能 + 差异化价值
-  description: 'Hawkeye 是开源的本地优先 AI 桌面助手，类似 Screenpipe/Rewind 的免费替代品。自动感知屏幕、剪贴板、文件变化，支持 OCR、语音识别、24/7 智能监控。支持 Ollama 本地 LLM，数据永不上传，100% 隐私安全。桌面/VS Code/Chrome 三端联动。',
-  descriptionEn: 'Hawkeye is an open-source, local-first AI desktop assistant - a free alternative to Screenpipe/Rewind. Auto-perceives screen, clipboard & file changes with OCR, speech-to-text, 24/7 monitoring. Supports Ollama local LLM, data never leaves your device. Works on Desktop, VS Code & Chrome.',
+  // 新定位：Prompt-Free AI Coworker
+  title: 'Hawkeye - Prompt-Free AI Coworker | Multimodal Agent That Just Works',
+  titleZh: 'Hawkeye - 无需提示词的 AI 协作伙伴 | 懂你所想，无需开口',
+  titleEn: 'Hawkeye - Prompt-Free AI Coworker | Multimodal Agent That Just Works',
+  // 新描述：突出 Prompt-Free + Coworker 概念
+  description: 'Hawkeye 是无需提示词的 AI 协作伙伴，自动感知屏幕、理解上下文、主动执行任务。不用打字输入指令，自然工作即可。开源免费，本地优先，100% 隐私安全。Claude Cowork/Cursor 的免费替代品。',
+  descriptionEn: 'Hawkeye is a prompt-free AI coworker that perceives your screen, understands context, and takes action automatically. No typing prompts - just work naturally. Open source, local-first, 100% private. Free Claude Cowork & Cursor alternative.',
   url: 'https://hawkiyi.com',
   ogImage: 'https://hawkiyi.com/og-image.png',
   twitterImage: 'https://hawkiyi.com/twitter-image.png',
   creator: 'tensorboy',
   github: 'https://github.com/tensorboy/hawkeye',
-  // 大幅扩展的关键词策略
+  // 大幅扩展的关键词策略 - Prompt-Free AI Coworker 定位
   keywords: {
     zh: [
+      // 核心新概念词（最重要！）
+      '无提示词 AI',
+      'Prompt-Free AI',
+      '不用打字的 AI',
+      '主动式 AI',
+      'AI 协作伙伴',
+      'AI 队友',
+      'AI Coworker',
+      '多模态 AI',
+      '屏幕感知 AI',
       // 核心产品词
       'AI 助手',
       '智能任务助手',
@@ -26,14 +36,15 @@ export const siteConfig = {
       'AI 记忆助手',
       '桌面 AI 记忆',
       // 竞品对标词（重要！）
+      'Claude Cowork 替代品',
+      'Cursor 替代品',
       'Screenpipe 替代品',
       'Rewind 替代品',
       'Raycast 替代品',
-      'Memex 替代品',
-      'OpenRecall 替代品',
+      'Copilot 替代品',
       '开源 AI 助手',
-      '免费 Rewind',
-      '开源 Screenpipe',
+      '免费 Cowork',
+      '开源 Cowork',
       // 功能特性词
       '屏幕感知',
       '屏幕录制 AI',
@@ -46,6 +57,8 @@ export const siteConfig = {
       '24/7 AI 监控',
       'AI 数字记忆',
       '电脑历史记录',
+      '上下文感知',
+      '自动执行任务',
       // 技术词
       '本地 AI',
       '离线 AI',
@@ -63,16 +76,18 @@ export const siteConfig = {
       'Linux AI 助手',
       'VS Code 扩展',
       'Chrome 扩展',
-      // 场景词
+      // 场景词 - 扩展到非开发者
       '程序员效率工具',
       '开发者工具',
+      '办公 AI 助手',
+      '学生 AI 助手',
       '工作效率提升',
       '任务自动化',
       '10x 效率',
       '自动化工具',
       '生产力工具',
       '会议记录 AI',
-      '工作报告生成',
+      '邮件处理 AI',
       // 长尾词
       '免费 AI 桌面助手',
       '开源生产力工具',
@@ -80,8 +95,23 @@ export const siteConfig = {
       'AI 工作流自动化',
       '2026 最佳 AI 助手',
       '隐私优先 AI',
+      '不需要输入提示词的 AI',
+      '自动理解上下文的 AI',
     ],
     en: [
+      // Core NEW concept keywords (MOST IMPORTANT!)
+      'prompt-free AI',
+      'no-prompt AI',
+      'AI without prompts',
+      'zero-prompt assistant',
+      'proactive AI',
+      'AI coworker',
+      'AI teammate',
+      'AI collaboration',
+      'multimodal AI agent',
+      'screen-aware AI',
+      'context-aware AI',
+      'vision AI assistant',
       // Core product keywords
       'AI assistant',
       'AI desktop assistant',
@@ -91,23 +121,23 @@ export const siteConfig = {
       'desktop AI memory',
       'digital memory AI',
       // Competitor alternative keywords (IMPORTANT!)
+      'Claude Cowork alternative',
+      'Cursor alternative',
+      'Copilot alternative',
       'Screenpipe alternative',
       'Rewind alternative',
       'Raycast alternative',
-      'Memex alternative',
-      'OpenRecall alternative',
       'open source AI assistant',
-      'free Rewind alternative',
-      'open source Rewind',
-      'open source Screenpipe',
-      'free screen recording AI',
-      // Feature keywords (inspired by competitors)
+      'free Cowork alternative',
+      'open source Cowork',
+      'free Claude Cowork',
+      // Feature keywords
       'screen perception',
       'screen recording AI',
       'screen history search',
       'search your computer history',
-      'scroll through screen history',
-      'ask AI about your work',
+      'AI that watches your screen',
+      'AI that understands context',
       'clipboard assistant',
       'clipboard AI',
       'OCR recognition',
@@ -115,8 +145,8 @@ export const siteConfig = {
       'file monitoring',
       '24/7 AI monitoring',
       'AI memory',
-      '24/7 memory for desktop',
-      'meeting transcription',
+      'automatic task execution',
+      'proactive task suggestions',
       // Technical keywords
       'local AI',
       'offline AI',
@@ -139,15 +169,19 @@ export const siteConfig = {
       'VS Code extension',
       'Chrome extension',
       'cross-platform AI',
-      // Use case keywords
+      // Use case keywords - expanded to non-developers
       'developer productivity tool',
       'programmer efficiency',
+      'AI for non-coders',
+      'AI for office work',
+      'AI for students',
       'work efficiency',
       'task automation',
       '10x productivity',
       'automation tool',
       'productivity tool',
-      'work like ChatGPT locally',
+      'email assistant AI',
+      'meeting notes AI',
       // Long-tail keywords
       'free AI desktop assistant',
       'open source productivity tool',
@@ -158,6 +192,9 @@ export const siteConfig = {
       'best AI assistant 2026',
       'best local AI 2026',
       'privacy first AI assistant',
+      'AI that just works',
+      'AI without typing prompts',
+      'genius AI teammate',
     ],
   },
   authors: [
@@ -255,7 +292,7 @@ export const softwareApplicationSchema = {
   description: siteConfig.descriptionEn,
   url: siteConfig.url,
   applicationCategory: 'ProductivityApplication',
-  applicationSubCategory: 'AI Assistant',
+  applicationSubCategory: 'Prompt-Free AI Coworker',
   operatingSystem: ['macOS 12+', 'Windows 10+', 'Linux Ubuntu 20.04+'],
   offers: {
     '@type': 'Offer',
@@ -344,8 +381,8 @@ export const softwareApplicationSchema = {
   ],
   // 新增：软件要求
   softwareRequirements: 'Node.js 18+, 4GB RAM minimum',
-  // 新增：关键词标签
-  keywords: 'AI assistant, screen perception, local AI, productivity, open source, Screenpipe alternative, Rewind alternative, Raycast alternative, Memex alternative, 24/7 AI memory, search computer history, offline AI, privacy-focused AI, local LLM, Ollama',
+  // 新增：关键词标签 - Prompt-Free AI Coworker 定位
+  keywords: 'prompt-free AI, AI coworker, no-prompt AI, multimodal agent, screen-aware AI, Claude Cowork alternative, Cursor alternative, AI assistant, local AI, productivity, open source, Screenpipe alternative, proactive AI, context-aware AI, offline AI, privacy-focused AI, local LLM, Ollama',
   // 新增：替代品标签
   sameAs: [
     'https://alternativeto.net/software/hawkeye/',
@@ -354,17 +391,27 @@ export const softwareApplicationSchema = {
   isRelatedTo: [
     {
       '@type': 'SoftwareApplication',
+      name: 'Claude Cowork',
+      applicationCategory: 'ProductivityApplication',
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Cursor',
+      applicationCategory: 'DeveloperApplication',
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'GitHub Copilot',
+      applicationCategory: 'DeveloperApplication',
+    },
+    {
+      '@type': 'SoftwareApplication',
       name: 'Screenpipe',
       applicationCategory: 'ProductivityApplication',
     },
     {
       '@type': 'SoftwareApplication',
       name: 'Rewind AI',
-      applicationCategory: 'ProductivityApplication',
-    },
-    {
-      '@type': 'SoftwareApplication',
-      name: 'Raycast',
       applicationCategory: 'ProductivityApplication',
     },
   ],
@@ -405,17 +452,33 @@ export const websiteSchema = {
   },
 }
 
-// JSON-LD 结构化数据 - FAQ（扩展版，包含更多 SEO 目标问题）
+// JSON-LD 结构化数据 - FAQ（扩展版，包含 Prompt-Free AI 相关问题）
 export const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is Hawkeye AI Assistant?',
+      name: 'What is Prompt-Free AI?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Hawkeye is a free, open-source, local-first AI desktop assistant that automatically perceives your work environment (screen, clipboard, file changes), understands your intent, and proactively offers actionable task suggestions. It supports Desktop apps, VS Code extension, and Chrome extension.',
+        text: 'Prompt-Free AI is a new paradigm where AI understands your context automatically without you typing prompts. Instead of telling AI what to do, it watches your screen, understands your work, and proactively suggests actions. Hawkeye is the first open-source Prompt-Free AI coworker.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '什么是无提示词 AI (Prompt-Free AI)？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '无提示词 AI 是一种新范式，AI 自动理解你的上下文，无需输入提示词。它不需要你告诉它做什么，而是观察你的屏幕、理解你的工作、主动建议行动。Hawkeye 是第一个开源的无提示词 AI 协作伙伴。',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is Hawkeye AI Coworker?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Hawkeye is a prompt-free AI coworker that perceives your screen, understands context, and takes action automatically. No typing prompts needed - just work naturally and Hawkeye helps proactively. Its free, open-source, local-first, and 100% private.',
       },
     },
     {
@@ -423,15 +486,15 @@ export const faqSchema = {
       name: 'Hawkeye 是什么？',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Hawkeye 是一款免费开源的本地优先 AI 智能任务感知助手，它能自动感知你的工作环境（屏幕、剪贴板、文件变化），理解你的意图，并主动提供可执行的任务建议。支持桌面应用、VS Code 扩展和 Chrome 扩展。',
+        text: 'Hawkeye 是无需提示词的 AI 协作伙伴，自动感知屏幕、理解上下文、主动执行任务。不用打字输入指令，自然工作即可。开源免费，本地优先，100% 隐私安全。',
       },
     },
     {
       '@type': 'Question',
-      name: 'Is Hawkeye a free Screenpipe or Rewind alternative?',
+      name: 'Is Hawkeye a Claude Cowork or Cursor alternative?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes! Hawkeye is a free, open-source alternative to Screenpipe and Rewind. Like these tools, it provides 24/7 screen monitoring, OCR, and AI-powered search. Unlike paid alternatives, Hawkeye is completely free and open source under MIT license, with all data processed locally for maximum privacy.',
+        text: 'Yes! Hawkeye is a free, open-source alternative to Claude Cowork and Cursor. Unlike these tools that require prompts, Hawkeye is prompt-free - it understands your context automatically. Its also local-first (data never leaves your device) and works for everyone, not just developers.',
       },
     },
     {
