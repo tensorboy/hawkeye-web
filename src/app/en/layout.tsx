@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     'Chrome AI extension',
     'cross-platform AI',
     // Use case keywords
-    'developer productivity tool',
+    'personal productivity tool',
     'AI workflow automation',
     '10x productivity',
     'task automation AI',

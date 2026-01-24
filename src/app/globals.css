@@ -93,8 +93,9 @@
 }
 
 /* Dark Mode - Hawkeye Dark Theme */
+/* System preference based dark mode */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     /* Hawkeye Dark Mode - Deep Slate */
     --hawk-bg-primary: #0f172a;
     --hawk-bg-secondary: #1e293b;
@@ -172,6 +173,84 @@
   }
 }
 
+/* Class-based dark mode override (manual toggle) */
+:root.dark {
+  /* Hawkeye Dark Mode - Deep Slate */
+  --hawk-bg-primary: #0f172a;
+  --hawk-bg-secondary: #1e293b;
+  --hawk-bg-tertiary: #334155;
+  --hawk-surface: #1e293b;
+  --hawk-surface-elevated: #334155;
+
+  /* Text Colors - Dark */
+  --hawk-text-primary: #f8fafc;
+  --hawk-text-secondary: #cbd5e1;
+  --hawk-text-tertiary: #94a3b8;
+  --hawk-text-muted: #64748b;
+
+  /* Accent - Brighter in dark mode */
+  --hawk-accent: #fbbf24;
+  --hawk-accent-hover: #fcd34d;
+  --hawk-accent-glow: rgba(251, 191, 36, 0.25);
+
+  /* Secondary Accent */
+  --hawk-blue: #60a5fa;
+  --hawk-blue-glow: rgba(96, 165, 250, 0.15);
+
+  /* Borders - Dark */
+  --hawk-border: #334155;
+  --hawk-border-light: #1e293b;
+
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 30, 41, 59;
+
+  /* iOS Label Colors - Dark */
+  --color-label: rgba(255, 255, 255, 1);
+  --color-label-secondary: rgba(235, 235, 245, 0.6);
+  --color-label-tertiary: rgba(235, 235, 245, 0.3);
+  --color-label-quaternary: rgba(235, 235, 245, 0.18);
+
+  /* iOS Background Colors - Dark */
+  --color-bg-primary: rgb(15, 23, 42);
+  --color-bg-secondary: rgb(30, 41, 59);
+  --color-bg-tertiary: rgb(51, 65, 85);
+
+  /* iOS Grouped Background Colors - Dark */
+  --color-bg-grouped: rgb(15, 23, 42);
+  --color-bg-grouped-secondary: rgb(30, 41, 59);
+  --color-bg-grouped-tertiary: rgb(51, 65, 85);
+
+  /* iOS System Colors - Dark (adjusted for dark mode) */
+  --color-system-blue: rgb(10, 132, 255);
+  --color-system-green: rgb(48, 209, 88);
+  --color-system-indigo: rgb(94, 92, 230);
+  --color-system-orange: rgb(255, 159, 10);
+  --color-system-pink: rgb(255, 55, 95);
+  --color-system-purple: rgb(191, 90, 242);
+  --color-system-red: rgb(255, 69, 58);
+  --color-system-teal: rgb(100, 210, 255);
+  --color-system-yellow: rgb(255, 214, 10);
+
+  /* iOS Fill Colors - Dark */
+  --color-fill: rgba(120, 120, 128, 0.36);
+  --color-fill-secondary: rgba(120, 120, 128, 0.32);
+  --color-fill-tertiary: rgba(120, 120, 128, 0.24);
+  --color-fill-quaternary: rgba(120, 120, 128, 0.18);
+
+  /* iOS Separator Colors - Dark */
+  --color-separator: rgba(84, 84, 88, 0.6);
+  --color-separator-opaque: rgb(56, 56, 58);
+
+  /* iOS System Gray Colors - Dark */
+  --color-gray: rgb(142, 142, 147);
+  --color-gray-2: rgb(99, 99, 102);
+  --color-gray-3: rgb(72, 72, 74);
+  --color-gray-4: rgb(58, 58, 60);
+  --color-gray-5: rgb(44, 44, 46);
+  --color-gray-6: rgb(28, 28, 30);
+}
+
 body {
   color: var(--hawk-text-primary);
   background: var(--hawk-bg-primary);
@@ -190,9 +269,13 @@ body {
 
 /* Dark mode body background */
 @media (prefers-color-scheme: dark) {
-  body {
+  :root:not(.light) body {
     background: rgb(var(--background-start-rgb));
   }
+}
+
+:root.dark body {
+  background: rgb(var(--background-start-rgb));
 }
 
 /* Custom scrollbar */
@@ -385,9 +468,13 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .ios-highlight {
+  :root:not(.light) .ios-highlight {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
   }
+}
+
+:root.dark .ios-highlight {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
 }
 
 /* ============================================
@@ -448,9 +535,13 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .ios-navbar {
+  :root:not(.light) .ios-navbar {
     background-color: rgba(28, 28, 30, 0.8);
   }
+}
+
+:root.dark .ios-navbar {
+  background-color: rgba(28, 28, 30, 0.8);
 }
 
 /* iOS Tab Bar Style */
@@ -463,9 +554,13 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .ios-tabbar {
+  :root:not(.light) .ios-tabbar {
     background-color: rgba(28, 28, 30, 0.95);
   }
+}
+
+:root.dark .ios-tabbar {
+  background-color: rgba(28, 28, 30, 0.95);
 }
 
 /* iOS Button Styles */
@@ -512,9 +607,13 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .ios-card {
+  :root:not(.light) .ios-card {
     box-shadow: none;
   }
+}
+
+:root.dark .ios-card {
+  box-shadow: none;
 }
 
 /* ============================================
@@ -549,10 +648,15 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .hawk-glass {
+  :root:not(.light) .hawk-glass {
     background: rgba(30, 41, 59, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
+}
+
+:root.dark .hawk-glass {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Subtle grid background pattern */
@@ -564,11 +668,17 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .hawk-grid-bg {
+  :root:not(.light) .hawk-grid-bg {
     background-image:
       linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
   }
+}
+
+:root.dark .hawk-grid-bg {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
 }
 
 /* Animated gradient border */
@@ -650,10 +760,15 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .hawk-card:hover {
+  :root:not(.light) .hawk-card:hover {
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4),
                 0 0 30px var(--hawk-accent-glow);
   }
+}
+
+:root.dark .hawk-card:hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4),
+              0 0 30px var(--hawk-accent-glow);
 }
 
 /* Floating animation for hero */
@@ -722,9 +837,13 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .hawk-noise::before {
+  :root:not(.light) .hawk-noise::before {
     opacity: 0.05;
   }
+}
+
+:root.dark .hawk-noise::before {
+  opacity: 0.05;
 }
 
 /* Responsive typography scale */
@@ -795,7 +914,7 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .hawk-glass-3d {
+  :root:not(.light) .hawk-glass-3d {
     background: linear-gradient(
       135deg,
       rgba(30, 41, 59, 0.9) 0%,
@@ -807,6 +926,19 @@ body {
       0 0 0 1px rgba(255, 255, 255, 0.05) inset,
       0 -2px 6px rgba(0, 0, 0, 0.1) inset;
   }
+}
+
+:root.dark .hawk-glass-3d {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 41, 59, 0.9) 0%,
+    rgba(30, 41, 59, 0.6) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 -2px 6px rgba(0, 0, 0, 0.1) inset;
 }
 
 /* Animated gradient background */
@@ -900,12 +1032,19 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .hawk-card-3d:hover {
+  :root:not(.light) .hawk-card-3d:hover {
     box-shadow:
       0 25px 50px -12px rgba(0, 0, 0, 0.5),
       0 0 30px var(--hawk-accent-glow),
       -5px 10px 30px rgba(0, 0, 0, 0.3);
   }
+}
+
+:root.dark .hawk-card-3d:hover {
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 30px var(--hawk-accent-glow),
+    -5px 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Glow button with animated border */

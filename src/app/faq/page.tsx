@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     question: 'Hawkeye 和 Claude Code / Cursor / Copilot 有什么区别？',
-    answer: 'Hawkeye 采用主动感知模式，自动观察你的工作并发现可帮助的机会；而 Claude Code、Cursor、Copilot 是被动响应模式，需要你主动输入指令。Hawkeye 适用于所有人（程序员、设计师、学生、上班族），而不仅仅是开发者。此外，Hawkeye 支持桌面应用、VS Code 扩展、Chrome 扩展三端联动，提供更全面的工作场景覆盖。',
+    answer: 'Hawkeye 采用主动感知模式，自动观察你的工作并发现可帮助的机会；而 Claude Code、Cursor、Copilot 是被动响应模式，需要你主动输入指令。Hawkeye 适用于所有人（上班族、学生、创作者、技术人员），是真正为普通用户设计的智能助手。此外，Hawkeye 支持桌面应用、VS Code 扩展、Chrome 扩展三端联动，提供更全面的工作场景覆盖。',
     category: 'comparison',
   },
   {

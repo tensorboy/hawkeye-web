@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 // import { Sora, Plus_Jakarta_Sans, Noto_Sans_SC } from 'next/font/google'
 import './globals.css'
 import { JsonLd } from '@/components/JsonLd'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import {
   generateMetadata as genMeta,
   siteConfig,
@@ -81,14 +82,16 @@ export default function RootLayout({
         <JsonLd data={getAllSchemas()} />
       </head>
       <body className="antialiased font-sans">
-        {/* 跳过导航链接 - 无障碍优化 */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-md z-50"
-        >
-          跳到主要内容
-        </a>
-        {children}
+        <ThemeProvider>
+          {/* 跳过导航链接 - 无障碍优化 */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-md z-50"
+          >
+            跳到主要内容
+          </a>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

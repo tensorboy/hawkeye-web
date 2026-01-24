@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   // 优化后的标题：Prompt-Free 定位 + 用户群体
-  title: 'Hawkeye Use Cases - Prompt-Free AI for Developers, Designers, Students & Professionals',
-  description: 'Discover how Hawkeye prompt-free AI helps without typing: developer code assistance, designer workflow automation, student research support, office productivity. The only AI that works without prompts. Free Claude Cowork/Cursor alternative.',
+  title: 'Hawkeye Use Cases - Prompt-Free AI for Everyone | Students, Professionals & Creatives',
+  description: 'Discover how Hawkeye prompt-free AI helps without typing: office productivity, student research, creative workflow, tech support. The only AI that works without prompts. Free Claude Cowork alternative.',
   keywords: [
     // Prompt-Free 核心词
     'prompt-free AI',
@@ -14,40 +14,38 @@ export const metadata: Metadata = {
     'no prompt AI',
     // 英文用户场景词
     'Hawkeye use cases',
-    'AI coding assistant',
-    'AI design tool',
-    'AI study assistant',
+    'AI productivity tool',
     'AI office assistant',
-    'developer productivity tool',
-    'designer workflow automation',
+    'AI study assistant',
+    'AI workflow automation',
+    'personal AI assistant',
+    'productivity AI',
     'student efficiency tool',
     'office automation AI',
     // 竞品关键词
     'Claude Cowork alternative',
-    'Cursor alternative',
-    'free Cursor alternative',
+    'free AI assistant',
     // 长尾关键词
-    'AI assistant for programmers',
-    'AI assistant for designers',
+    'AI assistant for everyone',
     'AI assistant for students',
+    'AI assistant for office work',
     'best prompt-free AI 2026',
     'free AI workflow automation',
     // 中文关键词
     'Hawkeye 使用场景',
     '无提示词 AI',
     '免 Prompt AI 助手',
-    'AI 编程助手',
-    'AI 设计工具',
-    'AI 学习助手',
     'AI 办公助手',
-    '程序员效率工具',
-    '设计师工具',
+    'AI 学习助手',
+    'AI 效率工具',
+    '个人 AI 助手',
     '学生效率工具',
     '办公自动化',
+    '工作效率提升',
   ],
   openGraph: {
     title: 'Hawkeye 使用场景 - 适合每个人的 AI 智能助手',
-    description: '了解 Hawkeye AI 助手如何帮助开发者、设计师、学生、办公人员提升效率',
+    description: '了解 Hawkeye AI 助手如何帮助上班族、学生、创作者、技术人员提升效率',
     url: `${siteConfig.url}/use-cases`,
     siteName: siteConfig.name,
     locale: 'zh_CN',
@@ -64,7 +62,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Hawkeye 使用场景 - 适合每个人的 AI 智能助手',
-    description: '了解 Hawkeye AI 助手如何帮助开发者、设计师、学生、办公人员提升效率',
+    description: '了解 Hawkeye AI 助手如何帮助上班族、学生、创作者、技术人员提升效率',
     images: [siteConfig.twitterImage],
   },
   alternates: {
@@ -74,73 +72,38 @@ export const metadata: Metadata = {
 
 const useCases = [
   {
-    id: 'developers',
-    icon: '👨‍💻',
-    title: '软件开发者',
-    titleEn: 'Software Developers',
-    description: 'Hawkeye 为开发者提供全方位的智能编程辅助，从代码理解到 Bug 修复，全程陪伴。',
-    color: 'from-blue-500 to-cyan-500',
+    id: 'office-workers',
+    icon: '💼',
+    title: '办公人员',
+    titleEn: 'Office Professionals',
+    description: 'Hawkeye 帮助办公人员自动化日常任务，减少重复劳动，提升工作效率。',
+    color: 'from-orange-500 to-amber-500',
     scenarios: [
       {
-        title: '智能代码补全与建议',
-        description: '基于你当前的代码上下文，Hawkeye 主动提供代码补全、重构建议和最佳实践提示。',
+        title: '邮件智能处理',
+        description: '阅读邮件时，Hawkeye 自动提取关键信息、待办事项，并建议回复模板。',
       },
       {
-        title: '错误诊断与修复',
-        description: '当你遇到报错时，Hawkeye 自动分析错误信息，理解上下文，提供精准的修复方案。',
+        title: '文档摘要生成',
+        description: '打开长篇文档，Hawkeye 自动生成摘要，帮你快速了解核心内容。',
       },
       {
-        title: '文档查询与学习',
-        description: '复制一段代码或 API 名称，Hawkeye 自动查找相关文档，帮你快速理解用法。',
+        title: '会议记录整理',
+        description: '会议结束后，Hawkeye 帮你整理笔记、提取行动项、分配责任人。',
       },
       {
-        title: 'Git 操作辅助',
-        description: '感知你的文件变更，自动生成 commit 信息，帮你处理 merge 冲突。',
+        title: '数据报表辅助',
+        description: '处理 Excel 数据时，Hawkeye 主动提供公式建议、数据清洗提示和可视化方案。',
       },
     ],
     testimonial: {
-      quote: '以前写代码时需要频繁切换到浏览器查文档，现在 Hawkeye 会主动把相关信息推送给我，感觉效率提升了不止一倍。',
-      author: '资深前端开发者',
+      quote: '每天要处理几十封邮件，以前光是分类和回复就要花大半天。有了 Hawkeye 后，这些工作变得轻松多了。',
+      author: '项目经理',
     },
     stats: [
-      { label: '代码编写效率', value: '+65%' },
-      { label: 'Bug 修复速度', value: '+80%' },
-      { label: '上下文切换', value: '-70%' },
-    ],
-  },
-  {
-    id: 'designers',
-    icon: '🎨',
-    title: '设计师',
-    titleEn: 'Designers',
-    description: 'Hawkeye 帮助设计师提升创意工作效率，从灵感收集到设计稿交付，全程智能辅助。',
-    color: 'from-pink-500 to-rose-500',
-    scenarios: [
-      {
-        title: '设计灵感收集',
-        description: '浏览设计网站时，Hawkeye 自动分析你看的设计，提取配色、布局、字体等关键信息。',
-      },
-      {
-        title: '素材整理与分类',
-        description: '监控你下载的素材文件，自动按类型、风格、项目进行智能分类和整理。',
-      },
-      {
-        title: '设计稿标注辅助',
-        description: '从设计软件截图，Hawkeye 自动识别元素尺寸、间距、颜色值，生成开发友好的标注。',
-      },
-      {
-        title: '跨软件协作',
-        description: '在 Figma、Sketch、PS 之间切换时，Hawkeye 保持上下文连贯，智能同步工作状态。',
-      },
-    ],
-    testimonial: {
-      quote: 'Hawkeye 就像有了一个永远在线的设计助理，帮我处理那些繁琐但必要的工作，让我可以专注于创意本身。',
-      author: 'UI/UX 设计师',
-    },
-    stats: [
-      { label: '素材整理效率', value: '+120%' },
-      { label: '设计迭代速度', value: '+45%' },
-      { label: '交付准备时间', value: '-60%' },
+      { label: '邮件处理效率', value: '+90%' },
+      { label: '文档处理速度', value: '+70%' },
+      { label: '重复工作', value: '-80%' },
     ],
   },
   {
@@ -179,38 +142,73 @@ const useCases = [
     ],
   },
   {
-    id: 'office-workers',
-    icon: '💼',
-    title: '办公人员',
-    titleEn: 'Office Workers',
-    description: 'Hawkeye 帮助办公人员自动化日常任务，减少重复劳动，提升工作效率。',
-    color: 'from-orange-500 to-amber-500',
+    id: 'designers',
+    icon: '🎨',
+    title: '创意工作者',
+    titleEn: 'Creative Professionals',
+    description: 'Hawkeye 帮助创意工作者提升效率，从灵感收集到作品交付，全程智能辅助。',
+    color: 'from-pink-500 to-rose-500',
     scenarios: [
       {
-        title: '邮件智能处理',
-        description: '阅读邮件时，Hawkeye 自动提取关键信息、待办事项，并建议回复模板。',
+        title: '灵感收集整理',
+        description: '浏览网站时，Hawkeye 自动分析你看的内容，提取配色、布局、关键元素等信息。',
       },
       {
-        title: '文档摘要生成',
-        description: '打开长篇文档，Hawkeye 自动生成摘要，帮你快速了解核心内容。',
+        title: '素材整理与分类',
+        description: '监控你下载的素材文件，自动按类型、风格、项目进行智能分类和整理。',
       },
       {
-        title: '会议记录整理',
-        description: '会议结束后，Hawkeye 帮你整理笔记、提取行动项、分配责任人。',
+        title: '作品标注辅助',
+        description: '从软件截图，Hawkeye 自动识别元素尺寸、间距、颜色值，生成详细标注。',
       },
       {
-        title: '数据报表辅助',
-        description: '处理 Excel 数据时，Hawkeye 主动提供公式建议、数据清洗提示和可视化方案。',
+        title: '跨软件协作',
+        description: '在多个软件之间切换时，Hawkeye 保持上下文连贯，智能同步工作状态。',
       },
     ],
     testimonial: {
-      quote: '每天要处理几十封邮件，以前光是分类和回复就要花大半天。有了 Hawkeye 后，这些工作变得轻松多了。',
-      author: '项目经理',
+      quote: 'Hawkeye 就像有了一个永远在线的助理，帮我处理那些繁琐但必要的工作，让我可以专注于创意本身。',
+      author: '自由创作者',
     },
     stats: [
-      { label: '邮件处理效率', value: '+90%' },
-      { label: '文档处理速度', value: '+70%' },
-      { label: '重复工作', value: '-80%' },
+      { label: '素材整理效率', value: '+120%' },
+      { label: '创作迭代速度', value: '+45%' },
+      { label: '交付准备时间', value: '-60%' },
+    ],
+  },
+  {
+    id: 'tech-workers',
+    icon: '💻',
+    title: '技术工作者',
+    titleEn: 'Tech Professionals',
+    description: 'Hawkeye 为技术工作者提供智能辅助，从问题诊断到方案建议，全程陪伴。',
+    color: 'from-blue-500 to-cyan-500',
+    scenarios: [
+      {
+        title: '智能问题诊断',
+        description: '遇到技术问题时，Hawkeye 自动分析错误信息，理解上下文，提供精准的解决方案。',
+      },
+      {
+        title: '信息查询与学习',
+        description: '复制一段内容，Hawkeye 自动查找相关资料和文档，帮你快速理解。',
+      },
+      {
+        title: '任务自动化建议',
+        description: '感知你的工作流程，主动建议可以自动化的重复任务，提升效率。',
+      },
+      {
+        title: '文件变更追踪',
+        description: '感知你的文件变更，自动生成变更说明和备注，方便后续查阅。',
+      },
+    ],
+    testimonial: {
+      quote: '以前遇到问题需要频繁切换到浏览器搜索，现在 Hawkeye 会主动把相关信息推送给我，效率提升明显。',
+      author: '技术顾问',
+    },
+    stats: [
+      { label: '问题解决效率', value: '+65%' },
+      { label: '故障修复速度', value: '+80%' },
+      { label: '上下文切换', value: '-70%' },
     ],
   },
 ]
@@ -232,7 +230,7 @@ export default function UseCasesPage() {
             </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            无论你是开发者、设计师、学生还是办公人员，Hawkeye 都能<strong className="text-white">不需要你输入任何提示词</strong>，自动理解你的工作并主动提供帮助。
+            无论你是上班族、学生、创作者还是技术人员，Hawkeye 都能<strong className="text-white">不需要你输入任何提示词</strong>，自动理解你的工作并主动提供帮助。
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             {useCases.map((uc) => (

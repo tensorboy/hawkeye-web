@@ -35,6 +35,8 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { GitHubStars } from '@/components/GitHubStars'
+import { ThemeToggle } from '@/components/ThemeToggle'
+import { LanguageSelector, LanguageSelectorMobile } from '@/components/LanguageSelector'
 
 export default function HomeEN() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -152,9 +154,8 @@ export default function HomeEN() {
 
             {/* Right Actions */}
             <div className="hidden md:flex items-center gap-3">
-              <Link href="/" className="text-sm text-gray-500 hover:text-gray-700">
-                中文
-              </Link>
+              <LanguageSelector currentLocale="en" />
+              <ThemeToggle />
               <GitHubStars repo="tensorboy/hawkeye" />
               <Link
                 href="https://github.com/tensorboy/hawkeye/releases"
@@ -186,7 +187,14 @@ export default function HomeEN() {
               <Link href="#features" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Features</Link>
               <Link href="#usecases" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Use Cases</Link>
               <Link href="#platforms" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Platforms</Link>
-              <Link href="/" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">中文版</Link>
+              <div className="py-2">
+                <span className="text-gray-400 text-xs uppercase tracking-wider mb-2 block">Language</span>
+                <LanguageSelectorMobile currentLocale="en" />
+              </div>
+              <div className="flex items-center py-3 min-h-[44px]">
+                <span className="text-gray-600 text-sm mr-2">Theme</span>
+                <ThemeToggle />
+              </div>
               <hr className="border-gray-100" />
               <Link
                 href="https://github.com/tensorboy/hawkeye/releases"
