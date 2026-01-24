@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
@@ -39,6 +39,8 @@ import { GitHubStars } from '@/components/GitHubStars'
 export default function HomeEN() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [videoPlaying, setVideoPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const shouldReduceMotion = useReducedMotion()
 
   // Prevent hydration mismatch by only using motion values after mount
@@ -75,8 +77,8 @@ export default function HomeEN() {
   const useCases = [
     {
       icon: Cpu,
-      title: 'Developer Debug Assistant',
-      description: 'Automatically detect error messages and suggest solutions to reduce debugging time',
+      title: 'Problem Solving Assistant',
+      description: 'Automatically detect issues on your screen and suggest solutions to save time',
       tag: '⭐️ Featured'
     },
     {
@@ -206,6 +208,14 @@ export default function HomeEN() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-4xl mx-auto"
           >
+            {/* Positioning Badge */}
+            <div className="mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 border border-amber-200 text-amber-700 text-sm font-medium">
+                <Sparkles className="w-4 h-4" />
+                Prompt-Free · Keyboard & Mouse Free · Open Source · 100% Local
+              </span>
+            </div>
+
             <h1 id="hero-heading" className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 tracking-tight">
               <span className="block">Hawkeye</span>
               <span className="block text-3xl md:text-5xl mt-2 font-normal text-gray-700">
@@ -356,38 +366,71 @@ export default function HomeEN() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            {/* Video Player Placeholder */}
-            <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-xl flex items-center justify-center group cursor-pointer border border-gray-200">
-              {/* Play button */}
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative z-10 w-20 h-20 md:w-24 md:h-24 rounded-full bg-gray-900 flex items-center justify-center shadow-2xl group-hover:bg-orange-500 transition-colors"
-              >
-                <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="currentColor" />
-              </motion.div>
+            {/* Video Player */}
+            <div
+              className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-xl flex items-center justify-center group cursor-pointer border border-gray-200"
+              onClick={() => {
+                if (videoRef.current) {
+                  if (videoPlaying) {
+                    videoRef.current.pause()
+                  } else {
+                    videoRef.current.play()
+                  }
+                  setVideoPlaying(!videoPlaying)
+                }
+              }}
+            >
+              {/* Video Element */}
+              <video
+                ref={videoRef}
+                className="absolute inset-0 w-full h-full object-cover"
+                src="/video/hawkeye-demo-zh.mp4"
+                playsInline
+                onEnded={() => setVideoPlaying(false)}
+              />
 
-              {/* Video info overlay */}
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full">
-                  <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                  <span className="text-white text-sm font-medium">Demo Video</span>
-                </div>
-                <span className="px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                  2:15
-                </span>
-              </div>
+              {/* Play button overlay - hidden when playing */}
+              {!videoPlaying && (
+                <>
+                  {/* Play button */}
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative z-10 w-20 h-20 md:w-24 md:h-24 rounded-full bg-gray-900 flex items-center justify-center shadow-2xl group-hover:bg-orange-500 transition-colors"
+                  >
+                    <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="currentColor" />
+                  </motion.div>
+
+                  {/* Video info overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                    <div className="flex items-center gap-2 px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full">
+                      <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                      <span className="text-white text-sm font-medium">Demo Video</span>
+                    </div>
+                    <span className="px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+                      0:15
+                    </span>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Video highlights */}
             <div className="grid grid-cols-3 gap-4 mt-6">
               {[
-                { time: '0:00', label: 'Installation' },
-                { time: '0:45', label: 'Screen Perception' },
-                { time: '1:30', label: 'Task Automation' },
+                { time: '0:00', label: 'Introduction', seconds: 0 },
+                { time: '0:03', label: 'Gesture Demo', seconds: 3 },
+                { time: '0:08', label: 'Features', seconds: 8 },
               ].map((chapter) => (
                 <button
                   key={chapter.time}
+                  onClick={() => {
+                    if (videoRef.current) {
+                      videoRef.current.currentTime = chapter.seconds
+                      videoRef.current.play()
+                      setVideoPlaying(true)
+                    }
+                  }}
                   className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200 hover:border-orange-300 transition-colors group"
                 >
                   <span className="text-sm font-mono text-orange-600">{chapter.time}</span>
@@ -432,7 +475,7 @@ export default function HomeEN() {
           >
             <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Testimonials</span>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">
-              What Developers Are Saying
+              What Users Are Saying
             </h2>
           </motion.header>
 
@@ -441,19 +484,19 @@ export default function HomeEN() {
               {
                 quote: "Finally, an AI assistant that truly respects privacy. All data is processed locally, and I can use it confidently at work.",
                 author: "Mike Chen",
-                role: "Full-Stack Developer",
+                role: "Product Manager",
                 avatar: "M"
               },
               {
                 quote: "Hawkeye has completely transformed my workflow. It automatically understands what I'm doing and gives precise suggestions.",
                 author: "Sarah Lee",
-                role: "Frontend Engineer",
+                role: "Freelancer",
                 avatar: "S"
               },
               {
                 quote: "As an open source project, Hawkeye's quality is impressive. Active community, frequent updates, and getting more powerful.",
                 author: "David Wang",
-                role: "Tech Lead",
+                role: "Entrepreneur",
                 avatar: "D"
               }
             ].map((testimonial, index) => (

@@ -46,6 +46,8 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [mounted, setMounted] = useState(false)
+  const [videoPlaying, setVideoPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const shouldReduceMotion = useReducedMotion()
   const heroRef = useRef<HTMLDivElement>(null)
 
@@ -113,7 +115,7 @@ export default function Home() {
   const useCases = [
     {
       icon: Cpu,
-      title: '开发者调试助手',
+      title: '问题诊断助手',
       description: '感知报错信息，智能建议解决方案',
       tag: 'Popular'
     },
@@ -343,7 +345,7 @@ export default function Home() {
             <motion.div variants={itemVariants} className="mb-8">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--hawk-accent)]/10 border border-[var(--hawk-accent)]/20 text-[var(--hawk-accent)] text-sm font-medium">
                 <Sparkles className="w-4 h-4" />
-                Prompt-Free · Open Source · Local-First
+                Prompt-Free · Keyboard & Mouse Free · Open Source · 100% Local
               </span>
             </motion.div>
 
@@ -523,50 +525,83 @@ export default function Home() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            {/* Video Player Placeholder */}
+            {/* Video Player */}
             <div className="hawk-border-gradient overflow-hidden">
-              <div className="relative aspect-video bg-gradient-to-br from-[var(--hawk-bg-secondary)] to-[var(--hawk-surface)] flex items-center justify-center group cursor-pointer">
-                {/* Animated background pattern */}
-                <div className="absolute inset-0 hawk-noise opacity-50" />
+              <div
+                className="relative aspect-video bg-gradient-to-br from-[var(--hawk-bg-secondary)] to-[var(--hawk-surface)] flex items-center justify-center group cursor-pointer"
+                onClick={() => {
+                  if (videoRef.current) {
+                    if (videoPlaying) {
+                      videoRef.current.pause()
+                    } else {
+                      videoRef.current.play()
+                    }
+                    setVideoPlaying(!videoPlaying)
+                  }
+                }}
+              >
+                {/* Video Element */}
+                <video
+                  ref={videoRef}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  src="/video/hawkeye-demo-zh.mp4"
+                  playsInline
+                  onEnded={() => setVideoPlaying(false)}
+                />
 
-                {/* Play button */}
-                <motion.div
-                  whileHover={prefersReducedMotion ? {} : { scale: 1.1 }}
-                  whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
-                  className="relative z-10 w-20 h-20 md:w-24 md:h-24 rounded-full bg-[var(--hawk-accent)] flex items-center justify-center shadow-2xl group-hover:bg-amber-400 transition-colors"
-                  style={{ boxShadow: '0 10px 50px rgba(245, 158, 11, 0.4)' }}
-                >
-                  <Play className="w-8 h-8 md:w-10 md:h-10 text-slate-900 ml-1" fill="currentColor" />
-                </motion.div>
+                {/* Play button overlay - hidden when playing */}
+                {!videoPlaying && (
+                  <>
+                    {/* Animated background pattern */}
+                    <div className="absolute inset-0 hawk-noise opacity-50" />
 
-                {/* Video info overlay */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full">
-                    <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                    <span className="text-white text-sm font-medium">Demo Video</span>
-                  </div>
-                  <span className="px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                    2:15
-                  </span>
-                </div>
+                    {/* Play button */}
+                    <motion.div
+                      whileHover={prefersReducedMotion ? {} : { scale: 1.1 }}
+                      whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+                      className="relative z-10 w-20 h-20 md:w-24 md:h-24 rounded-full bg-[var(--hawk-accent)] flex items-center justify-center shadow-2xl group-hover:bg-amber-400 transition-colors"
+                      style={{ boxShadow: '0 10px 50px rgba(245, 158, 11, 0.4)' }}
+                    >
+                      <Play className="w-8 h-8 md:w-10 md:h-10 text-slate-900 ml-1" fill="currentColor" />
+                    </motion.div>
 
-                {/* Corner decorations */}
-                <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-[var(--hawk-accent)]/30 rounded-tl-lg" />
-                <div className="absolute top-4 right-4 w-12 h-12 border-r-2 border-t-2 border-[var(--hawk-accent)]/30 rounded-tr-lg" />
-                <div className="absolute bottom-4 left-4 w-12 h-12 border-l-2 border-b-2 border-[var(--hawk-accent)]/30 rounded-bl-lg" />
-                <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-[var(--hawk-accent)]/30 rounded-br-lg" />
+                    {/* Video info overlay */}
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                      <div className="flex items-center gap-2 px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full">
+                        <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                        <span className="text-white text-sm font-medium">Demo Video</span>
+                      </div>
+                      <span className="px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+                        0:15
+                      </span>
+                    </div>
+
+                    {/* Corner decorations */}
+                    <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-[var(--hawk-accent)]/30 rounded-tl-lg" />
+                    <div className="absolute top-4 right-4 w-12 h-12 border-r-2 border-t-2 border-[var(--hawk-accent)]/30 rounded-tr-lg" />
+                    <div className="absolute bottom-4 left-4 w-12 h-12 border-l-2 border-b-2 border-[var(--hawk-accent)]/30 rounded-bl-lg" />
+                    <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-[var(--hawk-accent)]/30 rounded-br-lg" />
+                  </>
+                )}
               </div>
             </div>
 
             {/* Video highlights */}
             <div className="grid grid-cols-3 gap-4 mt-6">
               {[
-                { time: '0:00', label: '安装与设置' },
-                { time: '0:45', label: '屏幕感知演示' },
-                { time: '1:30', label: '任务自动化' },
+                { time: '0:00', label: '开场介绍', seconds: 0 },
+                { time: '0:03', label: '手势演示', seconds: 3 },
+                { time: '0:08', label: '功能特性', seconds: 8 },
               ].map((chapter) => (
                 <button
                   key={chapter.time}
+                  onClick={() => {
+                    if (videoRef.current) {
+                      videoRef.current.currentTime = chapter.seconds
+                      videoRef.current.play()
+                      setVideoPlaying(true)
+                    }
+                  }}
                   className="flex items-center gap-3 p-3 rounded-xl bg-[var(--hawk-surface)] border border-[var(--hawk-border)] hover:border-[var(--hawk-accent)]/50 transition-colors group"
                 >
                   <span className="text-sm font-mono text-[var(--hawk-accent)]">{chapter.time}</span>
@@ -615,7 +650,7 @@ export default function Home() {
               用户评价
             </span>
             <h2 className="hawk-display-lg text-[var(--hawk-text-primary)]">
-              开发者们都在说什么
+              用户们怎么说
             </h2>
           </motion.header>
 
@@ -624,19 +659,19 @@ export default function Home() {
               {
                 quote: "终于有一个真正尊重隐私的 AI 助手了。所有数据都在本地处理，我可以放心地在工作中使用它。",
                 author: "张明",
-                role: "全栈开发者",
+                role: "产品经理",
                 avatar: "Z"
               },
               {
                 quote: "Hawkeye 彻底改变了我的工作流程。它能自动识别我在做什么，并给出精准的建议，效率提升太明显了。",
                 author: "李华",
-                role: "前端工程师",
+                role: "自由职业者",
                 avatar: "L"
               },
               {
                 quote: "作为一个开源项目，Hawkeye 的质量让我惊讶。社区活跃，更新频繁，功能越来越强大。",
                 author: "王强",
-                role: "技术负责人",
+                role: "创业者",
                 avatar: "W"
               }
             ].map((testimonial, index) => (
