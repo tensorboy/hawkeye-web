@@ -3,15 +3,15 @@ import { siteConfig } from '@/lib/seo'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Hawkeye 博客 - AI 效率工具技巧 | 生产力提升 | 开发者资源',
-  description: '探索 Hawkeye 博客，获取 AI 智能助手使用技巧、效率提升方法、开发者工具教程、隐私保护指南等优质内容。',
+  title: 'Hawkeye 博客 - AI 效率工具技巧 | 生产力提升 | 工作效率',
+  description: '探索 Hawkeye 博客，获取 AI 智能助手使用技巧、效率提升方法、工作自动化教程、隐私保护指南等优质内容。',
   keywords: [
     'Hawkeye 博客',
     'AI 助手教程',
     'AI 效率工具',
     '生产力提升',
-    '开发者工具',
-    'AI 编程技巧',
+    '工作效率',
+    'AI 智能助手',
     '本地AI教程',
     'Ollama 教程',
     '工作效率方法',
@@ -80,15 +80,15 @@ const blogPosts = [
     tags: ['Ollama', '本地部署', '教程'],
   },
   {
-    slug: '10x-developer-productivity',
-    title: '开发者 10x 效率提升实践：Hawkeye 使用技巧',
-    titleEn: '10x Developer Productivity with Hawkeye',
-    excerpt: '分享资深开发者使用 Hawkeye 提升编码效率的实战经验，包括 VS Code 集成、Git 工作流优化等。',
+    slug: '10x-productivity-tips',
+    title: '10 倍效率提升实践：Hawkeye 使用技巧大全',
+    titleEn: '10x Productivity with Hawkeye',
+    excerpt: '分享用户使用 Hawkeye 提升工作效率的实战经验，包括邮件处理、文档整理、任务自动化等实用技巧。',
     category: '效率提升',
     date: '2024-12-28',
     readTime: '15 分钟',
     featured: true,
-    tags: ['开发者', '效率提升', 'VSCode'],
+    tags: ['效率提升', '工作技巧', '自动化'],
   },
   {
     slug: 'ai-privacy-concerns-2025',

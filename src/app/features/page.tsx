@@ -121,8 +121,8 @@ const features = [
     icon: '⚡',
     title: 'VS Code 扩展',
     titleEn: 'VS Code Extension',
-    description: '深度集成 VS Code 编辑器，为开发者提供智能代码建议、文档查询、错误修复等功能。',
-    benefits: ['IDE 深度集成', '智能代码建议', '开发效率提升'],
+    description: '深度集成 VS Code 编辑器，提供智能内容建议、文档查询、问题诊断等功能。',
+    benefits: ['编辑器深度集成', '智能内容建议', '工作效率提升'],
     category: 'platform',
   },
   {

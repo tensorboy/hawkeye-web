@@ -41,6 +41,8 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { GitHubStars } from '@/components/GitHubStars'
+import { ThemeToggle } from '@/components/ThemeToggle'
+import { LanguageSelector, LanguageSelectorMobile } from '@/components/LanguageSelector'
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -231,6 +233,8 @@ export default function Home() {
               >
                 <Github className="w-5 h-5" />
               </a>
+              <LanguageSelector currentLocale="zh" />
+              <ThemeToggle />
               <Link
                 href="https://github.com/tensorboy/hawkeye/releases"
                 className="hawk-btn-accent flex items-center gap-2 !py-3 !px-5"
@@ -274,6 +278,14 @@ export default function Home() {
                   {item.label}
                 </Link>
               ))}
+              <div className="px-3">
+                <span className="text-[var(--hawk-text-tertiary)] text-xs uppercase tracking-wider mb-2 block">语言</span>
+                <LanguageSelectorMobile currentLocale="zh" />
+              </div>
+              <div className="flex items-center min-h-[44px] px-3">
+                <span className="text-[var(--hawk-text-secondary)] text-sm mr-2">主题</span>
+                <ThemeToggle />
+              </div>
               <div className="pt-3 border-t border-[var(--hawk-border)] mt-3">
                 <Link
                   href="https://github.com/tensorboy/hawkeye/releases"

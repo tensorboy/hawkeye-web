@@ -76,9 +76,9 @@ export const siteConfig = {
       'Linux AI 助手',
       'VS Code 扩展',
       'Chrome 扩展',
-      // 场景词 - 扩展到非开发者
-      '程序员效率工具',
-      '开发者工具',
+      // 场景词 - 面向所有人
+      '个人效率工具',
+      '工作助手',
       '办公 AI 助手',
       '学生 AI 助手',
       '工作效率提升',
@@ -169,10 +169,10 @@ export const siteConfig = {
       'VS Code extension',
       'Chrome extension',
       'cross-platform AI',
-      // Use case keywords - expanded to non-developers
-      'developer productivity tool',
-      'programmer efficiency',
-      'AI for non-coders',
+      // Use case keywords - for everyone
+      'personal productivity tool',
+      'work efficiency',
+      'AI for everyone',
       'AI for office work',
       'AI for students',
       'work efficiency',
@@ -494,7 +494,7 @@ export const faqSchema = {
       name: 'Is Hawkeye a Claude Cowork or Cursor alternative?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes! Hawkeye is a free, open-source alternative to Claude Cowork and Cursor. Unlike these tools that require prompts, Hawkeye is prompt-free - it understands your context automatically. Its also local-first (data never leaves your device) and works for everyone, not just developers.',
+        text: 'Yes! Hawkeye is a free, open-source alternative to Claude Cowork. Unlike tools that require prompts, Hawkeye is prompt-free - it understands your context automatically. Its local-first (data never leaves your device) and designed for everyone: office workers, students, creatives, and tech professionals.',
       },
     },
     {
@@ -502,7 +502,7 @@ export const faqSchema = {
       name: 'How is Hawkeye different from Claude Code, Cursor, or Copilot?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Hawkeye uses proactive perception mode - it automatically observes your work and identifies opportunities to help. Claude Code, Cursor, and Copilot use reactive mode, requiring you to input commands. Hawkeye is designed for everyone (developers, designers, students, office workers), not just coders.',
+        text: 'Hawkeye uses proactive perception mode - it automatically observes your work and identifies opportunities to help. Claude Code, Cursor, and Copilot use reactive mode, requiring you to input commands. Hawkeye is designed for everyone: office workers, students, creatives, and tech professionals.',
       },
     },
     {
