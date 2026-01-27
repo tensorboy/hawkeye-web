@@ -133,7 +133,7 @@ export const de: Translations = {
     github: 'GitHub',
     privacy: 'Datenschutzrichtlinie',
     terms: 'Nutzungsbedingungen',
-    copyright: '© {year} Hawkeye. MIT License.',
+    copyright: '© {year} Anureka Inc.. MIT License.',
   },
 
   // Demo Section

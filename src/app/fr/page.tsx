@@ -13,6 +13,7 @@ import { GitHubStars } from '@/components/GitHubStars'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { LanguageSelector, LanguageSelectorMobile } from '@/components/LanguageSelector'
 import { getTranslations } from '@/lib/i18n'
+import { LifeTreeSection } from '@/components/sections/LifeTreeSection'
 
 const t = getTranslations('fr')
 
@@ -85,6 +86,8 @@ export default function HomeFR() {
           </motion.div>
         )}
       </nav>
+
+      <LifeTreeSection prefersReducedMotion={!!prefersReducedMotion} locale="fr" />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">

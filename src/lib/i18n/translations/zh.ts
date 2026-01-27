@@ -131,7 +131,7 @@ export const zh = {
     github: 'GitHub',
     privacy: '隐私政策',
     terms: '服务条款',
-    copyright: '© {year} Hawkeye. MIT License.',
+    copyright: '© {year} Anureka Inc.. MIT License.',
   },
 
   // Demo Section

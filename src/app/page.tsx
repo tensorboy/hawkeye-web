@@ -37,6 +37,7 @@ import Link from 'next/link'
 import { GitHubStars } from '@/components/GitHubStars'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { LanguageSelector, LanguageSelectorMobile } from '@/components/LanguageSelector'
+import { LifeTreeSection } from '@/components/sections/LifeTreeSection'
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -128,26 +129,26 @@ export default function Home() {
   ]
 
   return (
-    <main id="main-content" className="min-h-screen bg-gradient-to-b from-orange-50/50 via-white to-white">
+    <main id="main-content" className="min-h-screen bg-gradient-to-b from-orange-50/50 via-white to-white dark:from-[var(--hawk-bg-primary)] dark:via-[var(--hawk-bg-primary)] dark:to-[var(--hawk-bg-primary)]">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/85 backdrop-blur-md border-b border-gray-100 dark:border-[var(--hawk-border)]">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 min-h-[44px]">
               <Image src="/logo.png" alt="Hawkeye" width={32} height={32} className="w-8 h-8" />
-              <span className="text-xl font-bold text-gray-900">Hawkeye</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-[var(--hawk-text-primary)]">Hawkeye</span>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
-              <Link href="#features" className="text-gray-600 hover:text-gray-900 transition-colors py-3 px-2">
+              <Link href="#features" className="text-gray-600 dark:text-[var(--hawk-text-secondary)] hover:text-gray-900 dark:hover:text-[var(--hawk-text-primary)] transition-colors py-3 px-2">
                 Features
               </Link>
-              <Link href="#usecases" className="text-gray-600 hover:text-gray-900 transition-colors py-3 px-2">
+              <Link href="#usecases" className="text-gray-600 dark:text-[var(--hawk-text-secondary)] hover:text-gray-900 dark:hover:text-[var(--hawk-text-primary)] transition-colors py-3 px-2">
                 Use Cases
               </Link>
-              <Link href="#platforms" className="text-gray-600 hover:text-gray-900 transition-colors py-3 px-2">
+              <Link href="#platforms" className="text-gray-600 dark:text-[var(--hawk-text-secondary)] hover:text-gray-900 dark:hover:text-[var(--hawk-text-primary)] transition-colors py-3 px-2">
                 Platforms
               </Link>
             </div>
@@ -159,7 +160,7 @@ export default function Home() {
               <GitHubStars repo="tensorboy/hawkeye" />
               <Link
                 href="https://github.com/tensorboy/hawkeye/releases"
-                className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
               >
                 Download
               </Link>
@@ -167,7 +168,7 @@ export default function Home() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="md:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-900 dark:text-[var(--hawk-text-primary)]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -181,24 +182,24 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="md:hidden bg-white border-t border-gray-100 py-4"
+            className="md:hidden bg-white dark:bg-[var(--hawk-bg-primary)] border-t border-gray-100 dark:border-[var(--hawk-border)] py-4"
           >
             <div className="container mx-auto px-4 flex flex-col gap-2">
-              <Link href="#features" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Features</Link>
-              <Link href="#usecases" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Use Cases</Link>
-              <Link href="#platforms" className="text-gray-600 hover:text-gray-900 py-3 min-h-[44px] flex items-center">Platforms</Link>
+              <Link href="#features" className="text-gray-600 dark:text-[var(--hawk-text-secondary)] hover:text-gray-900 dark:hover:text-[var(--hawk-text-primary)] py-3 min-h-[44px] flex items-center">Features</Link>
+              <Link href="#usecases" className="text-gray-600 dark:text-[var(--hawk-text-secondary)] hover:text-gray-900 dark:hover:text-[var(--hawk-text-primary)] py-3 min-h-[44px] flex items-center">Use Cases</Link>
+              <Link href="#platforms" className="text-gray-600 dark:text-[var(--hawk-text-secondary)] hover:text-gray-900 dark:hover:text-[var(--hawk-text-primary)] py-3 min-h-[44px] flex items-center">Platforms</Link>
               <div className="py-2">
-                <span className="text-gray-400 text-xs uppercase tracking-wider mb-2 block">Language</span>
+                <span className="text-gray-400 dark:text-[var(--hawk-text-tertiary)] text-xs uppercase tracking-wider mb-2 block">Language</span>
                 <LanguageSelectorMobile currentLocale="en" />
               </div>
               <div className="flex items-center py-3 min-h-[44px]">
-                <span className="text-gray-600 text-sm mr-2">Theme</span>
+                <span className="text-gray-600 dark:text-[var(--hawk-text-secondary)] text-sm mr-2">Theme</span>
                 <ThemeToggle />
               </div>
-              <hr className="border-gray-100" />
+              <hr className="border-gray-100 dark:border-[var(--hawk-border)]" />
               <Link
                 href="https://github.com/tensorboy/hawkeye/releases"
-                className="px-4 py-3 bg-gray-900 text-white rounded-lg font-medium text-center min-h-[44px] flex items-center justify-center"
+                className="px-4 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium text-center min-h-[44px] flex items-center justify-center"
               >
                 Download
               </Link>
@@ -207,8 +208,11 @@ export default function Home() {
         )}
       </nav>
 
+      {/* Life Tree Section */}
+      <LifeTreeSection prefersReducedMotion={!!prefersReducedMotion} />
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 relative overflow-hidden" aria-labelledby="hero-heading">
+      <section className="pt-16 md:pt-32 pb-12 md:pb-20 relative overflow-hidden" aria-labelledby="hero-heading">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -218,21 +222,21 @@ export default function Home() {
           >
             {/* Positioning Badge */}
             <div className="mb-6">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 border border-amber-200 text-amber-700 text-sm font-medium">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 text-amber-700 dark:text-amber-400 text-sm font-medium">
                 <Sparkles className="w-4 h-4" />
                 Soul Driven · Prompt-Free · Keyboard & Mouse Free · Open Source · Local First
               </span>
             </div>
 
-            <h1 id="hero-heading" className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 tracking-tight">
+            <h1 id="hero-heading" className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-[var(--hawk-text-primary)] tracking-tight">
               <span className="block">Hawkeye</span>
-              <span className="block text-3xl md:text-5xl mt-2 font-normal text-gray-700">
+              <span className="block text-2xl sm:text-3xl md:text-5xl mt-2 font-normal text-gray-700 dark:text-[var(--hawk-text-secondary)]">
                 AI-Powered 10x Productivity
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-              From perception to action — A <strong className="text-gray-900">local-first AI assistant</strong> that
+            <p className="text-lg md:text-xl text-gray-600 dark:text-[var(--hawk-text-secondary)] mb-10 max-w-2xl mx-auto leading-relaxed">
+              From perception to action — A <strong className="text-gray-900 dark:text-[var(--hawk-text-primary)]">local-first AI assistant</strong> that
               automatically observes your work environment, understands intent, and proactively helps.
             </p>
 
@@ -241,7 +245,7 @@ export default function Home() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 href="https://github.com/tensorboy/hawkeye/releases"
-                className="inline-flex items-center gap-3 bg-gray-900 text-white px-6 py-4 rounded-xl font-medium text-lg hover:bg-gray-800 transition-all shadow-lg"
+                className="inline-flex items-center gap-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-4 rounded-xl font-medium text-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all shadow-lg"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
@@ -254,7 +258,7 @@ export default function Home() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 href="https://github.com/tensorboy/hawkeye"
-                className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium text-lg transition-colors"
+                className="inline-flex items-center gap-2 text-gray-600 dark:text-[var(--hawk-text-secondary)] hover:text-gray-900 dark:hover:text-[var(--hawk-text-primary)] font-medium text-lg transition-colors"
               >
                 View on GitHub
                 <ExternalLink className="w-4 h-4" />
@@ -266,7 +270,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mt-8 text-sm text-gray-500"
+              className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mt-8 text-sm text-gray-500 dark:text-[var(--hawk-text-tertiary)]"
             >
               <span className="flex items-center gap-1.5">
                 <Check className="w-4 h-4 text-green-500" />
@@ -294,15 +298,15 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-16 max-w-4xl mx-auto"
           >
-            <div className="bg-gradient-to-b from-gray-100 to-gray-200 rounded-2xl p-1 shadow-2xl">
-              <div className="bg-white rounded-xl overflow-hidden">
-                <div className="bg-gray-100 px-4 py-3 flex items-center gap-2">
+            <div className="bg-gradient-to-b from-gray-100 to-gray-200 dark:from-[var(--hawk-bg-tertiary)] dark:to-[var(--hawk-bg-secondary)] rounded-2xl p-1 shadow-2xl">
+              <div className="bg-white dark:bg-[var(--hawk-bg-primary)] rounded-xl overflow-hidden">
+                <div className="bg-gray-100 dark:bg-[var(--hawk-bg-secondary)] px-4 py-3 flex items-center gap-2">
                   <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-400" />
                     <div className="w-3 h-3 rounded-full bg-yellow-400" />
                     <div className="w-3 h-3 rounded-full bg-green-400" />
                   </div>
-                  <div className="flex-1 text-center text-sm text-gray-500">Hawkeye — Live Demo</div>
+                  <div className="flex-1 text-center text-sm text-gray-500 dark:text-[var(--hawk-text-tertiary)]">Hawkeye — Live Demo</div>
                 </div>
                 <div
                   className="relative aspect-video bg-slate-900 cursor-pointer group"
@@ -348,7 +352,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white border-y border-gray-100">
+      <section className="py-16 bg-white dark:bg-[var(--hawk-bg-primary)] border-y border-gray-100 dark:border-[var(--hawk-border)]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
@@ -360,9 +364,9 @@ export default function Home() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                <div className="text-lg font-medium text-gray-700">{stat.label}</div>
-                <div className="text-sm text-gray-500 mt-1">{stat.description}</div>
+                <div className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-[var(--hawk-text-primary)] mb-2">{stat.value}</div>
+                <div className="text-lg font-medium text-gray-700 dark:text-[var(--hawk-text-secondary)]">{stat.label}</div>
+                <div className="text-sm text-gray-500 dark:text-[var(--hawk-text-tertiary)] mt-1">{stat.description}</div>
               </motion.div>
             ))}
           </div>
@@ -370,7 +374,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-orange-50/30 to-white">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-orange-50/30 to-white dark:from-[var(--hawk-bg-secondary)] dark:to-[var(--hawk-bg-primary)]">
         <div className="container mx-auto px-4">
           <motion.header
             initial={{ opacity: 0, y: 20 }}
@@ -378,8 +382,8 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Testimonials</span>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">
+            <span className="text-sm font-medium text-gray-500 dark:text-[var(--hawk-text-tertiary)] uppercase tracking-wide">Testimonials</span>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-[var(--hawk-text-primary)] mt-2">
               What Users Are Saying
             </h2>
           </motion.header>
@@ -411,14 +415,14 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
+                className="bg-white dark:bg-[var(--hawk-surface)] rounded-2xl p-6 border border-gray-100 dark:border-[var(--hawk-border)] shadow-sm dark:shadow-none"
               >
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 text-orange-400 fill-orange-400" />
                   ))}
                 </div>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-600 dark:text-[var(--hawk-text-secondary)] mb-6 leading-relaxed">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-3">
@@ -426,8 +430,8 @@ export default function Home() {
                     {testimonial.avatar}
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">{testimonial.author}</div>
-                    <div className="text-sm text-gray-500">{testimonial.role}</div>
+                    <div className="font-semibold text-gray-900 dark:text-[var(--hawk-text-primary)]">{testimonial.author}</div>
+                    <div className="text-sm text-gray-500 dark:text-[var(--hawk-text-tertiary)]">{testimonial.role}</div>
                   </div>
                 </div>
               </motion.div>
@@ -437,7 +441,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-24 bg-white" aria-labelledby="features-heading">
+      <section id="features" className="py-24 bg-white dark:bg-[var(--hawk-bg-primary)]" aria-labelledby="features-heading">
         <div className="container mx-auto px-4">
           <motion.header
             initial={{ opacity: 0 }}
@@ -445,19 +449,19 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 id="features-heading" className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+            <h2 id="features-heading" className="text-3xl md:text-5xl font-serif font-bold text-gray-900 dark:text-[var(--hawk-text-primary)] mb-4">
               Build Your Workflow, Your Way
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-[var(--hawk-text-secondary)] max-w-2xl mx-auto">
               Intelligent, Secure, Fully Controllable
             </p>
           </motion.header>
 
           {/* Feature Badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            <span className="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium">Free & Open Source</span>
-            <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Dynamic Perception</span>
-            <span className="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Local-First</span>
+            <span className="px-4 py-2 bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 rounded-full text-sm font-medium">Free & Open Source</span>
+            <span className="px-4 py-2 bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 rounded-full text-sm font-medium">Dynamic Perception</span>
+            <span className="px-4 py-2 bg-purple-100 dark:bg-purple-500/10 text-purple-700 dark:text-purple-400 rounded-full text-sm font-medium">Local-First</span>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -469,14 +473,14 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="bg-gradient-to-br from-orange-50/50 to-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl hover:border-orange-200 transition-all group cursor-pointer"
+                className="bg-gradient-to-br from-orange-50/50 to-white dark:from-[var(--hawk-bg-secondary)] dark:to-[var(--hawk-surface)] rounded-2xl p-8 border border-gray-100 dark:border-[var(--hawk-border)] hover:shadow-xl hover:border-orange-200 dark:hover:border-amber-500/30 transition-all group cursor-pointer"
               >
-                <div className="w-14 h-14 rounded-xl bg-white shadow-sm border border-gray-100 flex items-center justify-center mb-6 group-hover:shadow-md group-hover:border-orange-200 transition-all">
-                  <feature.icon className="w-7 h-7 text-gray-700 group-hover:text-orange-600 transition-colors" />
+                <div className="w-14 h-14 rounded-xl bg-white dark:bg-[var(--hawk-bg-secondary)] shadow-sm border border-gray-100 dark:border-[var(--hawk-border)] flex items-center justify-center mb-6 group-hover:shadow-md group-hover:border-orange-200 dark:group-hover:border-amber-500/30 transition-all">
+                  <feature.icon className="w-7 h-7 text-gray-700 dark:text-[var(--hawk-text-secondary)] group-hover:text-orange-600 dark:group-hover:text-amber-400 transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-                <div className="mt-6 flex items-center gap-2 text-sm font-medium text-orange-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-[var(--hawk-text-primary)] mb-2 group-hover:text-orange-600 dark:group-hover:text-amber-400 transition-colors">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-[var(--hawk-text-secondary)]">{feature.description}</p>
+                <div className="mt-6 flex items-center gap-2 text-sm font-medium text-orange-600 dark:text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">
                   <span>Learn more</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
@@ -487,7 +491,7 @@ export default function Home() {
       </section>
 
       {/* Use Cases Section */}
-      <section id="usecases" className="py-24 bg-gradient-to-b from-white to-orange-50/30" aria-labelledby="usecases-heading">
+      <section id="usecases" className="py-24 bg-gradient-to-b from-white to-orange-50/30 dark:from-[var(--hawk-bg-primary)] dark:to-[var(--hawk-bg-secondary)]" aria-labelledby="usecases-heading">
         <div className="container mx-auto px-4">
           <motion.header
             initial={{ opacity: 0 }}
@@ -495,11 +499,11 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Use Cases</span>
-            <h2 id="usecases-heading" className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mt-2 mb-4">
+            <span className="text-sm font-medium text-gray-500 dark:text-[var(--hawk-text-tertiary)] uppercase tracking-wide">Use Cases</span>
+            <h2 id="usecases-heading" className="text-3xl md:text-5xl font-serif font-bold text-gray-900 dark:text-[var(--hawk-text-primary)] mt-2 mb-4">
               Real Scenarios, Real Results
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-[var(--hawk-text-secondary)] max-w-2xl mx-auto">
               See how Hawkeye helps with your daily tasks
             </p>
           </motion.header>
@@ -512,20 +516,20 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all cursor-pointer group"
+                className="bg-white dark:bg-[var(--hawk-surface)] rounded-xl p-6 border border-gray-100 dark:border-[var(--hawk-border)] hover:shadow-lg dark:hover:shadow-none hover:border-gray-200 dark:hover:border-[var(--hawk-accent)] transition-all cursor-pointer group"
               >
                 {useCase.tag && (
-                  <span className="inline-block px-2 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded mb-3">
+                  <span className="inline-block px-2 py-1 bg-orange-100 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400 text-xs font-medium rounded mb-3">
                     {useCase.tag}
                   </span>
                 )}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0 group-hover:bg-gray-200 transition-colors">
-                    <useCase.icon className="w-5 h-5 text-gray-600" />
+                  <div className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-[var(--hawk-bg-secondary)] flex items-center justify-center flex-shrink-0 group-hover:bg-gray-200 dark:group-hover:bg-[var(--hawk-bg-tertiary)] transition-colors">
+                    <useCase.icon className="w-5 h-5 text-gray-600 dark:text-[var(--hawk-text-secondary)]" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">{useCase.title}</h3>
-                    <p className="text-sm text-gray-500">{useCase.description}</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-[var(--hawk-text-primary)] mb-1 group-hover:text-primary-600 dark:group-hover:text-amber-400 transition-colors">{useCase.title}</h3>
+                    <p className="text-sm text-gray-500 dark:text-[var(--hawk-text-tertiary)]">{useCase.description}</p>
                   </div>
                 </div>
               </motion.article>
@@ -535,7 +539,7 @@ export default function Home() {
       </section>
 
       {/* Platforms Section */}
-      <section id="platforms" className="py-24 bg-white" aria-labelledby="platforms-heading">
+      <section id="platforms" className="py-24 bg-white dark:bg-[var(--hawk-bg-primary)]" aria-labelledby="platforms-heading">
         <div className="container mx-auto px-4">
           <motion.header
             initial={{ opacity: 0 }}
@@ -543,10 +547,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 id="platforms-heading" className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+            <h2 id="platforms-heading" className="text-3xl md:text-5xl font-serif font-bold text-gray-900 dark:text-[var(--hawk-text-primary)] mb-4">
               Multi-Platform Support
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-[var(--hawk-text-secondary)] max-w-2xl mx-auto">
               Desktop app, VS Code extension, and Chrome extension in real-time sync
             </p>
           </motion.header>
@@ -560,13 +564,13 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-xl transition-all text-center"
+                className="bg-white dark:bg-[var(--hawk-surface)] rounded-2xl p-8 border border-gray-200 dark:border-[var(--hawk-border)] hover:shadow-xl dark:hover:shadow-none transition-all text-center"
               >
                 <div className={`w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br ${platform.color} flex items-center justify-center mb-6`}>
                   <platform.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{platform.name}</h3>
-                <p className="text-gray-500">{platform.desc}</p>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-[var(--hawk-text-primary)] mb-2">{platform.name}</h3>
+                <p className="text-gray-500 dark:text-[var(--hawk-text-tertiary)]">{platform.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -574,39 +578,39 @@ export default function Home() {
       </section>
 
       {/* Privacy Section */}
-      <section className="py-24 bg-gradient-to-b from-white to-gray-50" aria-labelledby="privacy-heading">
+      <section className="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-[var(--hawk-bg-primary)] dark:to-[var(--hawk-bg-secondary)]" aria-labelledby="privacy-heading">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-lg"
+              className="bg-white dark:bg-[var(--hawk-surface)] rounded-3xl p-8 md:p-12 border border-gray-200 dark:border-[var(--hawk-border)] shadow-lg dark:shadow-none"
             >
               <div className="flex flex-col md:flex-row items-start gap-8">
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center flex-shrink-0">
                   <Shield className="w-10 h-10 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h2 id="privacy-heading" className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                  <h2 id="privacy-heading" className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-[var(--hawk-text-primary)] mb-6">
                     Privacy-First, Secure by Design
                   </h2>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">All data processed locally, never uploaded</span>
+                      <span className="text-gray-600 dark:text-[var(--hawk-text-secondary)]">All data processed locally, never uploaded</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">Supports Ollama local LLM</span>
+                      <span className="text-gray-600 dark:text-[var(--hawk-text-secondary)]">Supports Ollama local LLM</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">Optional cloud AI (Claude API)</span>
+                      <span className="text-gray-600 dark:text-[var(--hawk-text-secondary)]">Optional cloud AI (Claude API)</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">100% open source & transparent</span>
+                      <span className="text-gray-600 dark:text-[var(--hawk-text-secondary)]">100% open source & transparent</span>
                     </div>
                   </div>
                 </div>
@@ -653,20 +657,9 @@ export default function Home() {
                 <Image src="/logo.png" alt="Hawkeye" width={32} height={32} className="w-8 h-8" />
                 <span className="text-xl font-bold text-white">Hawkeye</span>
               </div>
-              <p className="text-gray-400 mb-6 max-w-sm">
+              <p className="text-gray-400 max-w-sm">
                 AI-powered 10x productivity for everyone. Local-first, privacy-secure, free and open source.
               </p>
-              {/* Email Subscribe */}
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gray-600"
-                />
-                <button className="px-4 py-2 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-                  Subscribe
-                </button>
-              </div>
             </div>
 
             {/* Links */}
@@ -700,7 +693,7 @@ export default function Home() {
 
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Hawkeye. MIT License.
+              © {new Date().getFullYear()} Anureka Inc. MIT License.
             </p>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
               <Link href="/zh" className="text-gray-400 hover:text-white text-sm">中文</Link>

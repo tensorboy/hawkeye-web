@@ -708,7 +708,7 @@ export default function CompareContent() {
       <footer className="py-8 bg-gray-900 border-t border-gray-800">
         <div className="container mx-auto px-4 text-center">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Hawkeye. MIT License.
+            © {new Date().getFullYear()} Anureka Inc.. MIT License.
           </p>
           <div className="mt-4 flex justify-center gap-6">
             <Link href="/privacy" className="text-gray-400 hover:text-white text-sm">隐私政策</Link>

@@ -276,7 +276,7 @@ export default function TermsOfService() {
           {/* Footer */}
           <div className="mt-16 pt-8 border-t border-gray-200 text-center">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Hawkeye. 基于 MIT 许可证开源。
+              © {new Date().getFullYear()} Anureka Inc.. 基于 MIT 许可证开源。
             </p>
             <div className="mt-4 flex justify-center gap-6">
               <Link href="/privacy" className="text-gray-600 hover:text-gray-900 text-sm">

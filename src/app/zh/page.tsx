@@ -70,6 +70,7 @@ import Link from 'next/link'
 import { GitHubStars } from '@/components/GitHubStars'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { LanguageSelector, LanguageSelectorMobile } from '@/components/LanguageSelector'
+import { LifeTreeSection } from '@/components/sections/LifeTreeSection'
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -356,6 +357,8 @@ export default function Home() {
           })}
         </div>
       </nav>
+
+      <LifeTreeSection prefersReducedMotion={!!prefersReducedMotion} locale="zh" />
 
       {/* Hero Section - Dramatic & Atmospheric */}
       <section id="main-content" ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden" aria-labelledby="hero-heading">
@@ -991,7 +994,7 @@ export default function Home() {
 
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-800">
             <p className="text-sm text-slate-500">
-              © {new Date().getFullYear()} Hawkeye. MIT License. <span className="text-slate-600">v0.1.0</span>
+              © {new Date().getFullYear()} Anureka Inc. MIT License. <span className="text-slate-600">v0.1.0</span>
             </p>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
               <a href="https://github.com/tensorboy/hawkeye" className="text-slate-400 hover:text-white transition-colors" aria-label="GitHub" title="在 GitHub 上加星">

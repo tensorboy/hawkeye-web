@@ -80,7 +80,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-800">
           <p className="text-sm text-slate-500">
-            © {new Date().getFullYear()} Hawkeye. MIT License. <span className="text-slate-600">v0.1.0</span>
+            © {new Date().getFullYear()} Anureka Inc.. MIT License. <span className="text-slate-600">v0.1.0</span>
           </p>
           <div className="flex items-center gap-4 mt-4 md:mt-0">
             <a href="https://github.com/tensorboy/hawkeye" className="text-slate-400 hover:text-white transition-colors" aria-label="GitHub" title="Star on GitHub">
