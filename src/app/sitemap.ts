@@ -5,86 +5,169 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url
   const currentDate = new Date()
 
-  // 所有现有页面
   const pages: MetadataRoute.Sitemap = [
-    // 主页 - 最高优先级
+    // Homepage (English - default)
     {
       url: baseUrl,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
-    // 英文版主页
+    // Chinese homepage
     {
-      url: `${baseUrl}/en`,
+      url: `${baseUrl}/zh`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
-    // 产品对比页 - 高SEO价值
+    // Japanese homepage
+    {
+      url: `${baseUrl}/ja`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    // Korean homepage
+    {
+      url: `${baseUrl}/ko`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    // Spanish homepage
+    {
+      url: `${baseUrl}/es`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    // French homepage
+    {
+      url: `${baseUrl}/fr`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    // German homepage
+    {
+      url: `${baseUrl}/de`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    // Product comparison
     {
       url: `${baseUrl}/compare`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
-    // 更新日志
+    // Competitor comparisons
+    {
+      url: `${baseUrl}/compare/cowork`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/compare/cursor`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/compare/screenpipe`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/compare/rewind`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    // Changelog
     {
       url: `${baseUrl}/changelog`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
-    // 隐私政策
+    // Privacy policy
     {
       url: `${baseUrl}/privacy`,
       lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
-    // 服务条款
+    // Terms of service
     {
       url: `${baseUrl}/terms`,
       lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
-    // FAQ页面 - 高SEO价值
+    // FAQ
     {
       url: `${baseUrl}/faq`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    // 功能特性页面 - 高SEO价值
+    // Features
     {
       url: `${baseUrl}/features`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
-    // 使用场景页面 - 高SEO价值
+    // Use cases
     {
       url: `${baseUrl}/use-cases`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    // 博客首页
+    // Use case sub-pages
+    {
+      url: `${baseUrl}/use-cases/developers`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/use-cases/office-workers`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/use-cases/students`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/use-cases/everyone`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    // Blog
     {
       url: `${baseUrl}/blog`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    // 博客文章 - 为什么本地优先AI是未来
     {
       url: `${baseUrl}/blog/why-local-first-ai`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
-    // LLMs.txt - AI 爬虫专用文件
+    // LLMs.txt
     {
       url: `${baseUrl}/llms.txt`,
       lastModified: currentDate,

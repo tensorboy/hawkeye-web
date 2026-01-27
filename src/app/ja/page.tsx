@@ -231,165 +231,63 @@ export default function HomeJA() {
           </motion.div>
         </div>
 
-        {/* Product Screenshot */}
+        {/* Hero Video - Autoplay */}
         <motion.div
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-16 max-w-5xl mx-auto px-4"
+          className="mt-16 max-w-4xl mx-auto px-4"
         >
           <div className="bg-gradient-to-b from-[var(--hawk-bg-tertiary)] to-[var(--hawk-bg-secondary)] rounded-2xl p-1 shadow-2xl">
             <div className="bg-[var(--hawk-bg-primary)] rounded-xl overflow-hidden">
-              {/* Mock App Window */}
               <div className="bg-[var(--hawk-bg-secondary)] px-4 py-3 flex items-center gap-2">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-red-400" />
                   <div className="w-3 h-3 rounded-full bg-yellow-400" />
                   <div className="w-3 h-3 rounded-full bg-green-400" />
                 </div>
-                <div className="flex-1 text-center text-sm text-[var(--hawk-text-secondary)]">{t.productDemo.windowTitle}</div>
+                <div className="flex-1 text-center text-sm text-[var(--hawk-text-secondary)]">Hawkeye — ライブデモ</div>
               </div>
-              <div className="p-6 bg-gradient-to-br from-[var(--hawk-bg-secondary)] to-[var(--hawk-bg-primary)] min-h-[300px] flex items-center justify-center">
-                <div className="grid grid-cols-3 gap-4 w-full max-w-3xl">
-                  {/* Chat Panel */}
-                  <div className="col-span-1 bg-[var(--hawk-bg-primary)] rounded-lg shadow-sm border border-[var(--hawk-border)] p-4">
-                    <div className="text-sm font-medium text-[var(--hawk-text-primary)] mb-3">{t.productDemo.chat}</div>
-                    <div className="space-y-2">
-                      <div className="bg-[var(--hawk-bg-secondary)] rounded-lg p-2 text-xs text-[var(--hawk-text-secondary)]">
-                        {t.productDemo.chatMessage}
-                      </div>
-                      <div className="bg-[var(--hawk-accent)]/10 rounded-lg p-2 text-xs text-[var(--hawk-accent)]">
-                        {t.productDemo.chatResponse}
-                      </div>
-                    </div>
-                  </div>
-                  {/* Agent Cards */}
-                  <div className="col-span-2 grid grid-cols-2 gap-3">
-                    <div className="bg-[var(--hawk-bg-primary)] rounded-lg shadow-sm border border-[var(--hawk-border)] p-3">
-                      <div className="text-xs font-medium text-green-600 mb-1">{t.productDemo.screenPerception}</div>
-                      <div className="text-sm text-[var(--hawk-text-primary)]">{t.productDemo.screenStatus}</div>
-                      <div className="mt-2 text-xs text-[var(--hawk-text-tertiary)]">● {t.productDemo.running}</div>
-                    </div>
-                    <div className="bg-[var(--hawk-bg-primary)] rounded-lg shadow-sm border border-[var(--hawk-border)] p-3">
-                      <div className="text-xs font-medium text-blue-600 mb-1">{t.productDemo.fileMonitor}</div>
-                      <div className="text-sm text-[var(--hawk-text-primary)]">{t.productDemo.fileStatus}</div>
-                      <div className="mt-2 text-xs text-[var(--hawk-text-tertiary)]">● {t.productDemo.active}</div>
-                    </div>
-                    <div className="bg-[var(--hawk-bg-primary)] rounded-lg shadow-sm border border-[var(--hawk-border)] p-3">
-                      <div className="text-xs font-medium text-purple-600 mb-1">{t.productDemo.clipboard}</div>
-                      <div className="text-sm text-[var(--hawk-text-primary)]">{t.productDemo.clipboardStatus}</div>
-                      <div className="mt-2 text-xs text-[var(--hawk-text-tertiary)]">● {t.productDemo.ready}</div>
-                    </div>
-                    <div className="bg-[var(--hawk-bg-primary)] rounded-lg shadow-sm border border-[var(--hawk-border)] p-3">
-                      <div className="text-xs font-medium text-orange-600 mb-1">{t.productDemo.taskSuggestions}</div>
-                      <div className="text-sm text-[var(--hawk-text-primary)]">{t.productDemo.taskStatus}</div>
-                      <div className="mt-2 text-xs text-[var(--hawk-text-tertiary)]">● {t.productDemo.complete}</div>
-                    </div>
-                  </div>
+              <div
+                className="relative aspect-video bg-slate-900 cursor-pointer group"
+                onClick={() => {
+                  if (videoRef.current) {
+                    if (videoRef.current.muted) {
+                      videoRef.current.muted = false
+                    } else {
+                      if (videoPlaying) {
+                        videoRef.current.pause()
+                        setVideoPlaying(false)
+                      } else {
+                        videoRef.current.play()
+                        setVideoPlaying(true)
+                      }
+                    }
+                  }
+                }}
+              >
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-cover"
+                  src="/video/hawkeye-demo-zh.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  onPlay={() => setVideoPlaying(true)}
+                  onPause={() => setVideoPlaying(false)}
+                />
+                <div className="absolute bottom-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-full text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                  クリックで音声をオン
+                </div>
+                <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-full">
+                  <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <span className="text-white text-xs font-medium">デモ</span>
                 </div>
               </div>
             </div>
           </div>
         </motion.div>
-      </section>
-
-      {/* Demo Video Section */}
-      <section className="py-16 md:py-24 bg-[var(--hawk-bg-primary)]">
-        <div className="container mx-auto px-4">
-          <motion.header
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="hawk-display-md text-[var(--hawk-text-primary)] mb-4">
-              {t.demo.title}
-            </h2>
-            <p className="text-lg text-[var(--hawk-text-secondary)] max-w-2xl mx-auto">
-              {t.demo.subtitle}
-            </p>
-          </motion.header>
-
-          <motion.div
-            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
-          >
-            {/* Video Player */}
-            <div
-              className="relative aspect-video bg-gradient-to-br from-[var(--hawk-bg-secondary)] to-[var(--hawk-bg-tertiary)] rounded-2xl overflow-hidden shadow-xl flex items-center justify-center group cursor-pointer border border-[var(--hawk-border)]"
-              onClick={() => {
-                if (videoRef.current) {
-                  if (videoPlaying) {
-                    videoRef.current.pause()
-                  } else {
-                    videoRef.current.play()
-                  }
-                  setVideoPlaying(!videoPlaying)
-                }
-              }}
-            >
-              {/* Video Element */}
-              <video
-                ref={videoRef}
-                className="absolute inset-0 w-full h-full object-cover"
-                src="/video/hawkeye-demo-zh.mp4"
-                playsInline
-                onEnded={() => setVideoPlaying(false)}
-              />
-
-              {/* Play button overlay - hidden when playing */}
-              {!videoPlaying && (
-                <>
-                  {/* Play button */}
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="relative z-10 w-20 h-20 md:w-24 md:h-24 rounded-full bg-[var(--hawk-accent)] flex items-center justify-center shadow-2xl"
-                  >
-                    <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="currentColor" />
-                  </motion.div>
-
-                  {/* Video info overlay */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                    <div className="flex items-center gap-2 px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full">
-                      <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                      <span className="text-white text-sm font-medium">{t.demo.playVideo}</span>
-                    </div>
-                    <span className="px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                      0:15
-                    </span>
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Video highlights */}
-            <div className="grid grid-cols-3 gap-4 mt-6">
-              {[
-                { time: '0:00', label: t.demo.chapters.intro, seconds: 0 },
-                { time: '0:03', label: t.demo.chapters.gesture, seconds: 3 },
-                { time: '0:08', label: t.demo.chapters.features, seconds: 8 },
-              ].map((chapter) => (
-                <button
-                  key={chapter.time}
-                  onClick={() => {
-                    if (videoRef.current) {
-                      videoRef.current.currentTime = chapter.seconds
-                      videoRef.current.play()
-                      setVideoPlaying(true)
-                    }
-                  }}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-[var(--hawk-bg-secondary)] border border-[var(--hawk-border)] hover:border-[var(--hawk-accent)] transition-colors group"
-                >
-                  <span className="text-sm font-mono text-[var(--hawk-accent)]">{chapter.time}</span>
-                  <span className="text-sm text-[var(--hawk-text-secondary)] group-hover:text-[var(--hawk-text-primary)] transition-colors">{chapter.label}</span>
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        </div>
       </section>
 
       {/* Stats Section */}
@@ -672,8 +570,8 @@ export default function HomeJA() {
               {t.footer.copyright.replace('{year}', new Date().getFullYear().toString())}
             </p>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
-              <Link href="/" className="text-gray-400 hover:text-white text-sm">中文</Link>
-              <Link href="/en" className="text-gray-400 hover:text-white text-sm">English</Link>
+              <Link href="/zh" className="text-gray-400 hover:text-white text-sm">中文</Link>
+              <Link href="/" className="text-gray-400 hover:text-white text-sm">English</Link>
               <a href="https://github.com/tensorboy/hawkeye" className="text-gray-400 hover:text-white transition-colors">
                 <Github className="w-5 h-5" />
               </a>

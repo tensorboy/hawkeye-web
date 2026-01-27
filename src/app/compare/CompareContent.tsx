@@ -1,9 +1,12 @@
 'use client'
 
-import { Fragment, useState, useEffect } from 'react'
+import { Fragment, useState, useEffect, useMemo } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+
+// Static viewport settings for consistent behavior
+const viewportOnce = { once: true, amount: 0.2 }
 import {
   ArrowLeft,
   Check,
@@ -17,7 +20,6 @@ import {
   Monitor,
   Code2,
   Chrome,
-  DollarSign,
   Server,
   Lock
 } from 'lucide-react'
@@ -36,34 +38,26 @@ export default function CompareContent() {
     {
       name: 'Hawkeye',
       logo: '/logo.png',
-      tagline: 'Prompt-Free AI Coworker',
+      tagline: 'Soul Driven AI Coworker',
       isUs: true,
-      pricing: '免费开源',
-      pricingNote: 'MIT License',
     },
     {
       name: 'Claude Cowork',
       logo: '🧠',
       tagline: 'Anthropic 桌面助手',
       isUs: false,
-      pricing: '$20+/月',
-      pricingNote: 'Pro 订阅起',
     },
     {
       name: 'Cursor',
       logo: '⌨️',
       tagline: 'AI 代码编辑器',
       isUs: false,
-      pricing: '$20/月',
-      pricingNote: 'Pro 起步',
     },
     {
       name: 'Screenpipe',
       logo: '📺',
       tagline: '开源 Rewind',
       isUs: false,
-      pricing: '免费开源',
-      pricingNote: 'MIT License',
     },
   ]
 
@@ -240,35 +234,6 @@ export default function CompareContent() {
         },
       ],
     },
-    {
-      category: '定价',
-      items: [
-        {
-          name: '完全免费',
-          hawkeye: true,
-          cowork: false,
-          cursor: false,
-          screenpipe: true,
-          note: 'Cowork/Cursor 需 $20/月',
-        },
-        {
-          name: '无订阅费',
-          hawkeye: true,
-          cowork: false,
-          cursor: false,
-          screenpipe: true,
-          note: '无月费',
-        },
-        {
-          name: '企业自托管',
-          hawkeye: true,
-          cowork: false,
-          cursor: 'partial',
-          screenpipe: true,
-          note: '私有部署',
-        },
-      ],
-    },
   ]
 
   const renderFeatureValue = (value: boolean | string) => {
@@ -305,16 +270,16 @@ export default function CompareContent() {
             animate={{ opacity: 1, y: 0 }}
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-orange-100 text-orange-700 text-sm font-medium">
-              ✨ The Only Prompt-Free Option
+              ✨ Soul Driven AI Coworker
             </span>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Compare Prompt-Free AI Tools
+              AI 协作工具对比
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-4">
               Hawkeye vs Claude Cowork vs Cursor vs Screenpipe
             </p>
             <p className="text-base text-gray-500 max-w-3xl mx-auto mb-8">
-              <strong className="text-orange-600">唯一无需提示词的 AI 协作伙伴</strong> — 自动理解你在做什么，无需输入任何指令
+              <strong className="text-orange-600">Soul Driven AI 协作伙伴</strong> — 自动理解你在做什么，主动建议下一步行动
             </p>
             <div className="flex justify-center gap-4">
               <GitHubStarButton repo="tensorboy/hawkeye" />
@@ -331,7 +296,7 @@ export default function CompareContent() {
             <motion.div
               initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={viewportOnce}
               className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-2xl border border-orange-100"
             >
               <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center mb-4">
@@ -346,7 +311,7 @@ export default function CompareContent() {
             <motion.div
               initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={viewportOnce}
               transition={{ delay: 0.1 }}
               className="bg-gradient-to-br from-green-50 to-white p-6 rounded-2xl border border-green-100"
             >
@@ -362,16 +327,16 @@ export default function CompareContent() {
             <motion.div
               initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={viewportOnce}
               transition={{ delay: 0.2 }}
               className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl border border-blue-100"
             >
               <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
-                <DollarSign className="w-6 h-6 text-blue-600" />
+                <Code2 className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Free Forever</h3>
+              <h3 className="font-bold text-gray-900 mb-2">Open Source</h3>
               <p className="text-gray-600 text-sm">
-                开源免费，无 $20/月订阅。Cowork 和 Cursor 的最佳替代。
+                完全开源，代码透明可审计。社区驱动，持续迭代。
               </p>
             </motion.div>
           </div>
@@ -385,14 +350,14 @@ export default function CompareContent() {
                   <span className="text-lg">🧠</span>
                   <span className="font-semibold text-gray-800">vs Claude Cowork</span>
                 </div>
-                <p className="text-sm text-gray-600"><strong>Prompt-Free</strong> + 免费 + 跨平台（Cowork 需 $20/月，仅 macOS）</p>
+                <p className="text-sm text-gray-600"><strong>Soul Driven</strong> + 跨平台支持（Cowork 仅 macOS）+ 开源透明</p>
               </div>
               <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-lg">⌨️</span>
                   <span className="font-semibold text-gray-800">vs Cursor</span>
                 </div>
-                <p className="text-sm text-gray-600"><strong>非开发者友好</strong> + Prompt-Free + 免费（Cursor 专注代码，$20/月）</p>
+                <p className="text-sm text-gray-600"><strong>非开发者友好</strong> + 屏幕感知 + 通用任务支持（Cursor 专注代码）</p>
               </div>
               <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                 <div className="flex items-center gap-2 mb-2">
@@ -406,7 +371,7 @@ export default function CompareContent() {
                   <span className="text-lg">⏪</span>
                   <span className="font-semibold text-gray-800">vs Rewind AI</span>
                 </div>
-                <p className="text-sm text-gray-600"><strong>开源永续</strong> + Prompt-Free（Rewind 已停服）</p>
+                <p className="text-sm text-gray-600"><strong>开源永续</strong> + 主动智能建议（Rewind 已停服）</p>
               </div>
             </div>
           </div>
@@ -418,7 +383,55 @@ export default function CompareContent() {
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">功能对比表</h2>
 
-          <div className="overflow-x-auto">
+          {/* Mobile Card View */}
+          <div className="md:hidden space-y-6">
+            {features.map((category) => (
+              <div key={category.category} className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="bg-gray-100 px-4 py-3">
+                  <h3 className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
+                    {category.category}
+                  </h3>
+                </div>
+                <div className="divide-y divide-gray-100">
+                  {category.items.map((item) => (
+                    <div key={item.name} className="p-4">
+                      <div className="mb-3">
+                        <span className="font-medium text-gray-900">{item.name}</span>
+                        {item.note && (
+                          <p className="text-xs text-gray-500 mt-0.5">{item.note}</p>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        {/* Hawkeye */}
+                        <div className={`flex items-center gap-2 p-2 rounded-lg ${item.hawkeye === true ? 'bg-orange-50' : 'bg-gray-50'}`}>
+                          {renderFeatureValue(item.hawkeye)}
+                          <span className="text-xs font-medium text-orange-600">Hawkeye</span>
+                        </div>
+                        {/* Cowork */}
+                        <div className="flex items-center gap-2 p-2 rounded-lg bg-gray-50">
+                          {renderFeatureValue(item.cowork)}
+                          <span className="text-xs text-gray-600">Cowork</span>
+                        </div>
+                        {/* Cursor */}
+                        <div className="flex items-center gap-2 p-2 rounded-lg bg-gray-50">
+                          {renderFeatureValue(item.cursor)}
+                          <span className="text-xs text-gray-600">Cursor</span>
+                        </div>
+                        {/* Screenpipe */}
+                        <div className="flex items-center gap-2 p-2 rounded-lg bg-gray-50">
+                          {renderFeatureValue(item.screenpipe)}
+                          <span className="text-xs text-gray-600">Screenpipe</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Table View */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-200">
               {/* Header */}
               <thead>
@@ -435,7 +448,7 @@ export default function CompareContent() {
                         <span className={`font-bold ${c.isUs ? 'text-orange-600' : 'text-gray-900'}`}>
                           {c.name}
                         </span>
-                        <span className="text-xs text-gray-500">{c.pricing}</span>
+                        <span className="text-xs text-gray-500">{c.tagline}</span>
                       </div>
                     </th>
                   ))}
@@ -485,16 +498,16 @@ export default function CompareContent() {
           </div>
 
           {/* Legend */}
-          <div className="flex justify-center gap-6 mt-6 text-sm text-gray-600">
-            <div className="flex items-center gap-2">
+          <div className="flex justify-center gap-4 md:gap-6 mt-6 text-sm text-gray-600">
+            <div className="flex items-center gap-1.5 md:gap-2">
               <Check className="w-4 h-4 text-green-500" />
               <span>支持</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 md:gap-2">
               <Minus className="w-4 h-4 text-yellow-500" />
               <span>部分支持</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 md:gap-2">
               <X className="w-4 h-4 text-gray-300" />
               <span>不支持</span>
             </div>
@@ -511,7 +524,7 @@ export default function CompareContent() {
           <motion.article
             initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={viewportOnce}
             className="mb-12 p-8 bg-gray-50 rounded-2xl"
             id="hawkeye-vs-cowork"
           >
@@ -526,7 +539,7 @@ export default function CompareContent() {
                 <h4 className="font-semibold text-green-600 mb-2">Hawkeye 优势</h4>
                 <ul className="space-y-2 text-gray-600 text-sm">
                   <li>✅ <strong>Prompt-Free</strong>，无需输入任何指令</li>
-                  <li>✅ <strong>完全免费</strong>，无 $20+/月订阅费</li>
+                  <li>✅ <strong>多模型支持</strong>，支持 Ollama 本地模型和云端 API</li>
                   <li>✅ <strong>100% 本地处理</strong>，数据不上传</li>
                   <li>✅ <strong>支持 Windows/Linux</strong>（Cowork 仅 macOS）</li>
                   <li>✅ <strong>VS Code + Chrome 扩展</strong>多端联动</li>
@@ -552,7 +565,7 @@ export default function CompareContent() {
           <motion.article
             initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={viewportOnce}
             className="mb-12 p-8 bg-gray-50 rounded-2xl"
             id="hawkeye-vs-cursor"
           >
@@ -568,7 +581,7 @@ export default function CompareContent() {
                 <ul className="space-y-2 text-gray-600 text-sm">
                   <li>✅ <strong>Prompt-Free</strong>，无需输入任何指令</li>
                   <li>✅ <strong>非开发者友好</strong>，办公/学习/创作全覆盖</li>
-                  <li>✅ <strong>完全免费</strong>，无 $20/月订阅费</li>
+                  <li>✅ <strong>多模型支持</strong>，支持本地和云端多种 AI 模型</li>
                   <li>✅ <strong>100% 本地处理</strong>，数据隐私</li>
                   <li>✅ <strong>开源透明</strong>，代码可审计</li>
                   <li>✅ <strong>屏幕感知</strong>，理解整个桌面</li>
@@ -593,7 +606,7 @@ export default function CompareContent() {
           <motion.article
             initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={viewportOnce}
             className="mb-12 p-8 bg-gray-50 rounded-2xl"
             id="hawkeye-vs-screenpipe"
           >
@@ -633,7 +646,7 @@ export default function CompareContent() {
           <motion.article
             initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={viewportOnce}
             className="p-8 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-300"
             id="hawkeye-vs-rewind"
           >
@@ -646,7 +659,7 @@ export default function CompareContent() {
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
               <h4 className="font-semibold text-orange-700 mb-2">🔄 Hawkeye：Rewind 的开源替代</h4>
               <ul className="space-y-2 text-gray-600 text-sm">
-                <li>✅ <strong>永久免费开源</strong>，不会被收购停服</li>
+                <li>✅ <strong>永久开源</strong>，社区驱动不会被收购停服</li>
                 <li>✅ <strong>100% 本地运行</strong>，比 Rewind 更隐私</li>
                 <li>✅ <strong>主动建议</strong>而非仅记录</li>
                 <li>✅ <strong>三端联动</strong>（桌面 + VS Code + Chrome）</li>
@@ -654,7 +667,7 @@ export default function CompareContent() {
               </ul>
             </div>
             <p className="mt-4 text-gray-500 text-sm">
-              如果你是 Rewind 的原用户，Hawkeye 是最佳的开源替代方案——更隐私、更主动、永久免费。
+              如果你是 Rewind 的原用户，Hawkeye 是最佳的开源替代方案——更隐私、更主动、永久开源。
             </p>
           </motion.article>
         </div>
@@ -664,13 +677,13 @@ export default function CompareContent() {
       <section className="py-16 bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-orange-500/20 text-orange-400 text-sm font-medium">
-            ✨ The Only Prompt-Free Option
+            ✨ Soul Driven AI Coworker
           </span>
           <h2 className="text-3xl font-bold text-white mb-4">
             Try the Prompt-Free AI Coworker
           </h2>
           <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-            免费、开源、本地优先。无需提示词，自然工作即可。
+            开源、本地优先。Soul Driven，自然工作即可。
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

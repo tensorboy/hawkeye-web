@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hawkeye - Open Source AI Desktop Assistant | 10x Your Productivity',
     description: 'Free, open-source AI assistant with 24/7 screen perception, clipboard automation, and local LLM support. Alternative to Screenpipe & Rewind.',
-    url: `${siteConfig.url}/en`,
+    url: siteConfig.url,
     siteName: siteConfig.name,
     locale: 'en_US',
     type: 'website',
@@ -79,10 +79,10 @@ export const metadata: Metadata = {
     creator: '@tensorboy',
   },
   alternates: {
-    canonical: `${siteConfig.url}/en`,
+    canonical: siteConfig.url,
     languages: {
-      'en-US': `${siteConfig.url}/en`,
-      'zh-CN': siteConfig.url,
+      'en-US': siteConfig.url,
+      'zh-CN': `${siteConfig.url}/zh`,
     },
   },
   robots: {

@@ -3,13 +3,13 @@ import { Metadata } from 'next'
 // SEO 配置常量
 export const siteConfig = {
   name: 'Hawkeye',
-  // 新定位：Prompt-Free AI Coworker
-  title: 'Hawkeye - Prompt-Free AI Coworker | Multimodal Agent That Just Works',
-  titleZh: 'Hawkeye - 无需提示词的 AI 协作伙伴 | 懂你所想，无需开口',
-  titleEn: 'Hawkeye - Prompt-Free AI Coworker | Multimodal Agent That Just Works',
-  // 新描述：突出 Prompt-Free + Coworker 概念
-  description: 'Hawkeye 是无需提示词的 AI 协作伙伴，自动感知屏幕、理解上下文、主动执行任务。不用打字输入指令，自然工作即可。开源免费，本地优先，100% 隐私安全。Claude Cowork/Cursor 的免费替代品。',
-  descriptionEn: 'Hawkeye is a prompt-free AI coworker that perceives your screen, understands context, and takes action automatically. No typing prompts - just work naturally. Open source, local-first, 100% private. Free Claude Cowork & Cursor alternative.',
+  // 优化后的 Title - 简洁有力 (< 60 字符)
+  title: 'Hawkeye - AI That Just Knows | Open Source',
+  titleZh: 'Hawkeye - 懂你的 AI 助手 | 开源免费',
+  titleEn: 'Hawkeye - Prompt-Free AI Coworker | Open Source',
+  // 优化后的 Description - 突出核心卖点 (< 160 字符)
+  description: 'Hawkeye 是无需提示词的 AI 协作伙伴。自动感知屏幕、理解意图、主动执行。开源免费，本地优先，100% 隐私。Claude Cowork/Cursor 免费替代。',
+  descriptionEn: 'Prompt-free AI coworker that perceives your screen and acts automatically. No prompts needed. Open source, local-first, 100% private. Free Cursor & Claude Cowork alternative.',
   url: 'https://hawkiyi.com',
   ogImage: 'https://hawkiyi.com/og-image.png',
   twitterImage: 'https://hawkiyi.com/twitter-image.png',
@@ -274,8 +274,8 @@ export function generateMetadata(overrides?: Partial<Metadata>): Metadata {
     alternates: {
       canonical: siteConfig.url,
       languages: {
-        'zh-CN': siteConfig.url,
-        'en-US': `${siteConfig.url}/en`,
+        'en-US': siteConfig.url,
+        'zh-CN': `${siteConfig.url}/zh`,
       },
     },
     category: 'technology',

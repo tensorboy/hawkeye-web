@@ -57,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="zh-CN"
+      lang="en"
       suppressHydrationWarning
     >
       <head>
@@ -70,9 +70,14 @@ export default function RootLayout({
         {/* 规范链接 */}
         <link rel="canonical" href={siteConfig.url} />
 
-        {/* 多语言 hreflang 标签 */}
-        <link rel="alternate" hrefLang="zh-CN" href={siteConfig.url} />
-        <link rel="alternate" hrefLang="en-US" href={`${siteConfig.url}/en`} />
+        {/* Multilingual hreflang tags */}
+        <link rel="alternate" hrefLang="en-US" href={siteConfig.url} />
+        <link rel="alternate" hrefLang="zh-CN" href={`${siteConfig.url}/zh`} />
+        <link rel="alternate" hrefLang="ja" href={`${siteConfig.url}/ja`} />
+        <link rel="alternate" hrefLang="ko" href={`${siteConfig.url}/ko`} />
+        <link rel="alternate" hrefLang="es" href={`${siteConfig.url}/es`} />
+        <link rel="alternate" hrefLang="fr" href={`${siteConfig.url}/fr`} />
+        <link rel="alternate" hrefLang="de" href={`${siteConfig.url}/de`} />
         <link rel="alternate" hrefLang="x-default" href={siteConfig.url} />
 
         {/* RSS/Atom Feed (如果有的话) */}
@@ -83,12 +88,12 @@ export default function RootLayout({
       </head>
       <body className="antialiased font-sans">
         <ThemeProvider>
-          {/* 跳过导航链接 - 无障碍优化 */}
+          {/* Skip navigation link - accessibility */}
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-md z-50"
           >
-            跳到主要内容
+            Skip to main content
           </a>
           {children}
         </ThemeProvider>

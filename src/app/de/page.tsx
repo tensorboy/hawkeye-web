@@ -115,9 +115,9 @@ export default function HomeDE() {
         </div>
       </section>
 
-      {/* Product Screenshot Mock */}
+      {/* Hero Video - Autoplay */}
       <section className="pb-20 px-4">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-4xl">
           <motion.div
             initial={prefersReducedMotion ? {} : { opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -133,89 +133,45 @@ export default function HomeDE() {
                   <div className="w-3 h-3 rounded-full bg-yellow-500" />
                   <div className="w-3 h-3 rounded-full bg-green-500" />
                 </div>
-                <div className="flex-1 text-center text-sm text-[var(--hawk-text-tertiary)]">{t.productDemo.windowTitle}</div>
+                <div className="flex-1 text-center text-sm text-[var(--hawk-text-tertiary)]">Hawkeye — Live-Demo</div>
               </div>
-              {/* App Content Mock */}
-              <div className="p-6 grid md:grid-cols-3 gap-6">
-                <div className="md:col-span-2 space-y-4">
-                  <div className="bg-[var(--hawk-bg-primary)] rounded-xl p-4 border border-[var(--hawk-border)]">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
-                        <Scan className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="font-medium text-[var(--hawk-text-primary)]">{t.productDemo.chat}</span>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="bg-[var(--hawk-bg-secondary)] rounded-lg p-3 text-sm text-[var(--hawk-text-secondary)]">{t.productDemo.chatMessage}</div>
-                      <div className="bg-[var(--hawk-accent)]/10 rounded-lg p-3 text-sm text-[var(--hawk-accent)]">{t.productDemo.chatResponse}</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <div className="bg-[var(--hawk-bg-primary)] rounded-xl p-4 border border-[var(--hawk-border)]">
-                    <div className="text-xs text-[var(--hawk-text-tertiary)] mb-2">{t.productDemo.screenPerception}</div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-sm text-[var(--hawk-text-secondary)]">{t.productDemo.screenStatus}</span>
-                    </div>
-                  </div>
-                  <div className="bg-[var(--hawk-bg-primary)] rounded-xl p-4 border border-[var(--hawk-border)]">
-                    <div className="text-xs text-[var(--hawk-text-tertiary)] mb-2">{t.productDemo.fileMonitor}</div>
-                    <div className="text-sm text-[var(--hawk-text-primary)]">{t.productDemo.fileStatus}</div>
-                  </div>
-                  <div className="bg-[var(--hawk-bg-primary)] rounded-xl p-4 border border-[var(--hawk-border)]">
-                    <div className="text-xs text-[var(--hawk-text-tertiary)] mb-2">{t.productDemo.clipboard}</div>
-                    <div className="text-sm text-[var(--hawk-text-primary)]">{t.productDemo.clipboardStatus}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Demo Video Section */}
-      <section className="py-20 px-4 bg-[var(--hawk-bg-secondary)]">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-12">
-            <h2 className="hawk-display-md text-[var(--hawk-text-primary)] mb-4">{t.demo.title}</h2>
-            <p className="text-lg text-[var(--hawk-text-secondary)]">{t.demo.subtitle}</p>
-          </div>
-          <motion.div
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative rounded-2xl overflow-hidden border border-[var(--hawk-border)] shadow-2xl"
-          >
-            <div className="aspect-video bg-slate-900 relative">
-              <video
-                ref={videoRef}
-                className="w-full h-full object-cover"
-                poster="/demo-poster.jpg"
-                controls={videoPlaying}
+              {/* Video Player */}
+              <div
+                className="relative aspect-video bg-slate-900 cursor-pointer group"
+                onClick={() => {
+                  if (videoRef.current) {
+                    if (videoRef.current.muted) {
+                      videoRef.current.muted = false
+                    } else {
+                      if (videoPlaying) {
+                        videoRef.current.pause()
+                        setVideoPlaying(false)
+                      } else {
+                        videoRef.current.play()
+                        setVideoPlaying(true)
+                      }
+                    }
+                  }
+                }}
               >
-                <source src="/demo.mp4" type="video/mp4" />
-              </video>
-              {!videoPlaying && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                  <button
-                    onClick={() => {
-                      setVideoPlaying(true)
-                      videoRef.current?.play()
-                    }}
-                    className="w-20 h-20 rounded-full bg-white/90 hover:bg-white flex items-center justify-center transition-transform hover:scale-110"
-                  >
-                    <Play className="w-8 h-8 text-slate-900 ml-1" />
-                  </button>
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-cover"
+                  src="/video/hawkeye-demo-zh.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  onPlay={() => setVideoPlaying(true)}
+                  onPause={() => setVideoPlaying(false)}
+                />
+                <div className="absolute bottom-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-full text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                  Klicken für Ton
                 </div>
-              )}
-            </div>
-            {/* Video Chapters */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-              <div className="flex gap-4 text-sm text-white/80">
-                <span className="flex items-center gap-1"><ChevronDown className="w-4 h-4" />0:00 - {t.demo.chapters.intro}</span>
-                <span className="flex items-center gap-1"><ChevronDown className="w-4 h-4" />0:30 - {t.demo.chapters.gesture}</span>
-                <span className="flex items-center gap-1"><ChevronDown className="w-4 h-4" />1:15 - {t.demo.chapters.features}</span>
+                <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-full">
+                  <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <span className="text-white text-xs font-medium">Demo</span>
+                </div>
               </div>
             </div>
           </motion.div>

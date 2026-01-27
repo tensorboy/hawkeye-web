@@ -21,10 +21,10 @@ export const localeFlags: Record<Locale, string> = {
   de: '🇩🇪',
 }
 
-export const defaultLocale: Locale = 'zh'
+export const defaultLocale: Locale = 'en'
 
 export function getLocalePath(locale: Locale): string {
-  return locale === 'zh' ? '/' : `/${locale}`
+  return locale === 'en' ? '/' : `/${locale}`
 }
 
 export function isValidLocale(locale: string): locale is Locale {
