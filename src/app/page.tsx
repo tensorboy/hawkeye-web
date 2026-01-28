@@ -29,7 +29,7 @@ import {
   FolderOpen,
   Mail,
   MessageSquare,
-  Twitter,
+
   ExternalLink,
   Play
 } from 'lucide-react'
@@ -697,12 +697,6 @@ export default function Home() {
             </p>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
               <Link href="/zh" className="text-gray-400 hover:text-white text-sm">中文</Link>
-              <a href="https://github.com/tensorboy/hawkeye" className="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="https://twitter.com/tensorboy" className="text-gray-400 hover:text-white transition-colors" aria-label="Twitter">
-                <Twitter className="w-5 h-5" />
-              </a>
             </div>
           </div>
         </div>

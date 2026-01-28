@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   Download, Github, Chrome, Monitor, Code2, Cpu, Menu, X,
-  FileText, Clipboard, FolderOpen, Mail, Twitter, Scan, Brain, Shield,
+  FileText, Clipboard, FolderOpen, Mail, Scan, Brain, Shield,
   Check, Sparkles, Star, ChevronDown, ExternalLink, Globe, Play
 } from 'lucide-react'
 import Link from 'next/link'
@@ -292,8 +292,6 @@ export default function HomeFR() {
             <div className="flex items-center gap-4 mt-4 md:mt-0">
               <Link href="/zh" className="text-gray-400 hover:text-white text-sm">中文</Link>
               <Link href="/" className="text-gray-400 hover:text-white text-sm">English</Link>
-              <a href="https://github.com/tensorboy/hawkeye" className="text-gray-400 hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
-              <a href="https://twitter.com/tensorboy" className="text-gray-400 hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
             </div>
           </div>
         </div>
