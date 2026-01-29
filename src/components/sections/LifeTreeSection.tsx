@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { TreePine } from 'lucide-react'
-import { DemoTree } from './life-tree/DemoTree'
+import { AnimatedLifeTree } from './life-tree/AnimatedLifeTree'
 
 interface LifeTreeSectionProps {
   prefersReducedMotion: boolean
@@ -207,7 +207,7 @@ export function LifeTreeSection({ prefersReducedMotion, locale = 'en' }: LifeTre
           <p className="text-base sm:text-xl md:text-2xl font-semibold mb-3 md:mb-4 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 dark:from-amber-300 dark:via-orange-400 dark:to-rose-400 bg-clip-text text-transparent px-2 sm:px-0">
             {copy.tagline}
           </p>
-          <p className="text-sm sm:text-base md:text-lg text-[var(--hawk-text-secondary)] max-w-2xl mx-auto px-2 sm:px-0">
+          <p className="text-sm sm:text-base md:text-lg text-[var(--hawk-text-primary)] opacity-80 max-w-2xl mx-auto px-2 sm:px-0 leading-relaxed">
             {copy.subheading}
           </p>
         </motion.header>
@@ -222,7 +222,7 @@ export function LifeTreeSection({ prefersReducedMotion, locale = 'en' }: LifeTre
         >
           <div className="bg-[var(--hawk-surface)] rounded-2xl border border-[var(--hawk-border)] p-3 sm:p-6 md:p-8 backdrop-blur-sm overflow-x-auto shadow-sm dark:shadow-none">
             <div className="min-w-[360px]">
-              <DemoTree prefersReducedMotion={!!prefersReducedMotion} />
+              <AnimatedLifeTree prefersReducedMotion={!!prefersReducedMotion} locale={locale} />
             </div>
           </div>
         </motion.div>

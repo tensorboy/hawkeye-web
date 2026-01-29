@@ -16,6 +16,7 @@ export interface LayoutNode {
   experimentStatus?: string
   x: number
   y: number
+  depth: number  // Depth from root (root = 0)
 }
 
 export interface LayoutEdge {
@@ -23,10 +24,11 @@ export interface LayoutEdge {
   fromY: number
   toX: number
   toY: number
+  targetDepth: number  // Depth of the target node (for animation timing)
 }
 
 const NODE_H_GAP = 140
-const NODE_V_GAP = 110
+const NODE_V_GAP = -110  // Negative to grow upward like a real tree
 
 interface SizedNode {
   node: DemoNode
@@ -48,6 +50,7 @@ function assignPositions(
   sized: SizedNode,
   cx: number,
   cy: number,
+  depth: number,
   nodes: LayoutNode[],
   edges: LayoutEdge[],
 ): void {
@@ -60,6 +63,7 @@ function assignPositions(
     experimentStatus: sized.node.experimentStatus,
     x: cx,
     y: cy,
+    depth,
   })
 
   if (sized.children.length === 0) return
@@ -71,8 +75,8 @@ function assignPositions(
     const childCx = startX + child.width / 2
     const childCy = cy + NODE_V_GAP
 
-    edges.push({ fromX: cx, fromY: cy, toX: childCx, toY: childCy })
-    assignPositions(child, childCx, childCy, nodes, edges)
+    edges.push({ fromX: cx, fromY: cy, toX: childCx, toY: childCy, targetDepth: depth + 1 })
+    assignPositions(child, childCx, childCy, depth + 1, nodes, edges)
     startX += child.width
   }
 }
@@ -83,7 +87,8 @@ export function computeDemoLayout(root: DemoNode): { nodes: LayoutNode[]; edges:
   const edges: LayoutEdge[] = []
 
   // Center the tree at (0, 0) — we'll translate via SVG viewBox
-  assignPositions(sized, 0, 0, nodes, edges)
+  // Start with depth 0 for the root node
+  assignPositions(sized, 0, 0, 0, nodes, edges)
 
   return { nodes, edges }
 }
