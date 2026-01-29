@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
@@ -42,8 +42,6 @@ import { LifeTreeSection } from '@/components/sections/LifeTreeSection'
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
-  const [videoPlaying, setVideoPlaying] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
   const shouldReduceMotion = useReducedMotion()
 
   // Prevent hydration mismatch by only using motion values after mount
@@ -291,63 +289,6 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Hero Video - Autoplay */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-16 max-w-4xl mx-auto"
-          >
-            <div className="bg-gradient-to-b from-gray-100 to-gray-200 dark:from-[var(--hawk-bg-tertiary)] dark:to-[var(--hawk-bg-secondary)] rounded-2xl p-1 shadow-2xl">
-              <div className="bg-white dark:bg-[var(--hawk-bg-primary)] rounded-xl overflow-hidden">
-                <div className="bg-gray-100 dark:bg-[var(--hawk-bg-secondary)] px-4 py-3 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-400" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                    <div className="w-3 h-3 rounded-full bg-green-400" />
-                  </div>
-                  <div className="flex-1 text-center text-sm text-gray-500 dark:text-[var(--hawk-text-tertiary)]">Hawkeye — Live Demo</div>
-                </div>
-                <div
-                  className="relative aspect-video bg-slate-900 cursor-pointer group"
-                  onClick={() => {
-                    if (videoRef.current) {
-                      if (videoRef.current.muted) {
-                        videoRef.current.muted = false
-                      } else {
-                        if (videoPlaying) {
-                          videoRef.current.pause()
-                          setVideoPlaying(false)
-                        } else {
-                          videoRef.current.play()
-                          setVideoPlaying(true)
-                        }
-                      }
-                    }
-                  }}
-                >
-                  <video
-                    ref={videoRef}
-                    className="w-full h-full object-cover"
-                    src="/video/hawkeye-demo-zh.mp4"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    onPlay={() => setVideoPlaying(true)}
-                    onPause={() => setVideoPlaying(false)}
-                  />
-                  <div className="absolute bottom-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-full text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                    Click to unmute
-                  </div>
-                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-full">
-                    <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                    <span className="text-white text-xs font-medium">Demo</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 

@@ -59,7 +59,6 @@ import {
   Home as HomeIcon,
   Layers,
   Play,
-  Activity,
   Target,
   Scan,
   Brain,
@@ -76,8 +75,6 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [mounted, setMounted] = useState(false)
-  const [videoPlaying, setVideoPlaying] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
   const shouldReduceMotion = useReducedMotion()
   const heroRef = useRef<HTMLDivElement>(null)
 
@@ -461,100 +458,6 @@ export default function Home() {
               </span>
             </motion.div>
 
-            {/* Hero Video - Autoplay */}
-            <motion.div
-              variants={itemVariants} custom={prefersReducedMotion}
-              className="relative max-w-4xl mx-auto"
-            >
-              {/* Glow behind the video */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[var(--hawk-accent)]/20 via-[var(--hawk-blue)]/20 to-[var(--hawk-accent)]/20 blur-3xl -z-10 scale-110" />
-
-              <div className="hawk-border-gradient overflow-hidden">
-                <div className="bg-[var(--hawk-surface)]">
-                  {/* Window Chrome */}
-                  <div className="flex items-center gap-2 px-4 py-3 bg-[var(--hawk-bg-secondary)] border-b border-[var(--hawk-border)]">
-                    <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                      <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                    </div>
-                    <div className="flex-1 text-center text-sm text-[var(--hawk-text-tertiary)] font-medium">
-                      Hawkeye — 实际演示
-                    </div>
-                    <div className="flex items-center gap-1 text-xs text-[var(--hawk-accent)]">
-                      <Activity className="w-3 h-3 animate-pulse" />
-                      实时演示
-                    </div>
-                  </div>
-
-                  {/* Video Player */}
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    aria-label={videoPlaying ? "暂停演示视频" : "播放演示视频"}
-                    className="relative aspect-video bg-slate-900 cursor-pointer group"
-                    onClick={() => {
-                      if (videoRef.current) {
-                        if (videoRef.current.muted) {
-                          videoRef.current.muted = false
-                        } else {
-                          if (videoPlaying) {
-                            videoRef.current.pause()
-                            setVideoPlaying(false)
-                          } else {
-                            videoRef.current.play()
-                            setVideoPlaying(true)
-                          }
-                        }
-                      }
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault()
-                        if (videoRef.current) {
-                          if (videoRef.current.muted) {
-                            videoRef.current.muted = false
-                          } else {
-                            if (videoPlaying) {
-                              videoRef.current.pause()
-                              setVideoPlaying(false)
-                            } else {
-                              videoRef.current.play()
-                              setVideoPlaying(true)
-                            }
-                          }
-                        }
-                      }
-                    }}
-                  >
-                    <video
-                      ref={videoRef}
-                      className="w-full h-full object-cover"
-                      src="/video/hawkeye-demo-zh.mp4"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      aria-label="Hawkeye产品演示视频"
-                      onPlay={() => setVideoPlaying(true)}
-                      onPause={() => setVideoPlaying(false)}
-                    />
-                    {/* Click to unmute hint */}
-                    <div className="absolute bottom-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-full text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                      </svg>
-                      点击开启声音
-                    </div>
-                    {/* Playing indicator */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-full">
-                      <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                      <span className="text-white text-xs font-medium">演示中</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </motion.div>
 
