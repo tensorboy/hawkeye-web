@@ -1,0 +1,24 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Pin to Node 22 (matches .nvmrc and package.json engines).
+        # Amplify build images ship multiple node versions via nvm.
+        - nvm install 22
+        - nvm use 22
+        - node -v
+        - npm -v
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    # Next.js 15 (App Router, SSR) builds to .next/
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - .next/cache/**/*
